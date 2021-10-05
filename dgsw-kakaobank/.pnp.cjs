@@ -56,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-app-rewired", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:2.1.8"],
             ["react-dom", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:17.0.2"],
             ["react-scripts", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:4.0.3"],
+            ["recoil", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:0.4.1"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
             ["web-vitals", "npm:1.1.2"]
           ],
@@ -9171,6 +9172,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-app-rewired", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:2.1.8"],
             ["react-dom", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:17.0.2"],
             ["react-scripts", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:4.0.3"],
+            ["recoil", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:0.4.1"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
             ["web-vitals", "npm:1.1.2"]
           ],
@@ -11354,6 +11356,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gzip-size", "npm:5.1.1"],
             ["duplexer", "npm:0.1.2"],
             ["pify", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["hamt_plus", [
+        ["npm:1.0.2", {
+          "packageLocation": "./.yarn/cache/hamt_plus-npm-1.0.2-67a52ee1df-af26ea32db.zip/node_modules/hamt_plus/",
+          "packageDependencies": [
+            ["hamt_plus", "npm:1.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -17150,6 +17161,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["readdirp", "npm:3.5.0"],
             ["picomatch", "npm:2.2.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["recoil", [
+        ["npm:0.4.1", {
+          "packageLocation": "./.yarn/cache/recoil-npm-0.4.1-013a399a25-a11a93e516.zip/node_modules/recoil/",
+          "packageDependencies": [
+            ["recoil", "npm:0.4.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:0.4.1", {
+          "packageLocation": "./.yarn/__virtual__/recoil-virtual-eae4b60a2c/0/cache/recoil-npm-0.4.1-013a399a25-a11a93e516.zip/node_modules/recoil/",
+          "packageDependencies": [
+            ["recoil", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:0.4.1"],
+            ["@types/react", "npm:17.0.27"],
+            ["hamt_plus", "npm:1.0.2"],
+            ["react", "npm:17.0.2"],
+            ["react-dom", "virtual:762e8564459883fe311af6600ee7b7c0bfa9d5d80d09d8722f6ad6fdd0ec95fbe39ce88eece817993543371e22a9b66a352148cf2a9561383d937039688efac4#npm:17.0.2"],
+            ["react-native", null]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react-dom",
+            "react-native",
+            "react"
           ],
           "linkType": "HARD",
         }]
