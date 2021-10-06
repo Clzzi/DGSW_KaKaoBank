@@ -1,6 +1,7 @@
-import { css } from '@emotion/react'
+import { css, useTheme } from '@emotion/react'
 
 const GlobalStyle = () => {
+  const theme = useTheme()
   return css`
     @font-face {
       font-family: AppleB;
@@ -26,6 +27,7 @@ const GlobalStyle = () => {
     * {
       padding: 0;
       margin: 0;
+      background-color: ${theme.color.backgroundColor};
     }
 
     a {
@@ -47,5 +49,4 @@ const GlobalStyle = () => {
   `
 }
 
-
-export default GlobalStyle;
+export default GlobalStyle
