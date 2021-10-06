@@ -30,6 +30,8 @@ const GlobalStyle = () => {
       margin: 0;
       background-color: ${theme.backgroundColor};
       color: ${theme.fontColor};
+      font-family: AppleM;
+      box-sizing: border-box;
     }
 
     a {
@@ -47,6 +49,13 @@ const GlobalStyle = () => {
     ol,
     ul {
       list-style: none;
+    }
+
+    input {
+      outline: none;
+      &:focus {
+        outline: none;
+      }
     }
   `;
 };

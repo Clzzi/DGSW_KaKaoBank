@@ -10,8 +10,9 @@ interface IButtonProps {
 export const StyledButton = styled.button<IButtonProps>`
   width: 452px;
   height: 52px;
-  background-color: ${(props) => props.backgroundColor || ColorPalette.darkBlue};
-  color: ${(props) => props.fontColor || ColorPalette.fureWhite };
+  background-color: ${(props) =>
+    props.backgroundColor || ColorPalette.darkBlue};
+  color: ${(props) => props.fontColor || ColorPalette.fureWhite};
   font-size: ${fontPalette.font24};
   border-radius: 10px;
   cursor: pointer;
@@ -22,4 +23,5 @@ export const StyledButton = styled.button<IButtonProps>`
   margin: 0;
   font-weight: bold;
   overflow: hidden;
+  border: none;
 `;
