@@ -9,9 +9,12 @@ const GlobalStyle = () => {
     * {
       padding: 0;
       margin: 0;
-      background-color: ${theme.backgroundColor};
       color: ${theme.fontColor};
       box-sizing: border-box;
+    }
+
+    body {
+      background-color: ${theme.backgroundColor};
     }
 
     a {

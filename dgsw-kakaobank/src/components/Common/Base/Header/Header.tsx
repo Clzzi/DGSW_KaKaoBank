@@ -9,7 +9,7 @@ const Header = ({ isLogout }: { isLogout: boolean }) => {
     height: '36px',
     fontSize: `${fontPalette.font16}`,
     fontFamily: 'AppleB',
-    fontWeight: "normal"
+    fontWeight: 'normal',
   };
   return (
     <StyleHeader>
