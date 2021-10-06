@@ -13,7 +13,7 @@ export const StyleHeader = styled.div`
   align-items: center;
 
   .HeaderWrapper {
-    width: 520px;
+    width: 430px;
     display: flex;
     justify-content: space-between;
     text-align: center;

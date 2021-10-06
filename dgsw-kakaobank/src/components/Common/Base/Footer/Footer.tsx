@@ -7,9 +7,9 @@ const Footer = (): JSX.Element => {
   return (
     <StyledFooter>
       <div className="buttonWrapper">
-        <MainButton />
-        <ServiceButton />
-        <UserButton />
+        <MainButton cursor="pointer" />
+        <ServiceButton cursor="pointer" />
+        <UserButton cursor="pointer" />
       </div>
     </StyledFooter>
   );
