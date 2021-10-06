@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      <Header isLogout={true} />
       <Button children={'testDiv'} />
       <InfoInput
         value={input}

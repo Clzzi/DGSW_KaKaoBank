@@ -7,8 +7,10 @@ export const StyleHeader = styled.div`
   height: 72px;
   padding: 21px 745px;
   display: flex;
+  text-align: center;
   background-color: ${ColorPalette.main};
   justify-content: space-between;
+  margin-bottom: 45px;
   .title {
     background: none;
     .mainTitle {
@@ -26,8 +28,6 @@ export const StyleHeader = styled.div`
       font-size: ${fontPalette.font14};
       font-family: AppleB;
       font-weight: bold;
-      line-height: 27px;
-      align-self: flex-end;
     }
   }
 `;
