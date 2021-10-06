@@ -1,6 +1,4 @@
-import styled, { CreateStyled } from '@emotion/styled';
-
-export interface IColorTheme {
+export interface IColorPalette {
   main: string;
   toss: string;
   shinhan: string;
@@ -14,16 +12,15 @@ export interface IColorTheme {
   fureGreen: string;
   fureWhite: string;
   fureBlack: string;
-  fontColor: string;
-  backgroundColor: string;
 }
 
-export interface IFontTheme {
+export interface IFontPalette {
   font14: string;
   font16: string;
   font18: string;
   font20: string;
   font22: string;
+  font24: string;
   font28: string;
   font36: string;
   font40: string;
@@ -32,6 +29,6 @@ export interface IFontTheme {
 }
 
 export interface ITheme {
-  color: IColorTheme,
-  font: IFontTheme
+  fontColor: string;
+  backgroundColor: string;
 }

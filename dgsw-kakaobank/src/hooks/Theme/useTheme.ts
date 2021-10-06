@@ -1,19 +1,33 @@
 import { ThemeEnum } from 'enum/ThemeEnum';
-import { useRecoilValue } from 'recoil';
+import { useCallback } from 'react';
+import { useRecoilState } from 'recoil';
 import { themeMode } from 'store/theme';
-import { darkTheme, fontTheme, lightTheme } from 'styles/Theme';
+import { darkTheme, lightTheme } from 'styles/ThemePalette';
 import { ITheme } from 'types/theme/theme.type';
+import getTheme from 'util/getTheme';
 
 const useTheme = () => {
-  const { LIGHT } = ThemeEnum;
-  const mode: ThemeEnum = useRecoilValue(themeMode);
+  const [currentTheme, setCurrentTheme] = useRecoilState<ThemeEnum>(themeMode);
+  const { LIGHT, DARK } = ThemeEnum;
 
-  const theme: ITheme = {
-    color: mode === LIGHT ? lightTheme : darkTheme,
-    font: fontTheme,
+  const handleChangeTheme = useCallback((): void => {
+    if (currentTheme === DARK) {
+      localStorage.setItem('theme', '0');
+      setCurrentTheme(LIGHT);
+      return;
+    }
+
+    localStorage.setItem('theme', '1');
+    setCurrentTheme(DARK);
+  }, [DARK, LIGHT, setCurrentTheme, currentTheme]);
+
+  const theme: ITheme = getTheme() ? darkTheme : lightTheme;
+
+  return {
+    theme,
+    currentTheme,
+    handleChangeTheme,
   };
-
-  return theme;
 };
 
 export default useTheme;

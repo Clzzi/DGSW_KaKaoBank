@@ -1,8 +1,8 @@
-import { css, useTheme } from '@emotion/react';
-import { ITheme } from 'types/theme/theme.type';
+import { css } from '@emotion/react';
+import useTheme from 'hooks/Theme/useTheme';
 
 const GlobalStyle = () => {
-  const theme: ITheme = useTheme();
+  const { theme } = useTheme();
   return css`
     @font-face {
       font-family: AppleB;
@@ -28,8 +28,8 @@ const GlobalStyle = () => {
     * {
       padding: 0;
       margin: 0;
-      background-color: ${theme.color.backgroundColor};
-      color: ${theme.color.fontColor};
+      background-color: ${theme.backgroundColor};
+      color: ${theme.fontColor};
     }
 
     a {

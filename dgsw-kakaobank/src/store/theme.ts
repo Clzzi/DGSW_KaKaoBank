@@ -1,8 +1,8 @@
-import { ThemeEnum } from "enum/ThemeEnum";
-import { atom } from "recoil";
-import { getTheme } from "util/getTheme";
+import { ThemeEnum } from 'enum/ThemeEnum';
+import { atom } from 'recoil';
+import getTheme from 'util/getTheme';
 
 export const themeMode = atom<ThemeEnum>({
-  key: "themeMode",
+  key: 'themeMode',
   default: getTheme(),
-})
+});

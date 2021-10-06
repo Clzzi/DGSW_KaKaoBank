@@ -1,17 +1,17 @@
-import { Global, ThemeProvider } from "@emotion/react"
-import App from "App";
-import useTheme from "hooks/Theme/useTheme";
-import GlobalStyle from "styles/globalStyle";
-import { ITheme } from "types/theme/theme.type";
+import App from 'App';
+import GlobalStyle from 'styles/globalStyle';
+import { ITheme } from 'types/theme/theme.type';
+import useTheme from 'hooks/Theme/useTheme';
+import { Global, ThemeProvider } from '@emotion/react';
 
-const ThemeProviderContainer = ():JSX.Element => {
-  const theme:ITheme = useTheme();
+const ThemeProviderContainer = (): JSX.Element => {
+  const { theme }: { theme: ITheme } = useTheme();
   return (
-    <ThemeProvider theme = {theme} >
+    <ThemeProvider theme={theme}>
       <Global styles={GlobalStyle} />
-      <App/>
+      <App />
     </ThemeProvider>
-  )
-}
+  );
+};
 
 export default ThemeProviderContainer;

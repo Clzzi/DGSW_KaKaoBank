@@ -1,7 +1,10 @@
+import Button from 'components/Common/Button';
+
 const App = () => {
+
   return (
     <div>
-      dfasdf
+      <Button children={"testDiv"} />
     </div>
   );
 };
