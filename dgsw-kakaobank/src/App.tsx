@@ -1,5 +1,9 @@
 const App = () => {
-  return <div>sadfsa</div>
-}
+  return (
+    <div>
+      dfasdf
+    </div>
+  );
+};
 
 export default App;
