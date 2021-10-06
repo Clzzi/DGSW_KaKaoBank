@@ -2,6 +2,7 @@ import Header from 'components/Common/Base/Header';
 import Button from 'components/Common/Button';
 import InfoInput from 'components/Common/Input/InfoInput';
 import { useState } from 'react';
+import 'styles/test.css';
 
 const App = () => {
   const [input, setInput] = useState<string>('');

@@ -6,9 +6,10 @@ import { StyleHeader } from './Header.style';
 const Header = ({ isLogout }: { isLogout: boolean }) => {
   const customButtonyStyle: CSSProperties = {
     width: '100px',
-    height: '40px',
+    height: '36px',
     fontSize: `${fontPalette.font16}`,
-    fontFamily: "AppleB"
+    fontFamily: 'AppleB',
+    fontWeight: "normal"
   };
   return (
     <StyleHeader>

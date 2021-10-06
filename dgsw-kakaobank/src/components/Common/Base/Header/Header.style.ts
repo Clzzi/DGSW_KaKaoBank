@@ -11,6 +11,7 @@ export const StyleHeader = styled.div`
   background-color: ${ColorPalette.main};
   justify-content: space-between;
   margin-bottom: 45px;
+  align-items: center;
   .title {
     background: none;
     .mainTitle {
@@ -18,15 +19,14 @@ export const StyleHeader = styled.div`
       background: none;
       color: ${ColorPalette.darkBlue};
       font-size: ${fontPalette.font20};
-      font-family: AppleEB;
-      font-weight: bold;
+      font-family: 'AppleEB';
     }
     .subTitle {
       display: inline-block;
       background: none;
       color: ${ColorPalette.darkBlue};
       font-size: ${fontPalette.font14};
-      font-family: AppleB;
+      font-family: 'AppleEB';
       font-weight: bold;
     }
   }

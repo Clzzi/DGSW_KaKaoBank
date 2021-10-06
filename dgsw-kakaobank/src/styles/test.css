@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'AppleB';
+  src: local(''), url('../assets/font/AppleSDGothicNeoB.woff') format('woff');
+}
+@font-face {
+  font-family: 'AppleEB';
+  src: local(''), url('../assets/font/AppleSDGothicNeoEB.woff') format('woff');
+}
+@font-face {
+  font-family: 'AppleH';
+  src: local(''), url('../assets/font/AppleSDGothicNeoH.woff') format('woff');
+}
+@font-face {
+  font-family: 'AppleL';
+  src: local(''), url('../assets/font/AppleSDGothicNeoL.woff') format('woff');
+}
+@font-face {
+  font-family: 'AppleM';
+  src: local(''), url('../assets/font/AppleSDGothicNeoM.woff') format('woff');
+}
+
+* {
+  font-family: 'AppleM';
+}
