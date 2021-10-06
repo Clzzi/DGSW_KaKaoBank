@@ -5,8 +5,8 @@ import { darkTheme, fontTheme, lightTheme } from 'styles/Theme';
 import { ITheme } from 'types/theme/theme.type';
 
 const useTheme = () => {
-  const mode: ThemeEnum = useRecoilValue(themeMode);
   const { LIGHT } = ThemeEnum;
+  const mode: ThemeEnum = useRecoilValue(themeMode);
 
   const theme: ITheme = {
     color: mode === LIGHT ? lightTheme : darkTheme,
