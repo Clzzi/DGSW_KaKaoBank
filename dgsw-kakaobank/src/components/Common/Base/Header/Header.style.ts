@@ -5,29 +5,35 @@ import { fontPalette } from 'styles/FontPalette';
 export const StyleHeader = styled.div`
   width: 100vw;
   height: 72px;
-  padding: 21px 745px;
   display: flex;
   text-align: center;
   background-color: ${ColorPalette.main};
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 45px;
   align-items: center;
-  .title {
-    background: none;
-    .mainTitle {
-      display: inline-block;
-      background: none;
-      color: ${ColorPalette.darkBlue};
-      font-size: ${fontPalette.font20};
-      font-family: 'AppleEB';
-    }
-    .subTitle {
-      display: inline-block;
-      background: none;
-      color: ${ColorPalette.darkBlue};
-      font-size: ${fontPalette.font14};
-      font-family: 'AppleEB';
-      font-weight: bold;
+
+  .HeaderWrapper {
+    width: 520px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    .title {
+      .mainTitle {
+        display: inline-block;
+        background: none;
+        color: ${ColorPalette.darkBlue};
+        font-size: ${fontPalette.font20};
+        font-family: 'AppleEB';
+      }
+      .subTitle {
+        display: inline-block;
+        background: none;
+        color: ${ColorPalette.darkBlue};
+        font-size: ${fontPalette.font14};
+        font-family: 'AppleEB';
+        font-weight: bold;
+      }
     }
   }
 `;

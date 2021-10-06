@@ -13,11 +13,13 @@ const Header = ({ isLogout }: { isLogout: boolean }) => {
   };
   return (
     <StyleHeader>
-      <div className="title">
-        <div className="mainTitle">카카오뱅크</div>
-        <div className="subTitle">in DGSW</div>
+      <div className={'HeaderWrapper'}>
+        <div className="title">
+          <div className="mainTitle">카카오뱅크</div>
+          <div className="subTitle">in DGSW</div>
+        </div>
+        {isLogout && <Button customStyle={customButtonyStyle}>로그아웃</Button>}
       </div>
-      {isLogout && <Button customStyle={customButtonyStyle}>로그아웃</Button>}
     </StyleHeader>
   );
 };
