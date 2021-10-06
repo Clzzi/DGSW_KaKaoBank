@@ -1,3 +1,4 @@
+import Header from 'components/Common/Base/Header';
 import Button from 'components/Common/Button';
 import InfoInput from 'components/Common/Input/InfoInput';
 import { useState } from 'react';
@@ -7,6 +8,7 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       <Button children={'testDiv'} />
       <InfoInput
         value={input}
