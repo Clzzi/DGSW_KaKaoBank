@@ -18,7 +18,7 @@ export const StyledAuthInput = styled.input`
 
 export const StyleAuthContainer = styled.div`
   width: 430px;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   text-align: center;
   align-items: center;
