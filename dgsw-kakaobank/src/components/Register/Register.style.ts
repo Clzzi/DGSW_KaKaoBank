@@ -31,6 +31,6 @@ export const StyledEasyPwError = styled.div`
 export const StyledEasyPw = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 180px;
+  min-height: 150px;
 `;
 

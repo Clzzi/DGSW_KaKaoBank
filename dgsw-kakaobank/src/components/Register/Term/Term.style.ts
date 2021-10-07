@@ -6,6 +6,7 @@ export const StyleTerm = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 50px;
 `;
 
 interface IButtonProps {

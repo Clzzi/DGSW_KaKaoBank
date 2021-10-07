@@ -8,6 +8,7 @@ import Form from './Form';
 import useRegister from 'hooks/Register/useRegister';
 import AuthInput from 'components/Common/Input/AuthInput';
 import Term from './Term';
+import Button from 'components/Common/Button';
 
 const Register = () => {
   const {
@@ -82,6 +83,12 @@ const Register = () => {
         )}
       </StyledEasyPw>
       <Term onClick={() => setCheckTerm((prev) => !prev)} check={checkTerm} />
+      <Button
+        children="회원가입"
+        handleClick={() => {
+          console.log('ㅇㅇ');
+        }}
+      />
     </div>
   );
 };
