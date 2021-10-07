@@ -13,7 +13,7 @@ interface IAuthInputProps {
 
 const AuthInput: FC<IAuthInputProps> = ({
   length = 6,
-  Reg = new RegExp('^[A-Za-z0-9]*$'),
+  Reg = new RegExp('^[0-9]*$'),
   customContainerStyle,
   customInputStyle,
   password,

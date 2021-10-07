@@ -55,14 +55,16 @@ const Register = () => {
         name="phone"
         value={registerState.phone}
         error={errorState.phone}
+        maxLength={13}
       />
       <Form
         onChange={onChangeRegisterState}
         title="생년월일"
-        placeholder="생년월일(8자리) 입력해주세요"
+        placeholder="생년월일(7자리) 입력해주세요"
         name="birth"
         value={registerState.birth}
         error={errorState.birth}
+        maxLength={8}
       />
       <StyledEasyPw>
         <StyledEasyPwTitle>간편인증번호</StyledEasyPwTitle>

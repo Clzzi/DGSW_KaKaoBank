@@ -5,5 +5,5 @@ export enum ERegisterError {
   easyPw = '간편비밀번호를 설정해주세요',
   phone = '폰번호를 제대로 입력해주세요',
   name = '이름을 제대로 입력해주세요',
-  birth = '생년월일(8자리)을 제대로 입력해주세요',
+  birth = '생년월일(7자리)을 제대로 입력해주세요',
 }

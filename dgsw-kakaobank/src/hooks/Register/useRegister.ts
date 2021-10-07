@@ -2,6 +2,7 @@ import { ERegisterError } from 'enum/registerEnum';
 import { ChangeEvent } from 'react';
 import { useRecoilState } from 'recoil';
 import { registerAtom, registerErrorAtom } from 'store/register';
+import makeBirth from 'util/makeBirth';
 import makePhoneNumber from 'util/makePhoneNumber';
 
 const useRegister = () => {
@@ -14,7 +15,7 @@ const useRegister = () => {
       setRegisterState({ ...registerState, [name]: makePhoneNumber(value) });
       onChangeErrorState({ name, value });
     } else if (name === "birth") {
-      setRegisterState({ ...registerState, [name]: value });
+      setRegisterState({ ...registerState, [name]: makeBirth(value) });
       onChangeErrorState({ name, value });
     } else {
       setRegisterState({ ...registerState, [name]: value });
@@ -71,7 +72,7 @@ const useRegister = () => {
   };
 
   const onCheckBirth = (value: string) => {
-    if (value.length !== 8) {
+    if (value.length !== 7) {
       //TODO: 생년월일 validation
       setErrorState({
         ...errorState,

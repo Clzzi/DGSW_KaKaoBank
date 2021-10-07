@@ -10,6 +10,7 @@ interface IFromProps {
   placeholder: string;
   type?: string;
   name: string;
+  maxLength?: number;
 }
 
 const Form = ({
@@ -20,6 +21,7 @@ const Form = ({
   value,
   title,
   placeholder,
+  maxLength,
 }: IFromProps) => {
   return (
     <StyledForm>
@@ -31,6 +33,7 @@ const Form = ({
         placeholder={placeholder}
         name={name}
         customStyle={{ marginBottom: '4px' }}
+        maxLength={maxLength && maxLength}
       />
       {error && <div className="error">{error}</div>}
     </StyledForm>

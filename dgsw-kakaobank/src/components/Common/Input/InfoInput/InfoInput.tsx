@@ -8,6 +8,7 @@ interface IInfoInputProps {
   type?: string;
   placeholder: string;
   customStyle?: CSSProperties;
+  maxLength?: number;
 }
 
 const InfoInput = ({
@@ -17,15 +18,17 @@ const InfoInput = ({
   type,
   placeholder,
   customStyle,
+  maxLength,
 }: IInfoInputProps) => {
   return (
     <StyledInfoInput
-      type={type ? type : "text"}
+      type={type ? type : 'text'}
       style={customStyle}
       onChange={onChange}
       placeholder={placeholder}
       value={value}
       name={name}
+      maxLength={maxLength && maxLength}
     />
   );
 };
