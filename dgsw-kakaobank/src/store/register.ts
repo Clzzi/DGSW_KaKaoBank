@@ -20,12 +20,12 @@ export const registerAtom = atom<IRegisterTypes>({
 export const registerErrorAtom = atom<IRegisterErrorTypes>({
   key: 'registerErrorAtom',
   default: {
-    idErr: '',
-    pwErr: '',
-    rePwErr: '',
-    easyPwErr: '',
-    phoneErr: '',
-    nameErr: '',
-    birthErr: '',
+    id: '',
+    pw: '',
+    rePw: '',
+    easyPw: '',
+    phone: '',
+    name: '',
+    birth: '',
   },
 });

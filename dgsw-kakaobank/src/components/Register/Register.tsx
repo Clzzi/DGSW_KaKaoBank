@@ -1,26 +1,55 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import useRegister from 'hooks/Register/useRegister';
+import { useEffect } from 'react';
 import Form from './Form';
 import { StyledTitle } from './Register.style';
 
 const Register = () => {
-  const [testState, setTestState] = useState({ 1: '', 2: '', 3: '' });
-  const onTestChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setTestState({ ...testState, [name]: value });
-  };
+  const { registerState, errorState, onChangeRegisterState } = useRegister();
   useEffect(() => {
-    console.log(testState);
-  }, [testState]);
+    console.log(registerState, errorState);
+  }, [registerState, errorState]);
   return (
     <div>
       <StyledTitle>회원가입</StyledTitle>
       <Form
-        onChange={onTestChange}
+        onChange={onChangeRegisterState}
         title="아이디"
         placeholder="아이디를 입력해주세요"
-        name="1"
-        value={testState[1]}
-        error="testError"
+        name="id"
+        value={registerState.id}
+        error={errorState.id}
+      />
+      <Form
+        onChange={onChangeRegisterState}
+        title="비밀번호"
+        placeholder="비밀번호를 입력해주세요"
+        name="pw"
+        value={registerState.pw}
+        error={errorState.pw}
+      />
+      <Form
+        onChange={onChangeRegisterState}
+        title="비밀번호 재입력"
+        placeholder="비밀번호를 다시 입력해주세요"
+        name="rePw"
+        value={registerState.rePw}
+        error={errorState.rePw}
+      />
+      <Form
+        onChange={onChangeRegisterState}
+        title="전화번호"
+        placeholder="전화번호를 입력해주세요"
+        name="phone"
+        value={registerState.phone}
+        error={errorState.phone}
+      />
+      <Form
+        onChange={onChangeRegisterState}
+        title="생년월일"
+        placeholder="생년월일(8자리) 입력해주세요"
+        name="birth"
+        value={registerState.birth}
+        error={errorState.birth}
       />
     </div>
   );
