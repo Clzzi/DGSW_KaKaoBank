@@ -19,7 +19,7 @@ const Button: FC<IButtonProps> = ({
   return (
     <StyledButton
       style={customStyle}
-      onClick={() => handleClick}
+      onClick={handleClick}
       backgroundColor={backgroundColor}
       fontColor={fontColor}
     >
