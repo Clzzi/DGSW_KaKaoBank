@@ -1,5 +1,5 @@
 import InfoInput from 'components/Common/Input/InfoInput';
-import { ChangeEvent, CSSProperties } from 'react';
+import { ChangeEvent } from 'react';
 import { StyledForm } from './Form.style';
 
 interface IFromProps {

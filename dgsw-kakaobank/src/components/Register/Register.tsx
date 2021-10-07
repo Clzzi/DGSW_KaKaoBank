@@ -7,10 +7,18 @@ import {
 import Form from './Form';
 import useRegister from 'hooks/Register/useRegister';
 import AuthInput from 'components/Common/Input/AuthInput';
+import Term from './Term';
 
 const Register = () => {
-  const { registerState, errorState, onChangeRegisterState, onChangeEasyPw } =
-    useRegister();
+  const {
+    checkTerm,
+    setCheckTerm,
+    registerState,
+    errorState,
+    onChangeRegisterState,
+    onChangeEasyPw,
+  } = useRegister();
+
   return (
     <div>
       <StyledTitle>회원가입</StyledTitle>
@@ -73,6 +81,7 @@ const Register = () => {
           <StyledEasyPwError> {errorState.easyPw}</StyledEasyPwError>
         )}
       </StyledEasyPw>
+      <Term onClick={() => setCheckTerm((prev) => !prev)} check={checkTerm} />
     </div>
   );
 };

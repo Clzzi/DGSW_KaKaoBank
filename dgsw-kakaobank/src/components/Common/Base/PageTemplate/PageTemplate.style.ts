@@ -14,4 +14,5 @@ export const StyledPageTemplate = styled.div`
 export const StyledPageTemplateContent = styled.div`
   width: 430px;
   max-width: 430px;
+  margin-bottom: 80px;
 `;
