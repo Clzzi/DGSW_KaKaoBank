@@ -2,7 +2,12 @@ import AuthInput from 'components/Common/Input/AuthInput';
 import useRegister from 'hooks/Register/useRegister';
 import { useEffect } from 'react';
 import Form from './Form';
-import { StyledTitle } from './Register.style';
+import {
+  StyledEasyPw,
+  StyledEasyPwError,
+  StyledEasyPwTitle,
+  StyledTitle,
+} from './Register.style';
 
 const Register = () => {
   const { registerState, errorState, onChangeRegisterState, onChangeEasyPw } =
@@ -63,7 +68,13 @@ const Register = () => {
         value={registerState.birth}
         error={errorState.birth}
       />
-      <AuthInput length={6} onChange={onChangeEasyPw} password />
+      <StyledEasyPw>
+        <StyledEasyPwTitle>간편인증번호</StyledEasyPwTitle>
+        <AuthInput length={6} onChange={onChangeEasyPw} password />
+        {errorState.easyPw && (
+          <StyledEasyPwError> {errorState.easyPw}</StyledEasyPwError>
+        )}
+      </StyledEasyPw>
     </div>
   );
 };
