@@ -25,6 +25,7 @@ export const StyleHeader = styled.div`
         color: ${ColorPalette.darkBlue};
         font-size: ${fontPalette.font20};
         font-family: 'AppleEB';
+        font-weight: bold;
       }
       .subTitle {
         display: inline-block;
