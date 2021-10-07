@@ -65,6 +65,7 @@ const useAuthInput = ({ Reg, onChange, length }: IUseAuthInput) => {
     }
     e.preventDefault();
   };
+
   return {
     handleOnChange,
     handleOnPaste,
