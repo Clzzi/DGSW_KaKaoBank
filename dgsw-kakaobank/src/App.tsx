@@ -1,14 +1,21 @@
-import PageTemplate from 'components/Common/Base/PageTemplate';
+import Footer from 'components/Common/Base/Footer';
+import Header from 'components/Common/Base/Header';
 import Button from 'components/Common/Button';
 import AuthInput from 'components/Common/Input/AuthInput';
 import InfoInput from 'components/Common/Input/InfoInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'styles/test.css';
 
 const App = () => {
   const [input, setInput] = useState<string>('');
+  const [authObj, setAuthObj] = useState<string>();
+
+  useEffect(() => {
+    console.log(authObj);
+  }, [authObj]);
+
   return (
-    <PageTemplate isFooter isLogout>
+    <>
       <Button children={'testDiv'} />
       <InfoInput
         value={input}
@@ -16,8 +23,12 @@ const App = () => {
         placeholder="비밀번호를 입력해주세요"
         onChange={(e) => setInput(e.target.value)}
       />
-      <AuthInput length={6} onChange={() => null} password={false} />
-    </PageTemplate>
+      <AuthInput
+        length={6}
+        onChange={(res: string) => setAuthObj(res)}
+        password={false}
+      />
+    </>
   );
 };
 

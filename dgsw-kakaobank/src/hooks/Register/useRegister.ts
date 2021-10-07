@@ -96,7 +96,12 @@ const useRegister = () => {
     }
   };
 
-  return { registerState, errorState, onChangeRegisterState };
+  const onChangeEasyPw = (res: string) => {
+    setRegisterState({ ...registerState, easyPw: res });
+    onChangeErrorState({ name: 'rePw', value: res });
+  };
+
+  return { registerState, errorState, onChangeRegisterState, onChangeEasyPw };
 };
 
 export default useRegister;

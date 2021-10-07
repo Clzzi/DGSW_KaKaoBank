@@ -1,10 +1,12 @@
+import AuthInput from 'components/Common/Input/AuthInput';
 import useRegister from 'hooks/Register/useRegister';
 import { useEffect } from 'react';
 import Form from './Form';
 import { StyledTitle } from './Register.style';
 
 const Register = () => {
-  const { registerState, errorState, onChangeRegisterState } = useRegister();
+  const { registerState, errorState, onChangeRegisterState, onChangeEasyPw } =
+    useRegister();
   useEffect(() => {
     console.log(registerState, errorState);
   }, [registerState, errorState]);
@@ -23,6 +25,7 @@ const Register = () => {
         onChange={onChangeRegisterState}
         title="비밀번호"
         placeholder="비밀번호를 입력해주세요"
+        type="password"
         name="pw"
         value={registerState.pw}
         error={errorState.pw}
@@ -31,6 +34,7 @@ const Register = () => {
         onChange={onChangeRegisterState}
         title="비밀번호 재입력"
         placeholder="비밀번호를 다시 입력해주세요"
+        type="password"
         name="rePw"
         value={registerState.rePw}
         error={errorState.rePw}
@@ -51,6 +55,15 @@ const Register = () => {
         value={registerState.birth}
         error={errorState.birth}
       />
+      <Form
+        onChange={onChangeRegisterState}
+        title="이름"
+        placeholder="이름을 입력해주세요"
+        name="name"
+        value={registerState.name}
+        error={errorState.name}
+      />
+      <AuthInput length={6} onChange={onChangeEasyPw} password />
     </div>
   );
 };
