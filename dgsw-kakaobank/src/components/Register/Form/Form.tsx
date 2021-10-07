@@ -1,5 +1,5 @@
 import InfoInput from 'components/Common/Input/InfoInput';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, CSSProperties } from 'react';
 import { StyledForm } from './Form.style';
 
 interface IFromProps {
@@ -30,6 +30,7 @@ const Form = ({
         value={value}
         placeholder={placeholder}
         name={name}
+        customStyle={{ marginBottom: '4px' }}
       />
       {error && <div className="error">{error}</div>}
     </StyledForm>

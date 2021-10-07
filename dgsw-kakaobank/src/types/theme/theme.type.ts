@@ -12,6 +12,7 @@ export interface IColorPalette {
   fureGreen: string;
   fureWhite: string;
   fureBlack: string;
+  highlightRed: string;
 }
 
 export interface IFontPalette {

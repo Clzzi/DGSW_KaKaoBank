@@ -15,6 +15,14 @@ const Register = () => {
       <StyledTitle>회원가입</StyledTitle>
       <Form
         onChange={onChangeRegisterState}
+        title="이름"
+        placeholder="이름을 입력해주세요"
+        name="name"
+        value={registerState.name}
+        error={errorState.name}
+      />
+      <Form
+        onChange={onChangeRegisterState}
         title="아이디"
         placeholder="아이디를 입력해주세요"
         name="id"
@@ -54,14 +62,6 @@ const Register = () => {
         name="birth"
         value={registerState.birth}
         error={errorState.birth}
-      />
-      <Form
-        onChange={onChangeRegisterState}
-        title="이름"
-        placeholder="이름을 입력해주세요"
-        name="name"
-        value={registerState.name}
-        error={errorState.name}
       />
       <AuthInput length={6} onChange={onChangeEasyPw} password />
     </div>

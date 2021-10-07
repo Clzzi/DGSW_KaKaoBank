@@ -14,4 +14,5 @@ export const ColorPalette: IColorPalette = {
   fureGreen: '#0C7E57',
   fureWhite: '#FFFFFF',
   fureBlack: '#000000',
+  highlightRed: '#FF5442',
 };
