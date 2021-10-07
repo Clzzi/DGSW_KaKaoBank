@@ -6,7 +6,7 @@ export const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
   min-height: 116px;
   .title {
     font-family: 'AppleB';

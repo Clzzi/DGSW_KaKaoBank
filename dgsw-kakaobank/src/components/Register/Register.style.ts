@@ -7,7 +7,7 @@ export const StyledTitle = styled.div`
   font-size: ${fontPalette.font40};
   text-align: start;
   margin-top: 12px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 `;
 
 export const StyledEasyPwTitle = styled.div`
@@ -33,3 +33,4 @@ export const StyledEasyPw = styled.div`
   flex-direction: column;
   min-height: 180px;
 `;
+

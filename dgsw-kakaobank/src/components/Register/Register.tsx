@@ -1,20 +1,16 @@
-import AuthInput from 'components/Common/Input/AuthInput';
-import useRegister from 'hooks/Register/useRegister';
-import { useEffect } from 'react';
-import Form from './Form';
 import {
   StyledEasyPw,
   StyledEasyPwError,
   StyledEasyPwTitle,
   StyledTitle,
 } from './Register.style';
+import Form from './Form';
+import useRegister from 'hooks/Register/useRegister';
+import AuthInput from 'components/Common/Input/AuthInput';
 
 const Register = () => {
   const { registerState, errorState, onChangeRegisterState, onChangeEasyPw } =
     useRegister();
-  useEffect(() => {
-    console.log(registerState, errorState);
-  }, [registerState, errorState]);
   return (
     <div>
       <StyledTitle>회원가입</StyledTitle>
