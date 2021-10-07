@@ -1,4 +1,4 @@
-import 'styles/test.css';
+import 'styles/font.css';
 import { RecoilRoot } from 'recoil';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';

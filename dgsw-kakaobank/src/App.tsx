@@ -4,7 +4,7 @@ import Button from 'components/Common/Button';
 import AuthInput from 'components/Common/Input/AuthInput';
 import InfoInput from 'components/Common/Input/InfoInput';
 import { useEffect, useState } from 'react';
-import 'styles/test.css';
+import 'styles/font.css';
 
 const App = () => {
   const [input, setInput] = useState<string>('');
