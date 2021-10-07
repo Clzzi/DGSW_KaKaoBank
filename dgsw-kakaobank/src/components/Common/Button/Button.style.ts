@@ -8,8 +8,8 @@ interface IButtonProps {
 }
 
 export const StyledButton = styled.button<IButtonProps>`
-  width: 452px;
-  height: 52px;
+  width: 430px;
+  height: 50px;
   background-color: ${(props) =>
     props.backgroundColor || ColorPalette.darkBlue};
   color: ${(props) => props.fontColor || ColorPalette.fureWhite};
