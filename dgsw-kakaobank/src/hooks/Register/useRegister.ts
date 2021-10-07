@@ -2,6 +2,7 @@ import { ERegisterError } from 'enum/registerEnum';
 import { ChangeEvent } from 'react';
 import { useRecoilState } from 'recoil';
 import { registerAtom, registerErrorAtom } from 'store/register';
+import makePhoneNumber from 'util/makePhoneNumber';
 
 const useRegister = () => {
   const [registerState, setRegisterState] = useRecoilState(registerAtom);
@@ -9,8 +10,16 @@ const useRegister = () => {
 
   const onChangeRegisterState = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value }: { name: string; value: string } = e.target;
-    setRegisterState({ ...registerState, [name]: value });
-    onChangeErrorState({ name, value });
+    if (name === 'phone') {
+      setRegisterState({ ...registerState, [name]: makePhoneNumber(value) });
+      onChangeErrorState({ name, value });
+    } else if (name === "birth") {
+      setRegisterState({ ...registerState, [name]: value });
+      onChangeErrorState({ name, value });
+    } else {
+      setRegisterState({ ...registerState, [name]: value });
+      onChangeErrorState({ name, value });
+    }
   };
 
   const onChangeErrorState = ({
