@@ -1,4 +1,5 @@
 import { ERegisterError } from 'enum/registerEnum';
+import Toast from 'lib/Token';
 import { ChangeEvent, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { registerAtom, registerErrorAtom } from 'store/register';
