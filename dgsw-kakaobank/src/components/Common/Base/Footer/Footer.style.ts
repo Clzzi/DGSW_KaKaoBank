@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { ColorPalette } from 'styles/ColorPalette';
 
 export const StyledFooter = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100vw;
   height: 60px;

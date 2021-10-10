@@ -20,6 +20,7 @@ export const StyledButton = styled.button<IButtonProps>`
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
   margin: 0;
   font-weight: bold;
   overflow: hidden;
