@@ -9,6 +9,7 @@ import useRegister from 'hooks/Register/useRegister';
 import AuthInput from 'components/Common/Input/AuthInput';
 import Term from './Term';
 import Button from 'components/Common/Button';
+import { useEffect } from 'react';
 
 const Register = () => {
   const {
@@ -19,7 +20,12 @@ const Register = () => {
     onChangeRegisterState,
     onChangeEasyPw,
     checkEmpty,
+    resetAllState,
   } = useRegister();
+
+  useEffect(() => {
+    resetAllState();
+  }, []);
 
   return (
     <div>

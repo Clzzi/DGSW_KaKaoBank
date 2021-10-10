@@ -1,7 +1,7 @@
 import { ERegisterError } from 'enum/registerEnum';
 import Toast from 'lib/Token';
 import { ChangeEvent, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import { registerAtom, registerErrorAtom } from 'store/register';
 import makeBirth from 'util/makeBirth';
 import makePhoneNumber from 'util/makePhoneNumber';
@@ -11,6 +11,8 @@ const useRegister = () => {
   const [registerState, setRegisterState] = useRecoilState(registerAtom);
   const [errorState, setErrorState] = useRecoilState(registerErrorAtom);
   const [checkTerm, setCheckTerm] = useState(false);
+  const resetRegisterState = useResetRecoilState(registerAtom);
+  const resetErrorState = useResetRecoilState(registerErrorAtom);
 
   const onChangeRegisterState = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value }: { name: string; value: string } = e.target;
@@ -121,6 +123,7 @@ const useRegister = () => {
       registerValidation.checkErrorState(errorState)
     ) {
       Toast.successToast('회원가입으로 들어감');
+      resetAllState();
     } else {
       if (
         !registerValidation.checkErrorState(errorState) ||
@@ -133,6 +136,11 @@ const useRegister = () => {
     }
   };
 
+  const resetAllState = () => {
+    resetRegisterState();
+    resetErrorState();
+  };
+
   return {
     registerState,
     errorState,
@@ -141,6 +149,7 @@ const useRegister = () => {
     onChangeEasyPw,
     checkTerm,
     setCheckTerm,
+    resetAllState,
   };
 };
 
