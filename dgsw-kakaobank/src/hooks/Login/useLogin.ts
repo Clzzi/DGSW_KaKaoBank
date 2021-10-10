@@ -1,5 +1,5 @@
 import { ELoginEnum } from 'enum/loginEnum';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import {
   easyPwErrorState,
@@ -19,9 +19,13 @@ const useLogin = () => {
   const [pwError, setPwError] = useRecoilState(pwErrorState);
   const [easyPwError, setEasyPwError] = useRecoilState(easyPwErrorState);
 
+  useEffect(() => {
+    console.log(easyPwError);
+  }, [easyPwError]);
+
   const onChangeEasyLogin = () => {
     setIsEasyLogin((prev) => !prev);
-  }
+  };
 
   const onChangeIdState = (e: ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
@@ -67,7 +71,7 @@ const useLogin = () => {
     onChangeIdState,
     onChangePwState,
     onChnageEasyPwState,
-    onChangeEasyLogin
+    onChangeEasyLogin,
   };
 };
 

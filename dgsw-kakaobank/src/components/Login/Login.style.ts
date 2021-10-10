@@ -15,6 +15,7 @@ export const StyledTitle = styled.div`
 
   & > button {
     font-family: 'AppleB';
+    cursor: pointer;
     width: 120px;
     height: 38px;
     color: ${ColorPalette.fureWhite};
@@ -25,4 +26,8 @@ export const StyledTitle = styled.div`
     align-items: center;
     text-align: center;
   }
+`;
+
+export const StyledLoginForm = styled.div`
+  margin-bottom: 67px;
 `;
