@@ -6,6 +6,7 @@ const Routes = () => {
     <Switch>
       <Route exact path="/" component={Pages.Welcome} />
       <Route exact path="/register" component={Pages.Register} />
+      <Route exact path="/login" component={Pages.Login} />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );
