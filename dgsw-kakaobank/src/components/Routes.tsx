@@ -8,6 +8,7 @@ const Routes = () => {
       <Route exact path="/register" component={Pages.Register} />
       <Route exact path="/login" component={Pages.Login} />
       <Route exact path="/main" component={Pages.Main} />
+      <Route exact path="/profile" component={Pages.Main} />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );

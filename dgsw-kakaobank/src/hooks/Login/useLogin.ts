@@ -1,7 +1,3 @@
-import { ELoginEnum } from 'enum/loginEnum';
-import Toast from 'lib/Token';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { useRecoilState, useResetRecoilState } from 'recoil';
 import {
   easyPwErrorState,
   easyPwState,
@@ -10,8 +6,14 @@ import {
   pwErrorState,
   pwState,
 } from 'store/login';
+import Toast from 'lib/Token';
+import { ChangeEvent, useState } from 'react';
+import { ELoginEnum } from 'enum/loginEnum';
+import useLink from 'hooks/Common/useLink';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 const useLogin = () => {
+  const { handleLink: pushMain } = useLink('/main');
   const [isEasyLogin, setIsEasyLogin] = useState<boolean>(false);
   const [id, setId] = useRecoilState(idState);
   const [pw, setPw] = useRecoilState(pwState);
@@ -82,12 +84,14 @@ const useLogin = () => {
         return;
       }
       Toast.successToast('ok');
+      pushMain();
     } else {
       if (id.length <= 0 || pw.length <= 0) {
         Toast.errorToast('아이디 또는 비밀번호를 제대로 입력해주세요');
         return;
       }
       Toast.successToast('ok');
+      pushMain();
     }
   };
 

@@ -18,6 +18,7 @@ export const StyleHeader = styled.div`
     justify-content: space-between;
     text-align: center;
     align-items: center;
+    cursor: pointer;
     .title {
       .mainTitle {
         display: inline-block;
