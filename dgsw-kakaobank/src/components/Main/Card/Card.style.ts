@@ -10,6 +10,7 @@ export const StyledCard = styled.div`
   border-radius: 10px;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.25);
   margin-bottom: 27px;
+  cursor: pointer;
   .title {
     display: flex;
     flex-direction: column;

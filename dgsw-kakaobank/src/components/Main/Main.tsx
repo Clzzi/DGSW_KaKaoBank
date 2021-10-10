@@ -28,7 +28,6 @@ const Main = () => {
       <Card company="토스" number="001-01-1234567" money="123,123" />
       <Card company="토스" number="001-01-1234567" money="123,123" />
       <Card company="토스" number="001-01-1234567" money="123,123" />
-      <Card company="토스" number="001-01-1234567" money="123,123" />
       <AddCard />
     </div>
   );
