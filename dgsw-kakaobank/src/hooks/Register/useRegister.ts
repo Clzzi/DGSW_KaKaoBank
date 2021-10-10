@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil';
 import { registerAtom, registerErrorAtom } from 'store/register';
 import makeBirth from 'util/makeBirth';
 import makePhoneNumber from 'util/makePhoneNumber';
+import registerValidation from 'validation/register.validation';
 
 const useRegister = () => {
   const [registerState, setRegisterState] = useRecoilState(registerAtom);
@@ -113,9 +114,29 @@ const useRegister = () => {
     onChangeErrorState({ name: 'easyPw', value: res });
   };
 
+  const checkEmpty = () => {
+    if (
+      registerValidation.checkEmptyState(registerState) &&
+      checkTerm &&
+      registerValidation.checkErrorState(errorState)
+    ) {
+      Toast.successToast('회원가입으로 들어감');
+    } else {
+      if (
+        !registerValidation.checkErrorState(errorState) ||
+        !registerValidation.checkEmptyState(registerState)
+      ) {
+        Toast.errorToast('제대로 작성해주세요');
+      } else {
+        Toast.errorToast('약관에 동의해주세요');
+      }
+    }
+  };
+
   return {
     registerState,
     errorState,
+    checkEmpty,
     onChangeRegisterState,
     onChangeEasyPw,
     checkTerm,

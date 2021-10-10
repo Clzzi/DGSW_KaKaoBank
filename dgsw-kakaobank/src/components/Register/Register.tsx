@@ -18,6 +18,7 @@ const Register = () => {
     errorState,
     onChangeRegisterState,
     onChangeEasyPw,
+    checkEmpty,
   } = useRegister();
 
   return (
@@ -83,12 +84,7 @@ const Register = () => {
         )}
       </StyledEasyPw>
       <Term onClick={() => setCheckTerm((prev) => !prev)} check={checkTerm} />
-      <Button
-        children="회원가입"
-        handleClick={() => {
-          console.log('ㅇㅇ');
-        }}
-      />
+      <Button children="회원가입" handleClick={checkEmpty} />
     </div>
   );
 };
