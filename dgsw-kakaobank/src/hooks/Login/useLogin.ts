@@ -1,6 +1,7 @@
 import { ELoginEnum } from 'enum/loginEnum';
+import Toast from 'lib/Token';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import {
   easyPwErrorState,
   easyPwState,
@@ -18,13 +19,21 @@ const useLogin = () => {
   const [idError, setIdError] = useRecoilState(idErrorState);
   const [pwError, setPwError] = useRecoilState(pwErrorState);
   const [easyPwError, setEasyPwError] = useRecoilState(easyPwErrorState);
-
-  useEffect(() => {
-    console.log(easyPwError);
-  }, [easyPwError]);
+  const resetIdState = useResetRecoilState(idState);
+  const resetPwState = useResetRecoilState(pwState);
+  const resetEasyPwState = useResetRecoilState(easyPwState);
+  const resetIdErrorState = useResetRecoilState(idErrorState);
+  const resetPwErrorState = useResetRecoilState(pwErrorState);
+  const resetEasyPwErrorState = useResetRecoilState(easyPwErrorState);
 
   const onChangeEasyLogin = () => {
     setIsEasyLogin((prev) => !prev);
+    resetIdState();
+    resetPwState();
+    resetEasyPwState();
+    resetIdErrorState();
+    resetPwErrorState();
+    resetEasyPwErrorState();
   };
 
   const onChangeIdState = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +44,8 @@ const useLogin = () => {
   const checkIdErrorState = (value: string) => {
     if (value.length <= 0) {
       setIdError(ELoginEnum.id);
+    } else {
+      resetIdErrorState();
     }
   };
 
@@ -46,17 +57,37 @@ const useLogin = () => {
   const checkPwErrorState = (value: string) => {
     if (value.length <= 0) {
       setPwError(ELoginEnum.pw);
+    } else {
+      resetPwErrorState();
     }
   };
 
-  const onChnageEasyPwState = (e: ChangeEvent<HTMLInputElement>) => {
-    setEasyPw(e.target.value);
-    checkEasyPwErrorState(e.target.value);
+  const onChnageEasyPwState = (res: string) => {
+    setEasyPw(res);
+    checkEasyPwErrorState(res);
   };
 
   const checkEasyPwErrorState = (value: string) => {
-    if (value.length <= 0) {
+    if (value.length < 6) {
       setEasyPwError(ELoginEnum.easyPw);
+    } else {
+      resetEasyPwErrorState();
+    }
+  };
+
+  const checkEmptyState = () => {
+    if (isEasyLogin) {
+      if (easyPw.length !== 6) {
+        Toast.errorToast('간편인증번호 6자리를 제대로 입력해주세요');
+        return;
+      }
+      Toast.successToast('ok');
+    } else {
+      if (id.length <= 0 || pw.length <= 0) {
+        Toast.errorToast('아이디 또는 비밀번호를 제대로 입력해주세요');
+        return;
+      }
+      Toast.successToast('ok');
     }
   };
 
@@ -72,6 +103,7 @@ const useLogin = () => {
     onChangePwState,
     onChnageEasyPwState,
     onChangeEasyLogin,
+    checkEmptyState,
   };
 };
 
