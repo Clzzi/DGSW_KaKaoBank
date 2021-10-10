@@ -1,6 +1,7 @@
 import Button from 'components/Common/Button';
 import Card from 'components/Main/Card';
 import { CSSProperties } from 'react';
+import AddCard from './AddCard';
 import { StyledButton, StyledMainTitle } from './Main.style';
 
 const Main = () => {
@@ -28,6 +29,7 @@ const Main = () => {
       <Card company="토스" number="001-01-1234567" money="123,123" />
       <Card company="토스" number="001-01-1234567" money="123,123" />
       <Card company="토스" number="001-01-1234567" money="123,123" />
+      <AddCard />
     </div>
   );
 };
