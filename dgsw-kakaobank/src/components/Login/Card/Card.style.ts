@@ -9,7 +9,7 @@ export const StyledCard = styled.div`
   width: 100vw;
   overflow: hidden;
   animation: slide 10s linear infinite;
-  .TEST {
+  .Cards {
     background: url('https://user-images.githubusercontent.com/62810965/136688366-e1f5ec9e-386c-4e29-97dc-786e30105fe2.png');
     width: 100%;
     height: 250px;

@@ -4,6 +4,7 @@ import { ReactComponent as ServiceButton } from 'assets/icon/squareBtn.svg';
 import { ReactComponent as MainButton } from 'assets/icon/home.svg';
 
 const Footer = (): JSX.Element => {
+  
   return (
     <StyledFooter>
       <div className="buttonWrapper">
