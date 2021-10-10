@@ -1,4 +1,4 @@
-import Form from 'components/Register/Form';
+import Form from 'components/Login/Form';
 import useLogin from 'hooks/Login/useLogin';
 import { StyledTitle } from './Login.style';
 

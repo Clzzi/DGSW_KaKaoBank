@@ -23,6 +23,7 @@ export interface IFontPalette {
   font22: string;
   font24: string;
   font28: string;
+  font30: string;
   font36: string;
   font40: string;
   font48: string;
