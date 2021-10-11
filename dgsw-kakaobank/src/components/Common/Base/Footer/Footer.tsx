@@ -17,7 +17,7 @@ const Footer = (): JSX.Element => {
         return (
           <div className="buttonWrapper">
             <MainButton fill="#111962" cursor="pointer" onClick={pushMain} />
-            <ServiceButton cursor="pointer" onClick={pushService} />
+            {/* <ServiceButton cursor="pointer" onClick={pushService} /> */}
             <UserButton cursor="pointer" onClick={pushProfile} />
           </div>
         );
@@ -25,11 +25,11 @@ const Footer = (): JSX.Element => {
         return (
           <div className="buttonWrapper">
             <MainButton cursor="pointer" onClick={pushMain} />
-            <ServiceButton
+            {/* <ServiceButton
               fill="#111962"
               cursor="pointer"
               onClick={pushService}
-            />
+            /> */}
             <UserButton cursor="pointer" onClick={pushProfile} />
           </div>
         );
@@ -38,7 +38,7 @@ const Footer = (): JSX.Element => {
         return (
           <div className="buttonWrapper">
             <MainButton cursor="pointer" onClick={pushMain} />
-            <ServiceButton cursor="pointer" onClick={pushService} />
+            {/* <ServiceButton cursor="pointer" onClick={pushService} /> */}
             <UserButton fill="#111962" cursor="pointer" onClick={pushProfile} />
           </div>
         );
