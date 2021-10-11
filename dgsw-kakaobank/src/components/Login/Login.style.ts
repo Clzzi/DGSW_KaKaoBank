@@ -7,7 +7,7 @@ export const StyledTitle = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  margin-bottom: 104px;
+  margin-bottom: 50px;
   & > div {
     font-family: 'AppleB';
     font-size: ${fontPalette.font40};

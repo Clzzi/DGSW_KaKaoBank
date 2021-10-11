@@ -83,7 +83,7 @@ const Register = () => {
         maxLength={8}
       />
       <StyledEasyPw>
-        <StyledEasyPwTitle>간편인증번호</StyledEasyPwTitle>
+        <StyledEasyPwTitle>간편비밀번호</StyledEasyPwTitle>
         <AuthInput length={6} onChange={onChangeEasyPw} password />
         {errorState.easyPw && (
           <StyledEasyPwError> {errorState.easyPw}</StyledEasyPwError>

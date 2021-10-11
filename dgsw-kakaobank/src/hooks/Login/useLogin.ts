@@ -80,7 +80,7 @@ const useLogin = () => {
   const checkEmptyState = () => {
     if (isEasyLogin) {
       if (easyPw.length !== 6) {
-        Toast.errorToast('간편인증번호 6자리를 제대로 입력해주세요');
+        Toast.errorToast('간편비밀번호 6자리를 제대로 입력해주세요');
         return;
       }
       Toast.successToast('ok');
