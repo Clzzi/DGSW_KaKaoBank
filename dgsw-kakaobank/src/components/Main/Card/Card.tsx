@@ -1,3 +1,4 @@
+import useLink from 'hooks/Common/useLink';
 import { StyledCard } from './Card.style';
 
 interface ICardProps {
@@ -7,8 +8,9 @@ interface ICardProps {
 }
 
 const Card = ({ company, number, money }: ICardProps) => {
+  const { handleLink: pushDetailCard } = useLink('/detailcard');
   return (
-    <StyledCard>
+    <StyledCard onClick={pushDetailCard}>
       <div className="title">
         <div className="company">{company}</div>
         <div className="number">{number}</div>
