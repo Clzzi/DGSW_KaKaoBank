@@ -3,7 +3,7 @@ import Register from 'components/Register';
 
 const RegisterPage = () => {
   return (
-    <PageTemplate isFooter={false} isLogout={false}>
+    <PageTemplate isHeader isFooter={false} isLogout={false}>
       <Register />
     </PageTemplate>
   );

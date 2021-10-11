@@ -6,7 +6,7 @@ import Card from 'components/Login/Card';
 const LoginPage = () => {
   return (
     <>
-      <PageTemplate isFooter={false} isLogout={false}>
+      <PageTemplate isHeader isFooter={false} isLogout={false}>
         <Login />
       </PageTemplate>
       <Card />

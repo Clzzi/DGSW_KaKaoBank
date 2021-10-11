@@ -3,7 +3,7 @@ import Main from 'components/Main';
 
 const MainPage = () => {
   return (
-    <PageTemplate isFooter isLogout>
+    <PageTemplate isHeader isFooter isLogout>
       <Main />
     </PageTemplate>
   );

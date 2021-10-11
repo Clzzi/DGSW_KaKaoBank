@@ -10,12 +10,18 @@ interface IPageTemplateProps {
   children: ReactNode;
   isLogout: boolean;
   isFooter: boolean;
+  isHeader: boolean;
 }
 
-const PageTemplate = ({ children, isLogout, isFooter }: IPageTemplateProps) => {
+const PageTemplate = ({
+  isHeader,
+  children,
+  isLogout,
+  isFooter,
+}: IPageTemplateProps) => {
   return (
     <StyledPageTemplate>
-      <Header isLogout={isLogout} />
+      {isHeader && <Header isLogout={isLogout} />}
       <StyledPageTemplateContent>{children}</StyledPageTemplateContent>
       {isFooter && <Footer />}
     </StyledPageTemplate>

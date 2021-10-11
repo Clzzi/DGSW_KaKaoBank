@@ -3,7 +3,7 @@ import Profile from 'components/Profile';
 
 const ProfilePage = (): JSX.Element => {
   return (
-    <PageTemplate isFooter isLogout>
+    <PageTemplate isHeader isFooter isLogout>
       <Profile />
     </PageTemplate>
   );
