@@ -1,11 +1,17 @@
-import Button from 'components/Common/Button';
-import { CSSProperties } from 'react';
 import {
   StyledButton,
   StyledMoney,
   StyledTitle,
   StyledTopWrapper,
 } from './DetailCard.style';
+import React from 'react';
+import { CSSProperties } from 'react';
+import Button from 'components/Common/Button';
+import CardHistory from './CardHistory';
+import {
+  StyledCardHistoryWrapper,
+  StyledHistoryOption,
+} from './CardHistory/CardHistory.style';
 
 const DetailCard = (): JSX.Element => {
   const customRemittanceButtonStyle: CSSProperties = {
@@ -19,20 +25,34 @@ const DetailCard = (): JSX.Element => {
     height: '66px',
   };
   return (
-    <StyledTopWrapper>
-      <StyledTitle>
-        <div className="company">토스</div>
-        <div className="number">001-01-1234567</div>
-      </StyledTitle>
-      <StyledMoney>
-        456,000
-        <span className="won"> 원</span>
-      </StyledMoney>
-      <StyledButton>
-        <Button children="송금" customStyle={customRemittanceButtonStyle} />
-        <Button children="입금" customStyle={customDepositButtonStyle} />
-      </StyledButton>
-    </StyledTopWrapper>
+    <>
+      <StyledTopWrapper>
+        <StyledTitle>
+          <div className="company">토스</div>
+          <div className="number">001-01-1234567</div>
+        </StyledTitle>
+        <StyledMoney>
+          456,000
+          <span className="won"> 원</span>
+        </StyledMoney>
+        <StyledButton>
+          <Button children="송금" customStyle={customRemittanceButtonStyle} />
+          <Button children="입금" customStyle={customDepositButtonStyle} />
+        </StyledButton>
+      </StyledTopWrapper>
+      <StyledHistoryOption>과거순</StyledHistoryOption>
+      <StyledCardHistoryWrapper>
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+        <CardHistory />
+      </StyledCardHistoryWrapper>
+    </>
   );
 };
 
