@@ -5,12 +5,16 @@ import AddCard from './AddCard';
 import { StyledButton, StyledMainTitle } from './Main.style';
 
 const Main = () => {
-  const { customDepositButtonStyle, customRemittanceButtonStyle } = useMain();
+  const {
+    customDepositButtonStyle,
+    onClickEstablish,
+    customRemittanceButtonStyle,
+  } = useMain();
   return (
     <div>
       <StyledMainTitle>
         <span>손민재</span>
-        <button>계좌개설</button>
+        <button onClick={onClickEstablish}>계좌개설</button>
       </StyledMainTitle>
       <StyledButton>
         <Button children="송금" customStyle={customRemittanceButtonStyle} />

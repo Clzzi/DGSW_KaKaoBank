@@ -1,20 +1,20 @@
 import useLink from 'hooks/Common/useLink';
 import JSConfetti from 'js-confetti';
-import { CSSProperties, useMemo, useState } from 'react';
+import Toast from 'lib/Token';
+import { CSSProperties, useMemo, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { accountPasswordState } from 'store/establishAccount';
 import { ColorPalette } from 'styles/ColorPalette';
 
 const useEstablishAccount = () => {
-  const confetti = useMemo(() => {
-    return new JSConfetti();
-  }, []);
+  const confetti = useRef<JSConfetti | null>(null);
   const { handleLink: pushNext } = useLink('/establish/complete');
+  const { handleLink: pushMain } = useLink('/main');
   const [password, setPassword] = useRecoilState<string>(accountPasswordState);
   const [passwordError, setPasswordError] = useState('');
 
   const popEmoji = () => {
-    confetti.addConfetti({
+    confetti.current?.addConfetti({
       emojis: ['🎇', '✨', '😎', '🎈', '🧨', '🎉', '🎊'],
       // @ts-ignore
       emojiSize: 36,
@@ -44,15 +44,41 @@ const useEstablishAccount = () => {
 
   const onClickEstablish = () => {
     if (password.length === 6) {
+      sessionStorage.setItem('EstablishCard', 'complete');
       pushNext();
     }
   };
 
+  const checkPasswordStorage = () => {
+    if (sessionStorage.getItem('EstablishCard') !== 'getPassword') {
+      Toast.errorToast('비정상적인 접근입니다.');
+      pushMain();
+    }
+  };
+
+  const checkComplete = () => {
+    if (sessionStorage.getItem('EstablishCard') !== 'complete') {
+      Toast.errorToast('비정상적인 접근입니다.');
+      pushMain();
+    }
+  };
+
+  const onClickComplete = () => {
+    sessionStorage.removeItem('EstablishCard');
+    popEmoji();
+    confetti.current = null;
+    pushMain();
+  };
+
   return {
+    pushMain,
+    checkPasswordStorage,
+    checkComplete,
     password,
     passwordError,
     setPassword,
     setPasswordError,
+    onClickComplete,
     onChangePassword,
     customButtonStyle,
     onClickEstablish,

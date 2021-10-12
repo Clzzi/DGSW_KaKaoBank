@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import Button from 'components/Common/Button';
 import { StyledContent, StyledTitle } from './EstablishAccountComplete.style';
 import useEstablishAccount from 'hooks/EstablishAccount/useEstablishAccount';
+import JSConfetti from 'js-confetti';
 
 const EstablishAccountComplete = (): JSX.Element => {
-  const { customButtonStyle, popEmoji } = useEstablishAccount();
+  const { customButtonStyle, checkComplete, onClickComplete, confetti } =
+    useEstablishAccount();
 
   useEffect(() => {
-    popEmoji();
-  }, [popEmoji]);
+    confetti.current = new JSConfetti();
+    checkComplete();
+  }, [checkComplete, confetti]);
 
   return (
     <>
@@ -27,7 +30,11 @@ const EstablishAccountComplete = (): JSX.Element => {
         <span className="property">이체한도: </span>
         <span className="content">1일 최대 300만원</span>
       </StyledContent>
-      <Button children="완료" customStyle={customButtonStyle} />
+      <Button
+        children="완료"
+        customStyle={customButtonStyle}
+        handleClick={onClickComplete}
+      />
     </>
   );
 };

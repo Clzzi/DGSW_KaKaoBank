@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Form from './Form';
 import { StyledTitle } from './EstablishAccountPassword.style';
 import Button from 'components/Common/Button';
@@ -10,7 +10,13 @@ const EstablishAccountPassword = (): JSX.Element => {
     onChangePassword,
     onClickEstablish,
     customButtonStyle,
+    checkPasswordStorage,
   } = useEstablishAccount();
+
+  useEffect(() => {
+    checkPasswordStorage();
+  }, [checkPasswordStorage]);
+
   return (
     <>
       <StyledTitle>
