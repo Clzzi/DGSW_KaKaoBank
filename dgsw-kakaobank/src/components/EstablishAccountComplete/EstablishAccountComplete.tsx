@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from 'components/Common/Button';
 import { StyledContent, StyledTitle } from './EstablishAccountComplete.style';
 import useEstablishAccount from 'hooks/EstablishAccount/useEstablishAccount';
 
 const EstablishAccountComplete = (): JSX.Element => {
-  const { customButtonStyle } = useEstablishAccount();
+  const { customButtonStyle, popEmoji } = useEstablishAccount();
+
+  useEffect(() => {
+    popEmoji();
+  }, [popEmoji]);
+
   return (
     <>
       <StyledTitle>

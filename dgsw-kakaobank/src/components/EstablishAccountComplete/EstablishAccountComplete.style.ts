@@ -34,7 +34,7 @@ export const StyledContent = styled.div`
     font-size: ${fontPalette.font24};
     color: ${ColorPalette.fureBlack};
   }
-  &:nth-child(3) {
+  &:nth-of-type(3) {
     margin-bottom: 190px;
   }
 `;

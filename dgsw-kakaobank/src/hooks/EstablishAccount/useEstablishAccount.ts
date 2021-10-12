@@ -1,13 +1,26 @@
 import useLink from 'hooks/Common/useLink';
+import JSConfetti from 'js-confetti';
 import { CSSProperties, useMemo, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { accountPasswordState } from 'store/establishAccount';
 import { ColorPalette } from 'styles/ColorPalette';
 
 const useEstablishAccount = () => {
+  const confetti = useMemo(() => {
+    return new JSConfetti();
+  }, []);
   const { handleLink: pushNext } = useLink('/establish/complete');
   const [password, setPassword] = useRecoilState<string>(accountPasswordState);
   const [passwordError, setPasswordError] = useState('');
+
+  const popEmoji = () => {
+    confetti.addConfetti({
+      emojis: ['🎇', '✨', '😎', '🎈', '🧨', '🎉', '🎊'],
+      // @ts-ignore
+      emojiSize: 36,
+      confettiNumber: 100,
+    });
+  };
 
   const onChangePassword = (res: string) => {
     setPassword(res);
@@ -43,6 +56,8 @@ const useEstablishAccount = () => {
     onChangePassword,
     customButtonStyle,
     onClickEstablish,
+    popEmoji,
+    confetti,
   };
 };
 
