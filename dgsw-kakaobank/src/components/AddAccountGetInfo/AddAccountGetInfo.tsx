@@ -11,12 +11,17 @@ const AddAccountGetInfo = (): JSX.Element => {
     onChangePhone,
     onClickFind,
     phone,
+    onResetPhone,
     checkGetInfo,
   } = useAddAccount();
 
   useEffect(() => {
     checkGetInfo();
   }, [checkGetInfo]);
+
+  useEffect(() => {
+    onResetPhone();
+  }, []);
 
   return (
     <>

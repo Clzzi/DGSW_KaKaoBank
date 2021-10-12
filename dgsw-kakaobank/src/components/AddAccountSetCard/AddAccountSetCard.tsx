@@ -5,11 +5,17 @@ import Card from './Card';
 import useAddAccount from 'hooks/AddAccount/useAddAccount';
 
 const AddAccountSetCard = (): JSX.Element => {
-  const { customButtonStyle, checkSetCard, onClickSetCard } = useAddAccount();
+  const { customButtonStyle, resetCard, checkSetCard, onClickSetCard } =
+    useAddAccount();
+
   useEffect(() => {
     checkSetCard();
   }, [checkSetCard]);
-  
+
+  useEffect(() => {
+    resetCard();
+  }, []);
+
   return (
     <>
       <StyledTitle>

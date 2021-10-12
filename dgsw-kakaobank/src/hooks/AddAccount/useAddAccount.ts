@@ -1,7 +1,7 @@
 import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Token';
 import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import { phoneState, setCardState } from 'store/addAccount';
 import { ColorPalette } from 'styles/ColorPalette';
 import makePhoneNumber from 'util/makePhoneNumber';
@@ -13,8 +13,15 @@ const useAddAccount = () => {
   const [phone, setPhone] = useRecoilState<string>(phoneState);
   const [phoneError, setPhoneError] = useState<string>('');
   const [card, setCard] = useRecoilState<string[]>(setCardState);
+  const resetCard = useResetRecoilState(setCardState);
+
+  const onResetPhone = () => {
+    setPhone('');
+    setPhoneError('');
+  };
 
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     setPhone(makePhoneNumber(e.target.value));
     checkPhone(e.target.value);
   };
@@ -57,8 +64,12 @@ const useAddAccount = () => {
   };
 
   const onClickSetCard = () => {
-    Toast.successToast(`${card.length}개의 카드를 등록했습니다.`);
-    pushMain();
+    if (card.length > 0) {
+      Toast.successToast(`${card.length}개의 카드를 등록했습니다.`);
+      pushMain();
+    } else {
+      Toast.infoToast(`카드를 선택해주세요!`);
+    }
   };
 
   const setCardCheck = ({
@@ -83,8 +94,10 @@ const useAddAccount = () => {
     onClickFind,
     customButtonStyle,
     checkGetInfo,
+    resetCard,
     checkSetCard,
     setCardCheck,
+    onResetPhone,
     setCard,
   };
 };
