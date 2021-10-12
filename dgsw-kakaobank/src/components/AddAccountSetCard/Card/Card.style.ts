@@ -2,7 +2,13 @@ import styled from '@emotion/styled';
 import { ColorPalette } from 'styles/ColorPalette';
 import { fontPalette } from 'styles/FontPalette';
 
-export const StyledCard = styled.div`
+interface IStyledCardProps {
+  check: boolean;
+}
+
+export const StyledCard = styled.div<IStyledCardProps>`
+  position: relative;
+  cursor: pointer;
   background-color: ${ColorPalette.skyBlue};
   border: none;
   border-radius: 10px;
@@ -37,5 +43,20 @@ export const StyledCard = styled.div`
       color: ${ColorPalette.fureWhite};
       font-weight: normal;
     }
+  }
+  .checkBackground {
+    display: ${(props) => (props.check ? 'flex' : 'none')};
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: ${ColorPalette.darkGrey}95;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
   }
 `;
