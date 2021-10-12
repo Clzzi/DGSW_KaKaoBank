@@ -16,7 +16,7 @@ const AddAccountGetInfo = (): JSX.Element => {
 
   useEffect(() => {
     checkGetInfo();
-  }, []);
+  }, [checkGetInfo]);
 
   return (
     <>

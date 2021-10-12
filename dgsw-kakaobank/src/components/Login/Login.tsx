@@ -1,7 +1,6 @@
 import Button from 'components/Common/Button';
 import Form from 'components/Login/Form';
 import useLogin from 'hooks/Login/useLogin';
-import Card from './Card';
 import EasyLoginForm from './EasyLoginForm';
 import { StyledLoginForm, StyledTitle } from './Login.style';
 
@@ -9,7 +8,6 @@ const Login = () => {
   const {
     id,
     pw,
-    easyPw,
     idError,
     pwError,
     easyPwError,

@@ -8,7 +8,8 @@ const AddAccountSetCard = (): JSX.Element => {
   const { customButtonStyle, checkSetCard, onClickSetCard } = useAddAccount();
   useEffect(() => {
     checkSetCard();
-  }, []);
+  }, [checkSetCard]);
+  
   return (
     <>
       <StyledTitle>

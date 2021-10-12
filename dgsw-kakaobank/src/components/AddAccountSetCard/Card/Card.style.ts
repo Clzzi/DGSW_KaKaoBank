@@ -1,4 +1,3 @@
-import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ColorPalette } from 'styles/ColorPalette';
 import { fontPalette } from 'styles/FontPalette';
