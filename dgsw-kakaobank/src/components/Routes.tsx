@@ -23,6 +23,11 @@ const Routes = () => {
         path="/establish/complete"
         component={Pages.EstablishAccountComplete}
       />
+      <Route
+        exact
+        path="/remittance/getcard"
+        component={Pages.RemittanceGetCard}
+      />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );

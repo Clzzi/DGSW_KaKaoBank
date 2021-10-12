@@ -8,3 +8,4 @@ export { default as AddAccountGetInfo } from './AddAccountGetInfoPage';
 export { default as AddAccountSetCard } from './AddAccountSetCardPage';
 export { default as EstablishAccountPassword } from './EstablishAccountPasswordPage';
 export { default as EstablishAccountComplete } from './EstablishAccountCompletePage';
+export {default as RemittanceGetCard } from './RemittanceGetCardPage';
