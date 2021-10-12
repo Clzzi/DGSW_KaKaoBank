@@ -1,3 +1,4 @@
+import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ColorPalette } from 'styles/ColorPalette';
 import { fontPalette } from 'styles/FontPalette';
@@ -44,8 +45,12 @@ export const StyledCard = styled.div<IStyledCardProps>`
       font-weight: normal;
     }
   }
+
   .checkBackground {
-    display: ${(props) => (props.check ? 'flex' : 'none')};
+    display: flex;
+    opacity: ${(props) => (props.check ? 1 : 0)};
+    transition: 0.4s ease-in-out;
+    display: flex;
     position: absolute;
     width: 100%;
     height: 100%;
