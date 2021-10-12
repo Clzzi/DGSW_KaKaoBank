@@ -3,7 +3,8 @@ import { CSSProperties, useMemo } from 'react';
 
 const useMain = () => {
   const { handleLink: pushDetailCard } = useLink('/detailcard');
-  const { handleLink: pushAddCard } = useLink('/getInfo');
+  const { handleLink: pushAddCard } = useLink('/add/info');
+  
   const customRemittanceButtonStyle: CSSProperties = useMemo(() => {
     return {
       width: '210px',
@@ -12,12 +13,14 @@ const useMain = () => {
       color: '#000000',
     };
   }, []);
+
   const customDepositButtonStyle: CSSProperties = useMemo(() => {
     return {
       width: '210px',
       height: '60px',
     };
   }, []);
+
   const onClickAddCard = () => {
     sessionStorage.setItem('AddCard', 'getInfo');
     pushAddCard();

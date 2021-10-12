@@ -8,7 +8,7 @@ import makePhoneNumber from 'util/makePhoneNumber';
 import addAccountValidation from 'validation/addAccount.validation';
 
 const useAddAccount = () => {
-  const { handleLink: pushNext } = useLink('/getInfo2');
+  const { handleLink: pushNext } = useLink('/add/card');
   const { handleLink: pushMain } = useLink('/main');
   const [phone, setPhone] = useRecoilState<string>(phoneState);
   const [phoneError, setPhoneError] = useState<string>('');
