@@ -7,3 +7,4 @@ export { default as Profile } from './ProfilePage';
 export { default as AddAccountGetInfo } from './AddAccountGetInfoPage';
 export { default as AddAccountSetCard } from './AddAccountSetCardPage';
 export { default as EstablishAccountPassword } from './EstablishAccountPasswordPage';
+export { default as EstablishAccountComplete } from './EstablishAccountCompletePage';

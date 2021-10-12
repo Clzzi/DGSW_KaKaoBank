@@ -18,6 +18,11 @@ const Routes = () => {
         path="/establish/password"
         component={Pages.EstablishAccountPassword}
       />
+      <Route
+        exact
+        path="/establish/complete"
+        component={Pages.EstablishAccountComplete}
+      />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );
