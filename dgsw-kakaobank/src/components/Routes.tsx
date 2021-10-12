@@ -1,5 +1,6 @@
 import * as Pages from 'pages';
 import { Redirect, Route, Switch } from 'react-router';
+import CustomRoute from './Common/CustomRoute';
 
 const Routes = () => {
   return (
@@ -11,6 +12,15 @@ const Routes = () => {
       <Route exact path="/profile" component={Pages.Profile} />
       <Route exact path="/service" component={Pages.Main} />
       <Route exact path="/detailcard" component={Pages.DetailCard} />
+      <CustomRoute
+        exact={true}
+        path="/getinfo"
+        component={Pages.AddAccountGetInfo}
+        fallback={Pages.Main}
+        isAllow={() => {
+          return true;
+        }}
+      />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );
