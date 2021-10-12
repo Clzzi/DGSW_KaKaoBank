@@ -12,7 +12,7 @@ const Routes = () => {
       <Route exact path="/service" component={Pages.Main} />
       <Route exact path="/detailcard" component={Pages.DetailCard} />
       <Route exact path="/add/info" component={Pages.AddAccountGetInfo} />
-      <Route exact path="/add/card" component={Pages.AddAccountGetInfo} />
+      <Route exact path="/add/card" component={Pages.AddAccountSetCard} />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );
