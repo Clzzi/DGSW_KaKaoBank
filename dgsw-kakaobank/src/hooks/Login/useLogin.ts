@@ -27,7 +27,7 @@ const useLogin = () => {
   const resetIdErrorState = useResetRecoilState(idErrorState);
   const resetPwErrorState = useResetRecoilState(pwErrorState);
   const resetEasyPwErrorState = useResetRecoilState(easyPwErrorState);
-
+  
   const onChangeEasyLogin = () => {
     setIsEasyLogin((prev) => !prev);
     resetIdState();

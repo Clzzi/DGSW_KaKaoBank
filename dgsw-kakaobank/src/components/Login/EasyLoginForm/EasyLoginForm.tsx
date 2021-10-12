@@ -6,7 +6,10 @@ interface IEasyLoinFormProps {
   onChange: (res: string) => void;
 }
 
-const EasyLoginForm = ({ error, onChange }: IEasyLoinFormProps) => {
+const EasyLoginForm = ({
+  error,
+  onChange,
+}: IEasyLoinFormProps): JSX.Element => {
   return (
     <StyledEasyLoginForm>
       <div className="title">간편비밀번호 6자리를 입력하세요</div>
