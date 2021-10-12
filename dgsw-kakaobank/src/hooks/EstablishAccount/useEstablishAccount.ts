@@ -56,7 +56,7 @@ const useEstablishAccount = () => {
     }
   };
 
-  const checkComplete = () => {
+  const checkCompleteStorage = () => {
     if (sessionStorage.getItem('EstablishCard') !== 'complete') {
       Toast.errorToast('비정상적인 접근입니다.');
       pushMain();
@@ -73,7 +73,7 @@ const useEstablishAccount = () => {
   return {
     pushMain,
     checkPasswordStorage,
-    checkComplete,
+    checkCompleteStorage,
     password,
     passwordError,
     setPassword,

@@ -5,13 +5,13 @@ import useEstablishAccount from 'hooks/EstablishAccount/useEstablishAccount';
 import JSConfetti from 'js-confetti';
 
 const EstablishAccountComplete = (): JSX.Element => {
-  const { customButtonStyle, checkComplete, onClickComplete, confetti } =
+  const { customButtonStyle, checkCompleteStorage, onClickComplete, confetti } =
     useEstablishAccount();
 
   useEffect(() => {
     confetti.current = new JSConfetti();
-    checkComplete();
-  }, [checkComplete, confetti]);
+    checkCompleteStorage();
+  }, [checkCompleteStorage, confetti]);
 
   return (
     <>
