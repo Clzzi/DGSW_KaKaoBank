@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyledCard } from './Card.style';
 import { ReactComponent as Check } from 'assets/icon/check.svg';
+import useAddAccount from 'hooks/AddAccount/useAddAccount';
 
 interface ICardProps {
   company: string;
@@ -9,12 +10,20 @@ interface ICardProps {
 }
 
 const Card = ({ money, company, number }: ICardProps): JSX.Element => {
+  const { setCardCheck } = useAddAccount();
   const [check, setCheck] = useState(false);
-  const onClick = () => {
-    setCheck((prev) => !prev);
-  };
+
+  useEffect(() => {
+    setCardCheck({ value: check, number });
+  }, [check]);
+
   return (
-    <StyledCard onClick={onClick} check={check}>
+    <StyledCard
+      onClick={() => {
+        setCheck((prev) => !prev);
+      }}
+      check={check}
+    >
       <div className="info">
         <div className="company">{company}</div>
         <div className="number">{number}</div>

@@ -2,7 +2,7 @@ import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Token';
 import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { phoneState } from 'store/addAccount';
+import { phoneState, setCardState } from 'store/addAccount';
 import { ColorPalette } from 'styles/ColorPalette';
 import makePhoneNumber from 'util/makePhoneNumber';
 import addAccountValidation from 'validation/addAccount.validation';
@@ -12,6 +12,7 @@ const useAddAccount = () => {
   const { handleLink: pushMain } = useLink('/main');
   const [phone, setPhone] = useRecoilState<string>(phoneState);
   const [phoneError, setPhoneError] = useState<string>('');
+  const [card, setCard] = useRecoilState<string[]>(setCardState);
 
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
     setPhone(makePhoneNumber(e.target.value));
@@ -36,7 +37,7 @@ const useAddAccount = () => {
 
   const onClickFind = () => {
     if (addAccountValidation.checkEmpty(phone)) {
-      localStorage.setItem('AddCard', 'setCard');
+      sessionStorage.setItem('AddCard', 'setCard');
       pushNext();
     }
   };
@@ -48,13 +49,43 @@ const useAddAccount = () => {
     }
   };
 
+  const checkSetCard = () => {
+    if (sessionStorage.getItem('AddCard') !== 'setCard') {
+      Toast.errorToast('비정상적인 접근입니다.');
+      pushMain();
+    }
+  };
+
+  const onClickSetCard = () => {
+    Toast.successToast(`${card.length}개의 카드를 등록했습니다.`);
+    pushMain();
+  };
+
+  const setCardCheck = ({
+    value,
+    number,
+  }: {
+    value: boolean;
+    number: string;
+  }) => {
+    if (value) {
+      setCard((prev) => [...prev, number]);
+    } else {
+      setCard(card.filter((v) => v !== number));
+    }
+  };
+
   return {
     phoneError,
+    onClickSetCard,
     onChangePhone,
     phone,
     onClickFind,
     customButtonStyle,
     checkGetInfo,
+    checkSetCard,
+    setCardCheck,
+    setCard,
   };
 };
 
