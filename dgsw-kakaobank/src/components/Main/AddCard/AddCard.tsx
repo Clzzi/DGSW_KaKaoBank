@@ -1,7 +1,9 @@
+import useMain from 'hooks/Main/useMain';
 import { StyledAddCard } from './AddCard.style';
 
 const AddCard = () => {
-  return <StyledAddCard>+</StyledAddCard>;
+  const { onClickAddCard } = useMain();
+  return <StyledAddCard onClick={onClickAddCard}>+</StyledAddCard>;
 };
 
 export default AddCard;

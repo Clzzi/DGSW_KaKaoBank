@@ -1,4 +1,4 @@
-import useLink from 'hooks/Common/useLink';
+import useMain from 'hooks/Main/useMain';
 import { StyledCard } from './Card.style';
 
 interface ICardProps {
@@ -8,7 +8,7 @@ interface ICardProps {
 }
 
 const Card = ({ company, number, money }: ICardProps) => {
-  const { handleLink: pushDetailCard } = useLink('/detailcard');
+  const { pushDetailCard } = useMain();
   return (
     <StyledCard onClick={pushDetailCard}>
       <div className="title">
