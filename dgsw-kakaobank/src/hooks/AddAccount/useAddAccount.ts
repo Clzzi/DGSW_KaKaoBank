@@ -66,6 +66,7 @@ const useAddAccount = () => {
   const onClickSetCard = () => {
     if (card.length > 0) {
       Toast.successToast(`${card.length}개의 카드를 등록했습니다.`);
+      sessionStorage.removeItem('AddCard');
       pushMain();
     } else {
       Toast.infoToast(`카드를 선택해주세요!`);
