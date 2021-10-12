@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Form from 'components/Register/Form';
 import { StyledTitle } from './AddAccountGetInfo.style';
 import useAddAccount from 'hooks/AddAccount/useAddAccount';
 import Button from 'components/Common/Button';
 
 const AddAccountGetInfo = (): JSX.Element => {
-  const { phoneError, customButtonStyle, onChangePhone, onClickFind, phone } =
-    useAddAccount();
+  const {
+    phoneError,
+    customButtonStyle,
+    onChangePhone,
+    onClickFind,
+    phone,
+    checkGetInfo,
+  } = useAddAccount();
+
+  useEffect(() => {
+    checkGetInfo();
+  }, []);
+
   return (
     <>
       <StyledTitle>

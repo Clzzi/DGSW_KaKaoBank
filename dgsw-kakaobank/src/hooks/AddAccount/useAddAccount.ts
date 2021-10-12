@@ -1,4 +1,5 @@
 import useLink from 'hooks/Common/useLink';
+import Toast from 'lib/Token';
 import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { phoneState } from 'store/addAccount';
@@ -8,6 +9,7 @@ import addAccountValidation from 'validation/addAccount.validation';
 
 const useAddAccount = () => {
   const { handleLink: pushNext } = useLink('/getInfo2');
+  const { handleLink: pushMain } = useLink('/main');
   const [phone, setPhone] = useRecoilState<string>(phoneState);
   const [phoneError, setPhoneError] = useState<string>('');
 
@@ -34,7 +36,15 @@ const useAddAccount = () => {
 
   const onClickFind = () => {
     if (addAccountValidation.checkEmpty(phone)) {
+      localStorage.setItem('AddCard', 'setCard');
       pushNext();
+    }
+  };
+
+  const checkGetInfo = () => {
+    if (sessionStorage.getItem('AddCard') !== 'getInfo') {
+      Toast.errorToast('비정상적인 접근입니다.');
+      pushMain();
     }
   };
 
@@ -44,6 +54,7 @@ const useAddAccount = () => {
     phone,
     onClickFind,
     customButtonStyle,
+    checkGetInfo,
   };
 };
 
