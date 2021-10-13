@@ -4,8 +4,9 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
 import { UGetAccountTitle } from 'types/getAccount/getAccount.type';
 
-const useGetAccountInfo = () => {
+const useGetAccountInfo = (nextUrl: string) => {
   const { handleLink: pushMain } = useLink('/main');
+  const { handleLink: pushNext } = useLink(nextUrl);
   const [card, setCard] = useRecoilState<string[]>(cardState);
   const resetCard = useResetRecoilState(cardState);
 
@@ -50,9 +51,18 @@ const useGetAccountInfo = () => {
     }
   };
 
+  const onClickNext = () => {
+    if (card.length <= 0) {
+      Toast.infoToast('카드를 최소 1개이상 선택해주세요');
+    } else {
+      pushNext();
+    }
+  };
+
   return {
     onClickCard,
     resetCard,
+    onClickNext,
     checkStorage,
   };
 };

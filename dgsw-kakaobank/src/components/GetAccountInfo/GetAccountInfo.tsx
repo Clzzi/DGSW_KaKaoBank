@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyledButton, StyledTitle } from './GetAccountInfo.style';
 import Card from 'components/Common/Card';
-import useLink from 'hooks/Common/useLink';
 import useGetAccountInfo from 'hooks/GetAccountInfo/useGetAccountInfo';
 import { UGetAccountTitle } from 'types/getAccount/getAccount.type';
 
@@ -12,8 +11,8 @@ const GetAccountInfo = ({
   title: UGetAccountTitle;
   nextUrl: string;
 }): JSX.Element => {
-  const { handleLink: pushNext } = useLink(nextUrl);
-  const { resetCard, checkStorage, onClickCard } = useGetAccountInfo();
+  const { resetCard, checkStorage, onClickCard, onClickNext } =
+    useGetAccountInfo(nextUrl);
 
   useEffect(() => {
     resetCard();
@@ -47,7 +46,7 @@ const GetAccountInfo = ({
         money="123,000"
         number="004-04-1234567"
       />
-      <StyledButton onClick={pushNext}>다음</StyledButton>
+      <StyledButton onClick={onClickNext}>다음</StyledButton>
     </>
   );
 };

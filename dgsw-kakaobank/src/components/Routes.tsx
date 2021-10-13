@@ -28,6 +28,11 @@ const Routes = () => {
         path="/remittance/getcard"
         component={Pages.RemittanceGetCard}
       />
+      <Route
+        exact
+        path="/remittance/setcard"
+        component={Pages.RemittanceSetCard}
+      />
       <Route exact path="/deposit/getcard" component={Pages.DepositGetCard} />
       <Route exact path="/bring/getcard" component={Pages.BringGetCard} />
       <Redirect path="*" to="/notfound" />

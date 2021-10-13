@@ -11,3 +11,4 @@ export { default as EstablishAccountComplete } from './EstablishAccountCompleteP
 export { default as RemittanceGetCard } from './RemittanceGetCardPage';
 export { default as DepositGetCard } from './DepositGetCardPage';
 export { default as BringGetCard } from './BringGetCardPage';
+export {default as RemittanceSetCard} from './RemittanceSetCardPage';
