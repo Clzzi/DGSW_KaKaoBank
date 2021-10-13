@@ -1,6 +1,6 @@
 import useLink from 'hooks/Common/useLink';
 import JSConfetti from 'js-confetti';
-import Toast from 'lib/Token';
+import Toast from 'lib/Toast';
 import { CSSProperties, useMemo, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { accountPasswordState } from 'store/establishAccount';

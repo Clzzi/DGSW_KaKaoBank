@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Form from 'components/Common/Form';
 import Bank from './Bank';
 import { StyledButton, StyledTitle } from './RemittanceSetCard.style';
@@ -11,11 +11,17 @@ const RemittanceSetCard = (): JSX.Element => {
     moneyError,
     account,
     customTitleInputStyle,
+    checkStorage,
     money,
     onChangeAccountNumber,
     customInputStyle,
     accountError,
+    onClickNext,
   } = useRemittance();
+
+  useEffect(() => {
+    checkStorage();
+  }, []);
 
   return (
     <>
@@ -43,7 +49,7 @@ const RemittanceSetCard = (): JSX.Element => {
         balance="450,000"
         customInputStyle={customInputStyle}
       />
-      <StyledButton onClick={() => null}>다음</StyledButton>
+      <StyledButton onClick={onClickNext}>다음</StyledButton>
     </>
   );
 };

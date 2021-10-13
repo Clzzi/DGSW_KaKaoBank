@@ -1,5 +1,5 @@
 import useLink from 'hooks/Common/useLink';
-import Toast from 'lib/Token';
+import Toast from 'lib/Toast';
 import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { phoneState, setCardState } from 'store/addAccount';

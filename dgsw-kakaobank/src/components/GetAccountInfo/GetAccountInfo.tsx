@@ -46,7 +46,7 @@ const GetAccountInfo = ({
         money="123,000"
         number="004-04-1234567"
       />
-      <StyledButton onClick={onClickNext}>다음</StyledButton>
+      <StyledButton onClick={() => onClickNext(title)}>다음</StyledButton>
     </>
   );
 };

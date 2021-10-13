@@ -1,5 +1,5 @@
 import useLink from 'hooks/Common/useLink';
-import Toast from 'lib/Token';
+import Toast from 'lib/Toast';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
 import { UGetAccountTitle } from 'types/getAccount/getAccount.type';
@@ -51,10 +51,21 @@ const useGetAccountInfo = (nextUrl: string) => {
     }
   };
 
-  const onClickNext = () => {
+  const onClickNext = (title: UGetAccountTitle) => {
     if (card.length <= 0) {
       Toast.infoToast('카드를 최소 1개이상 선택해주세요');
     } else {
+      switch (title) {
+        case '송금하기':
+          sessionStorage.setItem('Remittance', 'setCard');
+          break;
+        case '입금하기':
+          sessionStorage.setItem('Deposit', 'money');
+          break;
+        default:
+          sessionStorage.setItem('Bring', 'money');
+          break;
+      }
       pushNext();
     }
   };

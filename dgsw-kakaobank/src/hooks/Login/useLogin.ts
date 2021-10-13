@@ -6,7 +6,7 @@ import {
   pwErrorState,
   pwState,
 } from 'store/login';
-import Toast from 'lib/Token';
+import Toast from 'lib/Toast';
 import { ChangeEvent, useState } from 'react';
 import { ELoginEnum } from 'enum/loginEnum';
 import useLink from 'hooks/Common/useLink';
