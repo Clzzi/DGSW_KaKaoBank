@@ -22,10 +22,12 @@ const RemittanceSetCard = (): JSX.Element => {
     onClickModalYes,
     openModal,
     setOpenModal,
+    resetBank,
   } = useRemittance();
 
   useEffect(() => {
     checkStorage();
+    resetBank();
   }, []);
 
   return (
