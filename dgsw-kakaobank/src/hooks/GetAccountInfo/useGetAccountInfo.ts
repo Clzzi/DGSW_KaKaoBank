@@ -38,7 +38,7 @@ const useGetAccountInfo = () => {
         }
         break;
       case '은행선택':
-        if (sessionStorage.getItem('Bring') !== 'getInfo') {
+        if (sessionStorage.getItem('Bring') !== 'getCard') {
           Toast.errorToast('비정상적인 접근입니다.');
           pushMain();
         }

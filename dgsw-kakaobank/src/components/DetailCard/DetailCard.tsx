@@ -1,29 +1,15 @@
 import {
-  StyledButton,
-  StyledMoney,
-  StyledTitle,
-  StyledTopWrapper,
-} from './DetailCard.style';
-import React from 'react';
-import { CSSProperties } from 'react';
-import Button from 'components/Common/Button';
-import CardHistory from './CardHistory';
-import {
   StyledCardHistoryWrapper,
   StyledHistoryOption,
 } from './CardHistory/CardHistory.style';
+import React from 'react';
+import CardHistory from './CardHistory';
+import Button from 'components/Common/Button';
+import useDetailCard from 'hooks/DetailCard/useDetailCard';
+import { StyledMoney, StyledTitle, StyledTopWrapper } from './DetailCard.style';
 
 const DetailCard = (): JSX.Element => {
-  const customRemittanceButtonStyle: CSSProperties = {
-    width: '190px',
-    height: '66px',
-    backgroundColor: '#FFDC00',
-    color: '#000000',
-  };
-  const customDepositButtonStyle: CSSProperties = {
-    width: '190px',
-    height: '66px',
-  };
+  const { pushBring, customBringButtonStyle } = useDetailCard();
   return (
     <>
       <StyledTopWrapper>
@@ -35,10 +21,11 @@ const DetailCard = (): JSX.Element => {
           456,000
           <span className="won"> 원</span>
         </StyledMoney>
-        <StyledButton>
-          <Button children="송금" customStyle={customRemittanceButtonStyle} />
-          <Button children="입금" customStyle={customDepositButtonStyle} />
-        </StyledButton>
+        <Button
+          children="가져오기"
+          customStyle={customBringButtonStyle}
+          handleClick={pushBring}
+        />
       </StyledTopWrapper>
       <StyledHistoryOption>과거순</StyledHistoryOption>
       <StyledCardHistoryWrapper>
