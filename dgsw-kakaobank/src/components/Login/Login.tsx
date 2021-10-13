@@ -41,7 +41,7 @@ const Login = () => {
             name="id"
             value={id}
             error={idError}
-            CustomInputStyle={{ marginBottom: '4px' }}
+            customInputStyle={{ marginBottom: '4px' }}
           />
           <Form
             onChange={onChangePwState}
@@ -51,7 +51,7 @@ const Login = () => {
             name="pw"
             value={pw}
             error={pwError}
-            CustomInputStyle={{ marginBottom: '4px' }}
+            customInputStyle={{ marginBottom: '4px' }}
           />
         </StyledLoginForm>
       )}

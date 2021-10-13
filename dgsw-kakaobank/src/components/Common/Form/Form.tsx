@@ -11,7 +11,8 @@ interface IFormProps {
   type?: string;
   name: string;
   maxLength?: number;
-  CustomInputStyle?: CSSProperties;
+  customInputStyle?: CSSProperties;
+  customTitleInputStyle?: CSSProperties;
 }
 
 const Form = ({
@@ -21,20 +22,23 @@ const Form = ({
   placeholder,
   title,
   value,
-  CustomInputStyle,
+  customInputStyle,
+  customTitleInputStyle,
   maxLength,
   type,
 }: IFormProps): JSX.Element => {
   return (
     <StyledForm>
-      <div className="title">{title}</div>
+      <div className="title" style={customTitleInputStyle}>
+        {title}
+      </div>
       <InfoInput
         type={type ? type : 'text'}
         onChange={onChange}
         value={value}
         placeholder={placeholder}
         name={name}
-        customStyle={CustomInputStyle}
+        customStyle={customInputStyle}
         maxLength={maxLength && maxLength}
       />
       {error && <div className="error">{error}</div>}

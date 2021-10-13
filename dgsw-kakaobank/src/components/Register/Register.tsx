@@ -32,7 +32,7 @@ const Register = () => {
         name="name"
         value={registerState.name}
         error={errorState.name}
-        CustomInputStyle={{ marginBottom: '4px' }}
+        customInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -41,7 +41,7 @@ const Register = () => {
         name="id"
         value={registerState.id}
         error={errorState.id}
-        CustomInputStyle={{ marginBottom: '4px' }}
+        customInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -51,7 +51,7 @@ const Register = () => {
         name="pw"
         value={registerState.pw}
         error={errorState.pw}
-        CustomInputStyle={{ marginBottom: '4px' }}
+        customInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -61,7 +61,7 @@ const Register = () => {
         name="rePw"
         value={registerState.rePw}
         error={errorState.rePw}
-        CustomInputStyle={{ marginBottom: '4px' }}
+        customInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -71,7 +71,7 @@ const Register = () => {
         value={registerState.phone}
         error={errorState.phone}
         maxLength={13}
-        CustomInputStyle={{ marginBottom: '4px' }}
+        customInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -81,7 +81,7 @@ const Register = () => {
         value={registerState.birth}
         error={errorState.birth}
         maxLength={8}
-        CustomInputStyle={{ marginBottom: '4px' }}
+        customInputStyle={{ marginBottom: '4px' }}
       />
       <AuthForm
         title="간편비밀번호"
