@@ -1,6 +1,6 @@
 import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Toast';
-import { UConfirmInfo } from 'store/confirmInfo';
+import { UConfirmInfo } from 'store/common';
 
 const useConfirmInfo = () => {
   const { handleLink: pushMain } = useLink('/main');

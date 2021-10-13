@@ -34,6 +34,11 @@ const Routes = () => {
         component={Pages.RemittanceSetCard}
       />
       <Route exact path="/remittance/confirm" component={Pages.ConfirmInfo} />
+      <Route
+        exact
+        path="/remittance/password"
+        component={Pages.RemittanceGetPassword}
+      />
       <Route exact path="/deposit/getcard" component={Pages.DepositGetCard} />
       <Route exact path="/bring/getcard" component={Pages.BringGetCard} />
       <Redirect path="*" to="/notfound" />

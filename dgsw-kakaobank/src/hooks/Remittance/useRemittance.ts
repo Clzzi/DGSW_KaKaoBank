@@ -14,8 +14,12 @@ const useRemittance = () => {
   const [accountError, setAccountError] = useState<string>('');
   const [moneyError, setMoneyError] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
+
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink('/remittance/confirm');
+  const { handleLink: pushComplete } = useLink('/remittance/complete');
 
   const customTitleInputStyle: CSSProperties = useMemo(() => {
     return {
@@ -38,6 +42,19 @@ const useRemittance = () => {
     if (sessionStorage.getItem('Remittance') !== 'setCard') {
       Toast.errorToast('비정삭적인 접근입니다');
       pushMain();
+    }
+  };
+
+  const onChangePassword = (value: string) => {
+    setPassword(value);
+    checkPasswordError(value);
+  };
+
+  const checkPasswordError = (value: string) => {
+    if (value.length < 6) {
+      setPasswordError('비밀번호를 제대로 입력해주세요');
+    } else {
+      setPasswordError('');
     }
   };
 
@@ -87,6 +104,13 @@ const useRemittance = () => {
     pushNext();
   };
 
+  const onClickNextAuth = () => {
+    if (password.length === 6 && passwordError === '') {
+      sessionStorage.setItem('Remittance', 'complete');
+      pushComplete();
+    }
+  };
+
   return {
     onClickModalYes,
     openModal,
@@ -98,12 +122,15 @@ const useRemittance = () => {
     account,
     money,
     onClickNext,
+    onClickNextAuth,
     moneyError,
     onChangeAccountNumber,
     onChangeMoney,
     accountError,
     resetBank,
     checkStorage,
+    onChangePassword,
+    passwordError,
   };
 };
 
