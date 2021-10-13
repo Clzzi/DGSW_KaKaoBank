@@ -1,7 +1,7 @@
 import AuthForm from 'components/Common/AuthForm';
 import useGetPassword from 'hooks/GetPassword/useGetPassword';
 import React, { useEffect } from 'react';
-import { UGetPassword } from 'store/common';
+import { UGetPassword } from 'types/common/common.type';
 import { StyledButton, StyledTitle } from './GetPassword.style';
 
 interface IGetPasswordProps {

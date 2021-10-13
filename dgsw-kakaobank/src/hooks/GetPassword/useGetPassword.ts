@@ -1,6 +1,6 @@
 import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Toast';
-import { UGetPassword } from 'store/common';
+import { UGetPassword } from 'types/common/common.type';
 
 const useGetPassword = () => {
   const { handleLink: pushMain } = useLink('/main');

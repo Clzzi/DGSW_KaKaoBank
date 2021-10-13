@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StyledButton, StyledTitle } from './GetAccountInfo.style';
 import Card from 'components/Common/Card';
 import useGetAccountInfo from 'hooks/GetAccountInfo/useGetAccountInfo';
-import { UGetAccountTitle } from 'types/getAccount/getAccount.type';
+import { UGetAccountTitle } from 'types/common/common.type';
 
 const GetAccountInfo = ({
   title,

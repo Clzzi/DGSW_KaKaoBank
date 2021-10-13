@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useConfirmInfo from 'hooks/ConfirmInfo/useConfirmInfo';
 import { StyledWrapper, StyledTitle, StyledButton } from './ConfirmInfo.style';
-import { UConfirmInfo } from 'store/common';
+import { UConfirmInfo } from 'types/common/common.type';
 
 interface IConfirmInfoProps {
   title: string;

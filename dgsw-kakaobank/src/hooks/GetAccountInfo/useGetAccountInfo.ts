@@ -2,7 +2,7 @@ import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Toast';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
-import { UGetAccountTitle } from 'types/getAccount/getAccount.type';
+import { UGetAccountTitle } from 'types/common/common.type';
 
 const useGetAccountInfo = (nextUrl: string) => {
   const { handleLink: pushMain } = useLink('/main');
