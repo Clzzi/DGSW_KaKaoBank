@@ -111,7 +111,13 @@ const useRemittance = () => {
     }
   };
 
+  const onClickComplete = () => {
+    sessionStorage.removeItem('Remittance');
+    pushMain();
+  };
+
   return {
+    onClickComplete,
     onClickModalYes,
     openModal,
     setOpenModal,
