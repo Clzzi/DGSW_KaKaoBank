@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { UGetPassword } from 'types/common/common.type';
 import { StyledButton, StyledTitle, StyledWrapper } from './Complete.style';
 import { ReactComponent as Check } from 'assets/icon/check.svg';
+import useComplete from 'hooks/Complete/useComplete';
 
 interface ICompleteProps {
   title: string;
@@ -18,6 +19,7 @@ interface ICompleteProps {
 }
 
 const Complete = (Props: ICompleteProps): JSX.Element => {
+  const { checkStorage } = useComplete();
   const {
     title,
     depositAccount,
@@ -31,6 +33,10 @@ const Complete = (Props: ICompleteProps): JSX.Element => {
     remittanceReceiveAccount,
     handleClick,
   } = Props;
+
+  useEffect(() => {
+    checkStorage(type);
+  }, []);
 
   return (
     <>
