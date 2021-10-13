@@ -9,7 +9,7 @@ import useDetailCard from 'hooks/DetailCard/useDetailCard';
 import { StyledMoney, StyledTitle, StyledTopWrapper } from './DetailCard.style';
 
 const DetailCard = (): JSX.Element => {
-  const { pushBring, customBringButtonStyle } = useDetailCard();
+  const { onClickBring, customBringButtonStyle } = useDetailCard();
   return (
     <>
       <StyledTopWrapper>
@@ -24,7 +24,7 @@ const DetailCard = (): JSX.Element => {
         <Button
           children="가져오기"
           customStyle={customBringButtonStyle}
-          handleClick={pushBring}
+          handleClick={onClickBring}
         />
       </StyledTopWrapper>
       <StyledHistoryOption>과거순</StyledHistoryOption>

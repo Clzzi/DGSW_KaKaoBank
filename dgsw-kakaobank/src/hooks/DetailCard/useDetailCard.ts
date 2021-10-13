@@ -2,7 +2,7 @@ import useLink from 'hooks/Common/useLink';
 import { CSSProperties, useMemo } from 'react';
 
 const useDetailCard = () => {
-  const {handleLink: pushBring} = useLink("/bring/getcard");
+  const { handleLink: pushBring } = useLink('/bring/getcard');
   const customBringButtonStyle: CSSProperties = useMemo(() => {
     return {
       width: '100%',
@@ -12,10 +12,15 @@ const useDetailCard = () => {
     };
   }, []);
 
+  const onClickBring = () => {
+    sessionStorage.setItem('Bring', 'getCard');
+    pushBring();
+  };
+
   return {
-    pushBring,
-    customBringButtonStyle
-  }
+    onClickBring,
+    customBringButtonStyle,
+  };
 };
 
 export default useDetailCard;

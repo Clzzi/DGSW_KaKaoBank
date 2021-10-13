@@ -10,3 +10,4 @@ export { default as EstablishAccountPassword } from './EstablishAccountPasswordP
 export { default as EstablishAccountComplete } from './EstablishAccountCompletePage';
 export { default as RemittanceGetCard } from './RemittanceGetCardPage';
 export { default as DepositGetCard } from './DepositGetCardPage';
+export { default as BringGetCard } from './BringGetCardPage';

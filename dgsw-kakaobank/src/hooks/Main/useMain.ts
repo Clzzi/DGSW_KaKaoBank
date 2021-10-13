@@ -49,6 +49,7 @@ const useMain = () => {
     sessionStorage.removeItem('Remittance');
     sessionStorage.removeItem('EstablishCard');
     sessionStorage.removeItem('Deposit');
+    sessionStorage.removeItem("Bring");
   };
 
   return {
