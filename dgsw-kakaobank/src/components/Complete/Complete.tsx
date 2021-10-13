@@ -41,7 +41,7 @@ const Complete = (Props: ICompleteProps): JSX.Element => {
   return (
     <>
       <StyledTitle>
-        <Check />
+        <Check width={100} height={100} />
         <div className="title">{title}</div>
       </StyledTitle>
       <StyledWrapper>
