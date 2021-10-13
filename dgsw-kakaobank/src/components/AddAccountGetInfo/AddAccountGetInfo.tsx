@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Form from 'components/Register/Form';
+import Form from 'components/Common/Form';
 import { StyledTitle } from './AddAccountGetInfo.style';
 import useAddAccount from 'hooks/AddAccount/useAddAccount';
 import Button from 'components/Common/Button';
@@ -37,6 +37,7 @@ const AddAccountGetInfo = (): JSX.Element => {
         name="phone"
         placeholder="전화번호를 입력해주세요 ex) 010-9088-2512"
         maxLength={13}
+        CustomInputStyle={{marginBottom: "8px"}}
       />
       <Button
         children="조회하기"

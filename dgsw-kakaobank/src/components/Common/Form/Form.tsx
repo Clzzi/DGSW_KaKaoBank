@@ -1,8 +1,8 @@
-import InfoInput from 'components/Common/Input/InfoInput';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, CSSProperties } from 'react';
+import InfoInput from '../Input/InfoInput';
 import { StyledForm } from './Form.style';
 
-interface IFromProps {
+interface IFormProps {
   title: string;
   error: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -11,18 +11,20 @@ interface IFromProps {
   type?: string;
   name: string;
   maxLength?: number;
+  CustomInputStyle?: CSSProperties;
 }
 
 const Form = ({
-  onChange,
   error,
   name,
-  type,
-  value,
-  title,
+  onChange,
   placeholder,
+  title,
+  value,
+  CustomInputStyle,
   maxLength,
-}: IFromProps) => {
+  type,
+}: IFormProps): JSX.Element => {
   return (
     <StyledForm>
       <div className="title">{title}</div>
@@ -32,7 +34,7 @@ const Form = ({
         value={value}
         placeholder={placeholder}
         name={name}
-        customStyle={{ marginBottom: '4px', height: '51px' }}
+        customStyle={CustomInputStyle}
         maxLength={maxLength && maxLength}
       />
       {error && <div className="error">{error}</div>}

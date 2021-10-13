@@ -4,7 +4,7 @@ import {
   StyledEasyPwTitle,
   StyledTitle,
 } from './Register.style';
-import Form from './Form';
+import Form from 'components/Common/Form';
 import useRegister from 'hooks/Register/useRegister';
 import AuthInput from 'components/Common/Input/AuthInput';
 import Term from './Term';
@@ -37,6 +37,7 @@ const Register = () => {
         name="name"
         value={registerState.name}
         error={errorState.name}
+        CustomInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -45,6 +46,7 @@ const Register = () => {
         name="id"
         value={registerState.id}
         error={errorState.id}
+        CustomInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -54,6 +56,7 @@ const Register = () => {
         name="pw"
         value={registerState.pw}
         error={errorState.pw}
+        CustomInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -63,6 +66,7 @@ const Register = () => {
         name="rePw"
         value={registerState.rePw}
         error={errorState.rePw}
+        CustomInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -72,6 +76,7 @@ const Register = () => {
         value={registerState.phone}
         error={errorState.phone}
         maxLength={13}
+        CustomInputStyle={{ marginBottom: '4px' }}
       />
       <Form
         onChange={onChangeRegisterState}
@@ -81,6 +86,7 @@ const Register = () => {
         value={registerState.birth}
         error={errorState.birth}
         maxLength={8}
+        CustomInputStyle={{ marginBottom: '4px' }}
       />
       <StyledEasyPw>
         <StyledEasyPwTitle>간편비밀번호</StyledEasyPwTitle>

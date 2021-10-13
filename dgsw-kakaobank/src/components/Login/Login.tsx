@@ -1,5 +1,5 @@
 import Button from 'components/Common/Button';
-import Form from 'components/Login/Form';
+import Form from 'components/Common/Form';
 import useLogin from 'hooks/Login/useLogin';
 import EasyLoginForm from './EasyLoginForm';
 import { StyledLoginForm, StyledTitle } from './Login.style';
@@ -37,6 +37,7 @@ const Login = () => {
             name="id"
             value={id}
             error={idError}
+            CustomInputStyle={{ marginBottom: '4px' }}
           />
           <Form
             onChange={onChangePwState}
@@ -46,6 +47,7 @@ const Login = () => {
             name="pw"
             value={pw}
             error={pwError}
+            CustomInputStyle={{ marginBottom: '4px' }}
           />
         </StyledLoginForm>
       )}
