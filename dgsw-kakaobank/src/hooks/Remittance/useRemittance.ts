@@ -71,7 +71,6 @@ const useRemittance = () => {
   };
 
   const onClickNext = () => {
-    console.log(bank);
     if (
       accountError === '' &&
       moneyError === '' &&

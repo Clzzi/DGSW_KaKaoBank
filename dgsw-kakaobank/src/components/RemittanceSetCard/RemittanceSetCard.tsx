@@ -4,6 +4,8 @@ import Bank from './Bank';
 import { StyledButton, StyledTitle } from './RemittanceSetCard.style';
 import useRemittance from 'hooks/Remittance/useRemittance';
 import AccountForm from 'components/Common/AccountForm';
+import ModalPortal from 'components/Common/Modal/Portal';
+import Modal from 'components/Common/Modal/Modal';
 
 const RemittanceSetCard = (): JSX.Element => {
   const {
@@ -50,6 +52,15 @@ const RemittanceSetCard = (): JSX.Element => {
         customInputStyle={customInputStyle}
       />
       <StyledButton onClick={onClickNext}>다음</StyledButton>
+
+      <ModalPortal>
+        <Modal
+          title="신한은행"
+          content="신중빈님에게 송금하시겠습니까?"
+          handleNo={() => null}
+          handleYes={() => null}
+        />
+      </ModalPortal>
     </>
   );
 };
