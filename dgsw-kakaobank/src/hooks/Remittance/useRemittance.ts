@@ -60,7 +60,7 @@ const useRemittance = () => {
 
   const onChangeMoney = (e: ChangeEvent<HTMLInputElement>) => {
     setMoney(e.target.value.replace(/[^0-9]/g, ''));
-    checkMoneyError(e.target.value);
+    checkMoneyError(e.target.value.replace(/[^0-9]/g, ''));
   };
 
   const onChangeAccountNumber = (e: ChangeEvent<HTMLInputElement>) => {
