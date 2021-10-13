@@ -3,19 +3,21 @@ import { StyledButton, StyledTitle } from './GetAccountInfo.style';
 import Card from 'components/Common/Card';
 import useLink from 'hooks/Common/useLink';
 import useGetAccountInfo from 'hooks/GetAccountInfo/useGetAccountInfo';
+import { UGetAccountTitle } from 'types/getAccount/getAccount.type';
 
 const GetAccountInfo = ({
   title,
   nextUrl,
 }: {
-  title: string;
+  title: UGetAccountTitle;
   nextUrl: string;
 }): JSX.Element => {
   const { handleLink: pushNext } = useLink(nextUrl);
-  const { resetCard, onClickCard } = useGetAccountInfo();
+  const { resetCard, checkStorage, onClickCard } = useGetAccountInfo();
 
   useEffect(() => {
     resetCard();
+    checkStorage(title);
   }, []);
 
   return (
