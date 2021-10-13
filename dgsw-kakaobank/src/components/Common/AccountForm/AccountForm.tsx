@@ -48,7 +48,7 @@ const AccountForm = ({
         placeholder={placeholder}
         customStyle={customInputStyle}
         onChange={onChange}
-        maxLength={maxLength}
+        maxLength={maxLength}        
       />
       {error && <StlyedError>{error}</StlyedError>}
     </>

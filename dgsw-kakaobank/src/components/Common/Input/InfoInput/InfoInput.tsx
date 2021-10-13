@@ -8,7 +8,7 @@ interface IInfoInputProps {
   type?: string;
   placeholder: string;
   customStyle?: CSSProperties;
-  maxLength?: number;
+  maxLength?: number; 
 }
 
 const InfoInput = ({

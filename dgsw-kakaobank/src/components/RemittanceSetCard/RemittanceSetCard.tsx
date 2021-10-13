@@ -4,17 +4,17 @@ import Bank from './Bank';
 import { StyledButton, StyledTitle } from './RemittanceSetCard.style';
 import useRemittance from 'hooks/Remittance/useRemittance';
 import AccountForm from 'components/Common/AccountForm';
-import useLink from 'hooks/Common/useLink';
 
 const RemittanceSetCard = (): JSX.Element => {
   const {
-    setAccount,
     onChangeMoney,
     moneyError,
     account,
     customTitleInputStyle,
     money,
+    onChangeAccountNumber,
     customInputStyle,
+    accountError,
   } = useRemittance();
 
   return (
@@ -26,8 +26,8 @@ const RemittanceSetCard = (): JSX.Element => {
         placeholder="계좌번호를 입력해주세요"
         name="account"
         maxLength={14}
-        error="계좌번호를 제대로 적어주세요"
-        onChange={(e) => setAccount(e.target.value)}
+        error={accountError}
+        onChange={onChangeAccountNumber}
         value={account}
         customInputStyle={{ marginBottom: '8px' }}
         customTitleInputStyle={customTitleInputStyle}
