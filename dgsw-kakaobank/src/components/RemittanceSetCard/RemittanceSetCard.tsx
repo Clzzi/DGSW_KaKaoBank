@@ -19,6 +19,9 @@ const RemittanceSetCard = (): JSX.Element => {
     customInputStyle,
     accountError,
     onClickNext,
+    onClickModalYes,
+    openModal,
+    setOpenModal,
   } = useRemittance();
 
   useEffect(() => {
@@ -52,15 +55,18 @@ const RemittanceSetCard = (): JSX.Element => {
         customInputStyle={customInputStyle}
       />
       <StyledButton onClick={onClickNext}>다음</StyledButton>
-
-      <ModalPortal>
-        <Modal
-          title="신한은행"
-          content="신중빈님에게 송금하시겠습니까?"
-          handleNo={() => null}
-          handleYes={() => null}
-        />
-      </ModalPortal>
+      {openModal && (
+        <ModalPortal>
+          <Modal
+            title="신한은행"
+            content="신중빈님에게 송금하시겠습니까?"
+            handleNo={() => {
+              setOpenModal(false);
+            }}
+            handleYes={onClickModalYes}
+          />
+        </ModalPortal>
+      )}
     </>
   );
 };

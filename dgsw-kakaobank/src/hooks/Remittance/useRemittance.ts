@@ -18,6 +18,7 @@ const useRemittance = () => {
   const [money, setMoney] = useState<string>('10000');
   const [accountError, setAccountError] = useState<string>('');
   const [moneyError, setMoneyError] = useState<string>('');
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const { handleLink: pushMain } = useLink('/main');
 
   const customTitleInputStyle: CSSProperties = useMemo(() => {
@@ -78,13 +79,21 @@ const useRemittance = () => {
       account.length === 14 &&
       money.length > 0
     ) {
-      Toast.infoToast('모달');
+      setOpenModal(true);
     } else {
       Toast.errorToast('제대로 입력해주셍요');
     }
   };
 
+  const onClickModalYes = () => {
+    Toast.successToast("송금");
+    setOpenModal(false);
+  }
+
   return {
+    onClickModalYes,
+    openModal,
+    setOpenModal,
     setBank,
     bank,
     customInputStyle,
