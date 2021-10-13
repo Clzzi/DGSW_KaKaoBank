@@ -26,13 +26,13 @@ const useGetAccountInfo = () => {
   const checkStorage = (title: UGetAccountTitle) => {
     switch (title) {
       case '송금하기':
-        if (sessionStorage.getItem('Remittance') !== 'getInfo') {
+        if (sessionStorage.getItem('Remittance') !== 'getCard') {
           Toast.errorToast('비정상적인 접근입니다.');
           pushMain();
         }
         break;
       case '입금하기':
-        if (sessionStorage.getItem('Deposit') !== 'getInfo') {
+        if (sessionStorage.getItem('Deposit') !== 'getCard') {
           Toast.errorToast('비정상적인 접근입니다.');
           pushMain();
         }

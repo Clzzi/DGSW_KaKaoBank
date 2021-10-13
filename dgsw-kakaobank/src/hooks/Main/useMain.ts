@@ -5,6 +5,8 @@ const useMain = () => {
   const { handleLink: pushDetailCard } = useLink('/detailcard');
   const { handleLink: pushAddCard } = useLink('/add/info');
   const { handleLink: pushEstablish } = useLink('/establish/password');
+  const { handleLink: pushRemittance } = useLink('/remittance/getcard');
+  const { handleLink: pushDeposit } = useLink('/deposit/getcard');
 
   const customRemittanceButtonStyle: CSSProperties = useMemo(() => {
     return {
@@ -32,11 +34,31 @@ const useMain = () => {
     pushEstablish();
   };
 
+  const onClickRemittance = () => {
+    sessionStorage.setItem('Remittance', 'getCard');
+    pushRemittance();
+  };
+
+  const onClickDeposit = () => {
+    sessionStorage.setItem('Deposit', 'getCard');
+    pushDeposit();
+  };
+
+  const resetStorage = () => {
+    sessionStorage.removeItem('AddCard');
+    sessionStorage.removeItem('Remittance');
+    sessionStorage.removeItem('EstablishCard');
+    sessionStorage.removeItem('Deposit');
+  };
+
   return {
     customDepositButtonStyle,
     customRemittanceButtonStyle,
     pushDetailCard,
+    resetStorage,
+    onClickDeposit,
     onClickAddCard,
+    onClickRemittance,
     onClickEstablish,
   };
 };
