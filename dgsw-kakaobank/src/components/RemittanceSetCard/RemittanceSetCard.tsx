@@ -3,9 +3,11 @@ import Form from 'components/Common/Form';
 import Bank from './Bank';
 import { StyledTitle } from './RemittanceSetCard.style';
 import useRemittance from 'hooks/Remittance/useRemittance';
+import AccountForm from 'components/Common/AccountForm';
 
 const RemittanceSetCard = (): JSX.Element => {
-  const { setAccount, account, customTitleInputStyle } = useRemittance();
+  const { setAccount, account, customTitleInputStyle, customInputStyle } =
+    useRemittance();
   return (
     <>
       <StyledTitle>송금하기</StyledTitle>
@@ -20,6 +22,17 @@ const RemittanceSetCard = (): JSX.Element => {
         value={account}
         customInputStyle={{ marginBottom: '8px' }}
         customTitleInputStyle={customTitleInputStyle}
+      />
+      <AccountForm
+        title="금액 입력"
+        value={''}
+        name="account"
+        error="금액을 제대로 입력해주세요"
+        onChange={() => null}
+        placeholder="금액을 입력해주세요"
+        maxLength={14}
+        balance="450,000"
+        customInputStyle={customInputStyle}
       />
     </>
   );

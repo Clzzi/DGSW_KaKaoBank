@@ -1,8 +1,11 @@
 import { CSSProperties, useMemo, useState } from 'react';
+import { fontPalette } from 'styles/FontPalette';
 
 const useRemittance = () => {
   const [bank, setBank] = useState<string>();
   const [account, setAccount] = useState<string>('');
+  const [money, setMoney] = useState<number>(0);
+
   const customTitleInputStyle: CSSProperties = useMemo(() => {
     return {
       fontFamily: 'AppleM',
@@ -10,10 +13,20 @@ const useRemittance = () => {
       marginBottom: '20px',
     };
   }, []);
-  
+
+  const customInputStyle: CSSProperties = useMemo(() => {
+    return {
+      width: '100%',
+      height: '80px',
+      fontSize: fontPalette.font28,
+      padding: '20px',
+    };
+  }, []);
+
   return {
     setBank,
     bank,
+    customInputStyle,
     customTitleInputStyle,
     setAccount,
     account,
