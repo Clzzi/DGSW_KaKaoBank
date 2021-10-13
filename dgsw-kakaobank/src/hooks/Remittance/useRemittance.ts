@@ -4,7 +4,8 @@ import { fontPalette } from 'styles/FontPalette';
 const useRemittance = () => {
   const [bank, setBank] = useState<string>();
   const [account, setAccount] = useState<string>('');
-  const [money, setMoney] = useState<number>(0);
+  const [money, setMoney] = useState<string>("0");
+  const [korean, setKorean] = useState<string>("영");
 
   const customTitleInputStyle: CSSProperties = useMemo(() => {
     return {
