@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Form from './Form';
+import AuthForm from 'components/Common/AuthForm';
 import { StyledTitle } from './EstablishAccountPassword.style';
 import Button from 'components/Common/Button';
 import useEstablishAccount from 'hooks/EstablishAccount/useEstablishAccount';
@@ -23,7 +23,11 @@ const EstablishAccountPassword = (): JSX.Element => {
         <div>계좌개설을 위해</div>
         <div>비밀번호를 설정해주세요</div>
       </StyledTitle>
-      <Form error={passwordError} onChange={onChangePassword} />
+      <AuthForm
+        title="계좌 비밀번호 설정"
+        error={passwordError}
+        onChange={onChangePassword}
+      />
       <Button
         children="개설"
         customStyle={customButtonStyle}

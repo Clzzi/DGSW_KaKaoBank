@@ -1,15 +1,10 @@
-import {
-  StyledEasyPw,
-  StyledEasyPwError,
-  StyledEasyPwTitle,
-  StyledTitle,
-} from './Register.style';
+import { StyledTitle } from './Register.style';
 import Form from 'components/Common/Form';
 import useRegister from 'hooks/Register/useRegister';
-import AuthInput from 'components/Common/Input/AuthInput';
 import Term from './Term';
 import Button from 'components/Common/Button';
 import { useEffect } from 'react';
+import AuthForm from 'components/Common/AuthForm';
 
 const Register = () => {
   const {
@@ -88,13 +83,11 @@ const Register = () => {
         maxLength={8}
         CustomInputStyle={{ marginBottom: '4px' }}
       />
-      <StyledEasyPw>
-        <StyledEasyPwTitle>간편비밀번호</StyledEasyPwTitle>
-        <AuthInput length={6} onChange={onChangeEasyPw} password />
-        {errorState.easyPw && (
-          <StyledEasyPwError> {errorState.easyPw}</StyledEasyPwError>
-        )}
-      </StyledEasyPw>
+      <AuthForm
+        title="간편비밀번호"
+        error={errorState.easyPw}
+        onChange={onChangeEasyPw}
+      />
       <Term onClick={() => setCheckTerm((prev) => !prev)} check={checkTerm} />
       <Button children="회원가입" handleClick={checkEmpty} />
     </div>

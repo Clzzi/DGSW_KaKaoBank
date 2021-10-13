@@ -1,7 +1,7 @@
 import Button from 'components/Common/Button';
 import Form from 'components/Common/Form';
 import useLogin from 'hooks/Login/useLogin';
-import EasyLoginForm from './EasyLoginForm';
+import AuthForm from 'components/Common/AuthForm';
 import { StyledLoginForm, StyledTitle } from './Login.style';
 
 const Login = () => {
@@ -27,7 +27,11 @@ const Login = () => {
       </StyledTitle>
 
       {isEasyLogin ? (
-        <EasyLoginForm error={easyPwError} onChange={onChnageEasyPwState} />
+        <AuthForm
+          title="간편비밀번호 6자리를 입력하세요"
+          error={easyPwError}
+          onChange={onChnageEasyPwState}
+        />
       ) : (
         <StyledLoginForm>
           <Form
