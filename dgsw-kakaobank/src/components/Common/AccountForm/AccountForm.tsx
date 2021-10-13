@@ -1,7 +1,7 @@
-import React, { ChangeEvent, CSSProperties } from 'react';
 import InfoInput from '../Input/InfoInput';
+import React, { ChangeEvent, CSSProperties } from 'react';
 import { StyledTitle, StyledKorean, StlyedError } from './AccountForm.style';
-
+import { numToKorean, FormatOptions } from 'num-to-korean';
 interface IAccountFormProps {
   title: string;
   balance: string;
@@ -39,14 +39,16 @@ const AccountForm = ({
           <span className="won"> 원</span>
         </span>
       </StyledTitle>
-      <StyledKorean>오백만원</StyledKorean>
+      <StyledKorean>
+        {numToKorean(parseInt(value), FormatOptions.LINGUAL)} 원
+      </StyledKorean>
       <InfoInput
         name={name}
         value={value}
         placeholder={placeholder}
         customStyle={customInputStyle}
         onChange={onChange}
-        maxLength={maxLength}        
+        maxLength={maxLength}
       />
       {error && <StlyedError>{error}</StlyedError>}
     </>

@@ -1,11 +1,11 @@
-import { CSSProperties, useMemo, useState } from 'react';
+import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
 import { fontPalette } from 'styles/FontPalette';
 
 const useRemittance = () => {
   const [bank, setBank] = useState<string>();
   const [account, setAccount] = useState<string>('');
-  const [money, setMoney] = useState<string>("0");
-  const [korean, setKorean] = useState<string>("영");
+  const [money, setMoney] = useState<string>('10000');
+  const [moneyError, setMoneyError] = useState<string>('');
 
   const customTitleInputStyle: CSSProperties = useMemo(() => {
     return {
@@ -24,6 +24,19 @@ const useRemittance = () => {
     };
   }, []);
 
+  const onChangeMoney = (e: ChangeEvent<HTMLInputElement>) => {
+    setMoney(e.target.value);
+    checkMoneyError(e.target.value);
+  };
+
+  const checkMoneyError = (value: string) => {
+    if (value.length <= 0) {
+      setMoneyError('금액을 제대로 입력해주세요');
+    } else {
+      setMoneyError('');
+    }
+  };
+
   return {
     setBank,
     bank,
@@ -31,6 +44,9 @@ const useRemittance = () => {
     customTitleInputStyle,
     setAccount,
     account,
+    money,
+    moneyError,
+    onChangeMoney,
   };
 };
 
