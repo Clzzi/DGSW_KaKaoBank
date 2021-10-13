@@ -1,20 +1,24 @@
-import { useEffect, useState } from 'react';
 import { StyledCard } from './Card.style';
+import { useEffect, useState } from 'react';
 import { ReactComponent as Check } from 'assets/icon/check.svg';
-import useAddAccount from 'hooks/AddAccount/useAddAccount';
 
 interface ICardProps {
   company: string;
   number: string;
   money: string;
+  handleClick: ({ check, number }: { check: boolean; number: string }) => void;
 }
 
-const Card = ({ money, company, number }: ICardProps): JSX.Element => {
-  const { setCardCheck } = useAddAccount();
+const Card = ({
+  company,
+  money,
+  number,
+  handleClick,
+}: ICardProps): JSX.Element => {
   const [check, setCheck] = useState(false);
 
   useEffect(() => {
-    setCardCheck({ value: check, number });
+    handleClick({ check, number });
   }, [check]);
 
   return (

@@ -74,13 +74,13 @@ const useAddAccount = () => {
   };
 
   const setCardCheck = ({
-    value,
+    check,
     number,
   }: {
-    value: boolean;
+    check: boolean;
     number: string;
   }) => {
-    if (value) {
+    if (check) {
       setCard((prev) => [...prev, number]);
     } else {
       setCard(card.filter((v) => v !== number));
