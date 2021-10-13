@@ -14,3 +14,4 @@ export { default as BringGetCard } from './BringGetCardPage';
 export { default as RemittanceSetCard } from './RemittanceSetCardPage';
 export { default as ConfirmInfo } from './ConfirmInfoPage';
 export {default as RemittanceGetPassword} from './RemittanceGetPasswordPage';
+export {default as RemittanceComplete} from './RemittanceCompletePage';
