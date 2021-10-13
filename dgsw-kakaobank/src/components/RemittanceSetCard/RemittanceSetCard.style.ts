@@ -7,4 +7,5 @@ export const StyledTitle = styled.div`
   font-size: ${fontPalette.font28};
   color: ${ColorPalette.fureBlack};
   text-align: start;
+  margin-bottom: 45px;
 `;
