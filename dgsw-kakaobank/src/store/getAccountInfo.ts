@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const cardState = atom<string[]>({
+export const cardState = atom<string>({
   key: 'cardState',
-  default: [],
+  default: '',
 });

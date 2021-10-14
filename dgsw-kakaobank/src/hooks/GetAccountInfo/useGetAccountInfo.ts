@@ -1,5 +1,6 @@
 import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Toast';
+import { useEffect } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
 import { UGetAccountTitle } from 'types/common/common.type';
@@ -7,21 +8,15 @@ import { UGetAccountTitle } from 'types/common/common.type';
 const useGetAccountInfo = (nextUrl: string) => {
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink(nextUrl);
-  const [card, setCard] = useRecoilState<string[]>(cardState);
+  const [card, setCard] = useRecoilState<string>(cardState);
   const resetCard = useResetRecoilState(cardState);
 
-  const onClickCard = ({
-    check,
-    number,
-  }: {
-    check: boolean;
-    number: string;
-  }) => {
-    if (check) {
-      setCard((prev) => [...prev, number]);
-    } else {
-      setCard(card.filter((v) => v !== number));
-    }
+  useEffect(() => {
+    console.log(card);
+  }, [card]);
+
+  const onClickCard = (number: string) => {
+    setCard(number);
   };
 
   const checkStorage = (title: UGetAccountTitle) => {
@@ -53,7 +48,7 @@ const useGetAccountInfo = (nextUrl: string) => {
 
   const onClickNext = (title: UGetAccountTitle) => {
     if (card.length <= 0) {
-      Toast.infoToast('카드를 최소 1개이상 선택해주세요');
+      Toast.infoToast('카드를 선택해주세요');
     } else {
       switch (title) {
         case '송금하기':
@@ -73,6 +68,7 @@ const useGetAccountInfo = (nextUrl: string) => {
   return {
     onClickCard,
     resetCard,
+    card,
     onClickNext,
     checkStorage,
   };

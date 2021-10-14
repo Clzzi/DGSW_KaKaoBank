@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import Card from './Card';
 import { StyledButton, StyledTitle } from './GetAccountInfo.style';
-import Card from 'components/Common/Card';
 import useGetAccountInfo from 'hooks/GetAccountInfo/useGetAccountInfo';
 import { UGetAccountTitle } from 'types/common/common.type';
 
@@ -11,7 +11,7 @@ const GetAccountInfo = ({
   title: UGetAccountTitle;
   nextUrl: string;
 }): JSX.Element => {
-  const { resetCard, checkStorage, onClickCard, onClickNext } =
+  const { resetCard, checkStorage, onClickCard, onClickNext, card } =
     useGetAccountInfo(nextUrl);
 
   useEffect(() => {
@@ -27,24 +27,28 @@ const GetAccountInfo = ({
         handleClick={onClickCard}
         money="456,000"
         number="001-01-1234567"
+        check={card === '001-01-1234567'}
       />
       <Card
         company="카카오뱅크"
         handleClick={onClickCard}
         money="333,000"
         number="002-02-1234567"
+        check={card === '002-02-1234567'}
       />
       <Card
         company="신한은행"
         handleClick={onClickCard}
         money="420,000"
         number="003-03-1234567"
+        check={card === '003-03-1234567'}
       />
       <Card
         company="토스2"
         handleClick={onClickCard}
         money="123,000"
         number="004-04-1234567"
+        check={card === '004-04-1234567'}
       />
       <StyledButton onClick={() => onClickNext(title)}>다음</StyledButton>
     </>
