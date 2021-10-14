@@ -20,6 +20,7 @@ const useRemittance = () => {
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink('/remittance/confirm');
   const { handleLink: pushComplete } = useLink('/remittance/complete');
+  const { handleLink: pushPassword } = useLink('/remittance/password');
 
   const customTitleInputStyle: CSSProperties = useMemo(() => {
     return {
@@ -43,6 +44,11 @@ const useRemittance = () => {
       Toast.errorToast('비정삭적인 접근입니다');
       pushMain();
     }
+  };
+
+  const onClickConfirmYes = () => {
+    sessionStorage.setItem('Remittance', 'password');
+    pushPassword();
   };
 
   const onChangePassword = (value: string) => {
@@ -134,6 +140,7 @@ const useRemittance = () => {
     onChangeMoney,
     accountError,
     resetBank,
+    onClickConfirmYes,
     checkStorage,
     onChangePassword,
     passwordError,

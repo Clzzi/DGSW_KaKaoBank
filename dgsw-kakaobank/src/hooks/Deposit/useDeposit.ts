@@ -4,7 +4,7 @@ import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
 import { fontPalette } from 'styles/FontPalette';
 
 const useDeposit = () => {
-  const [money, setMoney] = useState<string>('');
+  const [money, setMoney] = useState<string>('10000');
   const [moneyError, setMoneyError] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const { handleLink: pushMain } = useLink('/main');
@@ -33,6 +33,8 @@ const useDeposit = () => {
   const onClickNext = () => {
     if (money.length > 0 && moneyError === '') {
       setOpenModal(true);
+    } else {
+      Toast.infoToast("금액을 입력해주세요");
     }
   };
 

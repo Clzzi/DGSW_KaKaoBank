@@ -4,15 +4,9 @@ import { UConfirmInfo } from 'types/common/common.type';
 
 const useConfirmInfo = () => {
   const { handleLink: pushMain } = useLink('/main');
-  const { handleLink: pushNext } = useLink('/remittance/password');
 
   const onClickNo = () => {
     pushMain();
-  };
-
-  const onClickYes = () => {
-    sessionStorage.setItem('Remittance', 'password');
-    pushNext();
   };
 
   const checkStorage = (type: UConfirmInfo) => {
@@ -34,7 +28,6 @@ const useConfirmInfo = () => {
 
   return {
     onClickNo,
-    onClickYes,
     checkStorage,
   };
 };

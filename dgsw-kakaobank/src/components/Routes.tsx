@@ -33,7 +33,11 @@ const Routes = () => {
         path="/remittance/setcard"
         component={Pages.RemittanceSetCard}
       />
-      <Route exact path="/remittance/confirm" component={Pages.ConfirmInfo} />
+      <Route
+        exact
+        path="/remittance/confirm"
+        component={Pages.RemittanceConfirm}
+      />
       <Route
         exact
         path="/remittance/password"

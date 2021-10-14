@@ -1,9 +1,9 @@
 import PageTemplate from 'components/Common/Base/PageTemplate';
 import ConfirmInfo from 'components/ConfirmInfo';
-import useConfirmInfo from 'hooks/ConfirmInfo/useConfirmInfo';
+import useRemittance from 'hooks/Remittance/useRemittance';
 
-const ConfirmInfoPage = (): JSX.Element => {
-  const { onClickYes } = useConfirmInfo();
+const RemittanceConfirmPage = (): JSX.Element => {
+  const { onClickConfirmYes } = useRemittance();
   return (
     <PageTemplate isHeader isFooter={false} isLogout={false}>
       <ConfirmInfo
@@ -12,11 +12,11 @@ const ConfirmInfoPage = (): JSX.Element => {
         receive="002-02-4562382"
         commission="1,000"
         money="34,221"
-        onClick={onClickYes}
+        onClick={onClickConfirmYes}
         type="송금"
       />
     </PageTemplate>
   );
 };
 
-export default ConfirmInfoPage;
+export default RemittanceConfirmPage;
