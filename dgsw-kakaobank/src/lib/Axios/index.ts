@@ -1,13 +1,13 @@
-import { getToken } from "./token";
-import { SERVER } from "config/config.json";
-import axios, { AxiosInstance } from "axios";
-import { refreshToken } from "lib/token/refreshToken";
+import { SERVER } from 'config/config.json';
+import axios, { AxiosInstance } from 'axios';
+import Token from 'lib/Token';
+import { refreshToken } from './refreshToken';
 
 export const customAxios: AxiosInstance = axios.create({
   baseURL: SERVER,
   headers: {
-    "x-access-token": getToken(),
-    "Access-Control-Allow-Origin": "*",
+    'x-access-token': Token.getToken('access-token', 'session'),
+    'Access-Control-Allow-Origin': '*',
   },
 });
 
