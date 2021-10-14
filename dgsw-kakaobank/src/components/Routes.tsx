@@ -56,11 +56,7 @@ const Routes = () => {
         path="/deposit/password"
         component={Pages.DepositGetPassword}
       />
-      <Route
-        exact
-        path="/deposit/complete"
-        component={Pages.DepositGetPassword}
-      />
+      <Route exact path="/deposit/complete" component={Pages.DepositComplete} />
       <Route exact path="/bring/getcard" component={Pages.BringGetCard} />
       <Redirect path="*" to="/notfound" />
     </Switch>

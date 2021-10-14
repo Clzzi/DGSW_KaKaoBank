@@ -53,6 +53,11 @@ const useDeposit = () => {
     }
   };
 
+  const onClickComplete = () => {
+    sessionStorage.removeItem('Deposit');
+    pushMain();
+  };
+
   const onClickNext = () => {
     if (money.length > 0 && moneyError === '') {
       setOpenModal(true);
@@ -79,6 +84,8 @@ const useDeposit = () => {
     if (password.length === 6 && passwordError === '') {
       sessionStorage.setItem('Deposit', 'complete');
       pushComplete();
+    } else {
+      Toast.infoToast('비밀번호를 입력해주세요');
     }
   };
 
@@ -92,6 +99,7 @@ const useDeposit = () => {
     onClickNext,
     moneyError,
     openModal,
+    onClickComplete,
     setOpenModal,
     customInputStyle,
     passwordError,

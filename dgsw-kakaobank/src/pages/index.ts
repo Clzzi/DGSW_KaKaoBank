@@ -18,3 +18,4 @@ export {default as RemittanceComplete} from './RemittanceCompletePage';
 export {default as DepositMoney} from './DepositMoneyPage';
 export {default as DepositConfirm} from './DepositConfirmPage';
 export {default as DepositGetPassword} from './DepositGetPasswordPage';
+export {default as DepositComplete} from './DepositCompletePage';
