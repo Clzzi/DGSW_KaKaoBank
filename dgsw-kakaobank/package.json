@@ -22,6 +22,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^6.0.0",
     "js-confetti": "^0.9.0",
+    "js-cookie": "^3.0.1",
     "num-to-korean": "^0.4.3",
     "prettier": "^2.4.1",
     "query-string": "^7.0.1",
