@@ -1,6 +1,5 @@
 import useLink from 'hooks/Common/useLink';
 import Toast from 'lib/Toast';
-import { useEffect } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
 import { UGetAccountTitle } from 'types/common/common.type';
@@ -10,10 +9,6 @@ const useGetAccountInfo = (nextUrl: string) => {
   const { handleLink: pushNext } = useLink(nextUrl);
   const [card, setCard] = useRecoilState<string>(cardState);
   const resetCard = useResetRecoilState(cardState);
-
-  useEffect(() => {
-    console.log(card);
-  }, [card]);
 
   const onClickCard = (number: string) => {
     setCard(number);

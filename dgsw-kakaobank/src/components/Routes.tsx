@@ -58,6 +58,7 @@ const Routes = () => {
       />
       <Route exact path="/deposit/complete" component={Pages.DepositComplete} />
       <Route exact path="/bring/getcard" component={Pages.BringGetCard} />
+      <Route exact path="/bring/money" component={Pages.BringMoney} />
       <Redirect path="*" to="/notfound" />
     </Switch>
   );
