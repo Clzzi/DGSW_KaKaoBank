@@ -5,11 +5,28 @@ import { fontPalette } from 'styles/FontPalette';
 
 const useDeposit = () => {
   const [money, setMoney] = useState<string>('10000');
+  const [password, setPassword] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
   const [moneyError, setMoneyError] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
+
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink('/deposit/confirm');
-  const {handleLink: pushPassword} = useLink("/deposit/password");
+  const { handleLink: pushPassword } = useLink('/deposit/password');
+  const { handleLink: pushComplete } = useLink('/deposit/complete');
+
+  const onChangePassword = (value: string) => {
+    setPassword(value);
+    checkPasswordError(value);
+  };
+
+  const checkPasswordError = (value: string) => {
+    if (value.length < 6) {
+      setPasswordError('비밀번호를 제대로 입력해주세요');
+    } else {
+      setPasswordError('');
+    }
+  };
 
   const checkStorage = () => {
     if (sessionStorage.getItem('Deposit') !== 'money') {
@@ -19,9 +36,9 @@ const useDeposit = () => {
   };
 
   const onClickConfirmYes = () => {
-    sessionStorage.setItem("Deposit","password");
+    sessionStorage.setItem('Deposit', 'password');
     pushPassword();
-  }
+  };
 
   const onChangeMoney = (e: ChangeEvent<HTMLInputElement>) => {
     setMoney(e.target.value.replace(/[^0-9]/g, ''));
@@ -40,7 +57,7 @@ const useDeposit = () => {
     if (money.length > 0 && moneyError === '') {
       setOpenModal(true);
     } else {
-      Toast.infoToast("금액을 입력해주세요");
+      Toast.infoToast('금액을 입력해주세요');
     }
   };
 
@@ -58,7 +75,16 @@ const useDeposit = () => {
     };
   }, []);
 
+  const onClickNextAuth = () => {
+    if (password.length === 6 && passwordError === '') {
+      sessionStorage.setItem('Deposit', 'complete');
+      pushComplete();
+    }
+  };
+
   return {
+    onClickNextAuth,
+    onChangePassword,
     onChangeMoney,
     onClickModalYes,
     money,
@@ -68,6 +94,7 @@ const useDeposit = () => {
     openModal,
     setOpenModal,
     customInputStyle,
+    passwordError,
     onClickConfirmYes,
   };
 };
