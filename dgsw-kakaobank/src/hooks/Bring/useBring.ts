@@ -5,11 +5,34 @@ import { fontPalette } from 'styles/FontPalette';
 
 const useBring = () => {
   const [money, setMoney] = useState<string>('10000');
+  const [password, setPassword] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [moneyError, setMoneyError] = useState<string>('');
-  const { handleLink: pushPassword } = useLink('/deposit/password');
 
   const { handleLink: pushMain } = useLink('/main');
+  const { handleLink: pushPassword } = useLink('/deposit/password');
+  const { handleLink: pushComplete } = useLink('/deposit/complete');
+
+  const onChangePassword = (value: string) => {
+    setPassword(value);
+    checkPasswordError(value);
+  };
+
+  const checkPasswordError = (value: string) => {
+    if (value.length < 6) {
+      setPasswordError('비밀번호를 제대로 입력해주세요');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const onClickNextAuth = () => {
+    if (password.length === 6 && passwordError === '') {
+      sessionStorage.setItem('Bring', 'complete');
+      pushComplete();
+    }
+  };
 
   const checkStorage = () => {
     if (sessionStorage.getItem('Bring') !== 'money') {
@@ -41,7 +64,7 @@ const useBring = () => {
   }, []);
 
   const onClickModalYes = () => {
-    sessionStorage.setItem('Bring', 'confirm');
+    sessionStorage.setItem('Bring', 'password');
     pushPassword();
   };
 
@@ -58,6 +81,9 @@ const useBring = () => {
     onClickNext,
     customInputStyle,
     checkStorage,
+    onClickNextAuth,
+    onChangePassword,
+    passwordError,
     openModal,
     onChangeMoney,
     setOpenModal,

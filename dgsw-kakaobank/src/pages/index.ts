@@ -25,3 +25,4 @@ export { default as DepositComplete } from './DepositCompletePage';
 
 export { default as BringGetCard } from './BringGetCardPage';
 export { default as BringMoney } from './BringMoneyPage';
+export { default as BringGetPassword } from './BringGetPasswordPage';
