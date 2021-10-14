@@ -9,6 +9,7 @@ const useDeposit = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink('/deposit/confirm');
+  const {handleLink: pushPassword} = useLink("/deposit/password");
 
   const checkStorage = () => {
     if (sessionStorage.getItem('Deposit') !== 'money') {
@@ -16,6 +17,11 @@ const useDeposit = () => {
       pushMain();
     }
   };
+
+  const onClickConfirmYes = () => {
+    sessionStorage.setItem("Deposit","password");
+    pushPassword();
+  }
 
   const onChangeMoney = (e: ChangeEvent<HTMLInputElement>) => {
     setMoney(e.target.value.replace(/[^0-9]/g, ''));
@@ -62,6 +68,7 @@ const useDeposit = () => {
     openModal,
     setOpenModal,
     customInputStyle,
+    onClickConfirmYes,
   };
 };
 
