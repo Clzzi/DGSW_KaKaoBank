@@ -1,11 +1,13 @@
-import { ERegisterError } from 'enum/registerEnum';
 import Toast from 'lib/Toast';
-import { ChangeEvent, useState } from 'react';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { registerAtom, registerErrorAtom } from 'store/register';
 import makeBirth from 'util/makeBirth';
+import { ChangeEvent, useState } from 'react';
+import { removeHyphen } from 'util/removeHyphen';
+import { ERegisterError } from 'enum/registerEnum';
+import { handleRegister } from 'lib/api/auth/auth.api';
 import makePhoneNumber from 'util/makePhoneNumber';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import registerValidation from 'validation/register.validation';
+import { registerAtom, registerErrorAtom } from 'store/register';
 
 const useRegister = () => {
   const [registerState, setRegisterState] = useRecoilState(registerAtom);
@@ -45,9 +47,6 @@ const useRegister = () => {
       case 'birth':
         onCheckBirth(value);
         break;
-      case 'easyPw':
-        onCheckEasyPw(value);
-        break;
       default:
         onCheckDefault({ name, value });
         break;
@@ -65,20 +64,8 @@ const useRegister = () => {
     }
   };
 
-  const onCheckEasyPw = (value: string) => {
-    if (value.length !== 6) {
-      setErrorState({
-        ...errorState,
-        easyPw: ERegisterError.easyPw,
-      });
-    } else {
-      setErrorState({ ...errorState, easyPw: '' });
-    }
-  };
-
   const onCheckBirth = (value: string) => {
     if (value.length !== 7) {
-      //TODO: 생년월일 validation
       setErrorState({
         ...errorState,
         birth: ERegisterError.birth,
@@ -90,7 +77,6 @@ const useRegister = () => {
 
   const onCheckPhone = (value: string) => {
     if (value.length !== 13) {
-      //TODO: 폰번호 validation
       setErrorState({
         ...errorState,
         phone: ERegisterError.phone,
@@ -111,19 +97,13 @@ const useRegister = () => {
     }
   };
 
-  const onChangeEasyPw = (res: string) => {
-    setRegisterState({ ...registerState, easyPw: res });
-    onChangeErrorState({ name: 'easyPw', value: res });
-  };
-
   const checkEmpty = () => {
     if (
       registerValidation.checkEmptyState(registerState) &&
       checkTerm &&
       registerValidation.checkErrorState(errorState)
     ) {
-      Toast.successToast('회원가입으로 들어감');
-      resetAllState();
+      register();
     } else {
       if (
         !registerValidation.checkErrorState(errorState) ||
@@ -133,6 +113,22 @@ const useRegister = () => {
       } else {
         Toast.errorToast('약관에 동의해주세요');
       }
+    }
+  };
+
+  const register = async () => {
+    try {
+      const data = {
+        id: registerState.id,
+        pw: registerState.pw,
+        phone: removeHyphen(registerState.phone),
+        name: registerState.name,
+        birth: removeHyphen(registerState.birth),
+      };
+      await handleRegister(data);
+      resetAllState();
+    } catch (e: any) {
+      Toast.errorToast(e.data.response.message);
     }
   };
 
@@ -146,7 +142,6 @@ const useRegister = () => {
     errorState,
     checkEmpty,
     onChangeRegisterState,
-    onChangeEasyPw,
     checkTerm,
     setCheckTerm,
     resetAllState,

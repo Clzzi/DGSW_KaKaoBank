@@ -4,7 +4,6 @@ import useRegister from 'hooks/Register/useRegister';
 import Term from './Term';
 import Button from 'components/Common/Button';
 import { useEffect } from 'react';
-import AuthForm from 'components/Common/AuthForm';
 
 const Register = () => {
   const {
@@ -13,7 +12,6 @@ const Register = () => {
     registerState,
     errorState,
     onChangeRegisterState,
-    onChangeEasyPw,
     checkEmpty,
     resetAllState,
   } = useRegister();
@@ -82,11 +80,6 @@ const Register = () => {
         error={errorState.birth}
         maxLength={8}
         customInputStyle={{ marginBottom: '4px' }}
-      />
-      <AuthForm
-        title="간편비밀번호"
-        error={errorState.easyPw}
-        onChange={onChangeEasyPw}
       />
       <Term onClick={() => setCheckTerm((prev) => !prev)} check={checkTerm} />
       <Button children="회원가입" handleClick={checkEmpty} />
