@@ -4,6 +4,7 @@ import useDeposit from 'hooks/Deposit/useDeposit';
 
 const DepositCompletePage = (): JSX.Element => {
   const { onClickComplete } = useDeposit();
+
   return (
     <PageTemplate isHeader isFooter={false} isLogout={false}>
       <Complete

@@ -1,9 +1,9 @@
 import PageTemplate from 'components/Common/Base/PageTemplate';
 import GetPassword from 'components/GetPassword';
-import useDeposit from 'hooks/Deposit/useDeposit';
+import useBring from 'hooks/Bring/useBring';
 
 const BringGetPasswordPage = (): JSX.Element => {
-  const { onChangePassword, passwordError, onClickNextAuth } = useDeposit();
+  const { onChangePassword, passwordError, onClickNextAuth } = useBring();
   return (
     <PageTemplate isHeader isFooter={false} isLogout={false}>
       <GetPassword

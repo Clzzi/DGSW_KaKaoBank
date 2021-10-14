@@ -11,8 +11,8 @@ const useBring = () => {
   const [moneyError, setMoneyError] = useState<string>('');
 
   const { handleLink: pushMain } = useLink('/main');
-  const { handleLink: pushPassword } = useLink('/deposit/password');
-  const { handleLink: pushComplete } = useLink('/deposit/complete');
+  const { handleLink: pushPassword } = useLink('/bring/password');
+  const { handleLink: pushComplete } = useLink('/bring/complete');
 
   const onChangePassword = (value: string) => {
     setPassword(value);
@@ -76,6 +76,11 @@ const useBring = () => {
     }
   };
 
+  const onClickComplete = () => {
+    sessionStorage.removeItem('Bring');
+    pushMain();
+  };
+
   return {
     money,
     onClickNext,
@@ -89,6 +94,7 @@ const useBring = () => {
     setOpenModal,
     onClickModalYes,
     moneyError,
+    onClickComplete,
   };
 };
 
