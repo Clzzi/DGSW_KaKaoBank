@@ -10,7 +10,7 @@ const Password = (): JSX.Element => {
     <>
       <StyledTitle>간편비밀번호 설정</StyledTitle>
       <AuthForm
-        title="바꿀 간편비밀번호 6자리를 입력해주세요"
+        title="간편비밀번호 6자리를 입력해주세요"
         error={passwordError}
         onChange={onChangePassword}
       />

@@ -10,11 +10,12 @@ const Routes = () => {
       <Route exact path="/main" component={Pages.Main} />
       <Route exact path="/profile" component={Pages.Profile} />
       <Route exact path="/service" component={Pages.Main} />
+      <Route exact path="/password" component={Pages.Password} />
       <Route exact path="/detailcard" component={Pages.DetailCard} />
-      
+
       <Route exact path="/add/info" component={Pages.AddAccountGetInfo} />
       <Route exact path="/add/card" component={Pages.AddAccountSetCard} />
-      
+
       <Route
         exact
         path="/establish/password"
