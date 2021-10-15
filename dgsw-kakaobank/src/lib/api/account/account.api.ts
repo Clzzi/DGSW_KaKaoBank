@@ -2,9 +2,10 @@ import {
   IEstablishAccountDto,
   IEstablishAccountResponse,
   IGetAccountInfoResponse,
-  IGetDepositRecord,
-  IGetDepositRecordResponse,
   IGetMyAccountResponse,
+  IGetPushRecordResponse,
+  IGetReceiveRecordResponse,
+  IRecordDto,
 } from 'types/account/account.type';
 import { customAxios } from 'lib/Axios';
 
@@ -33,13 +34,24 @@ export const handleGetAccountInfo = async (
   return data;
 };
 
-export const handleGetDepositRecord = async (
-  getDepositRecordDto: IGetDepositRecord,
-): Promise<IGetDepositRecordResponse> => {
+export const handleGetPushRecord = async (
+  pushRecordDto: IRecordDto,
+): Promise<IGetPushRecordResponse> => {
   const url: string = `/remittance/record/receive`;
-  const { data } = await customAxios.post<IGetDepositRecordResponse>(
+  const { data } = await customAxios.post<IGetPushRecordResponse>(
     url,
-    getDepositRecordDto,
+    pushRecordDto,
+  );
+  return data;
+};
+
+export const handleGetReceiveRecord = async (
+  pushRecordDto: IRecordDto,
+): Promise<IGetReceiveRecordResponse> => {
+  const url: string = `/remittance/record/receive`;
+  const { data } = await customAxios.post<IGetReceiveRecordResponse>(
+    url,
+    pushRecordDto,
   );
   return data;
 };

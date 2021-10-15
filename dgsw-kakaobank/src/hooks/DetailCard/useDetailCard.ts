@@ -2,15 +2,22 @@ import useLink from 'hooks/Common/useLink';
 import useQueryString from 'hooks/Common/useQueryString';
 import {
   handleGetAccountInfo,
-  handleGetDepositRecord,
+  handleGetPushRecord,
+  handleGetReceiveRecord,
 } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { CSSProperties, useMemo, useState } from 'react';
-import { IAccount } from 'types/account/account.type';
+import {
+  IAccount,
+  IPushRecord,
+  IReceiveRecord,
+} from 'types/account/account.type';
 
 const useDetailCard = () => {
   const { number } = useQueryString();
   const { handleLink: pushBring } = useLink('/bring/getcard');
+  const [pushRecord, setPushRecord] = useState<IPushRecord[]>([]);
+  const [receiveRecord, setReceiveRecord] = useState<IReceiveRecord[]>([]);
   const [card, setCard] = useState<IAccount>({
     money: '',
     userPhone: '',
@@ -40,15 +47,29 @@ const useDetailCard = () => {
     pushBring();
   };
 
-  const getDepositRecord = async () => {
+  const getPushRemittanceRecord = async () => {
     try {
       const req = { accountId: number as string };
-      const { data } = await handleGetDepositRecord(req);
-
+      const { data } = await handleGetPushRecord(req);
+      setPushRecord(data);
     } catch (e: any) {
       Toast.errorToast(e.response.data.message);
     }
   };
+
+  const getReceiveRemittanceRecord = async () => {
+    try {
+      const req = { accountId: number as string };
+      const { data } = await handleGetReceiveRecord(req);
+      setReceiveRecord(data);
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
+  };
+
+  const handleRecord = () => {
+    
+  }
 
   return {
     onClickBring,
@@ -56,6 +77,7 @@ const useDetailCard = () => {
     number,
     getAccountInfo,
     card,
+    pushRecord,
   };
 };
 

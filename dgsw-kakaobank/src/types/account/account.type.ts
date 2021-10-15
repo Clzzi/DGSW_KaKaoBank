@@ -1,6 +1,21 @@
 import { IResponse } from 'types/response/response.type';
 import { IUser } from 'types/user/user.type';
-import { IDeposit } from './deposit.type';
+
+export interface IReceiveRecord {
+  idx: number;
+  senderId: string;
+  money: string;
+  createdAt: string;
+  accountId: string;
+}
+
+export interface IPushRecord {
+  idx: number;
+  reciverId: string;
+  money: string;
+  createdAt: string;
+  accountId: string;
+}
 
 export interface IEstablishAccountResponse extends IResponse {
   data: {
@@ -35,10 +50,14 @@ export interface IGetAccountInfoResponse {
   data: IAccount;
 }
 
-export interface IGetDepositRecord {
+export interface IRecordDto {
   accountId: string;
 }
 
-export interface IGetDepositRecordResponse extends IResponse {
-  data: IDeposit[]
+export interface IGetPushRecordResponse extends IResponse {
+  data: IPushRecord[];
+}
+
+export interface IGetReceiveRecordResponse extends IResponse {
+  data: IReceiveRecord[];
 }
