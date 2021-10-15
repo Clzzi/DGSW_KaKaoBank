@@ -8,10 +8,11 @@ import { ColorPalette } from 'styles/ColorPalette';
 
 const useEstablishAccount = () => {
   const confetti = useRef<JSConfetti | null>(null);
-  const { handleLink: pushNext } = useLink('/establish/complete');
-  const { handleLink: pushMain } = useLink('/main');
   const [password, setPassword] = useRecoilState<string>(accountPasswordState);
   const [passwordError, setPasswordError] = useState('');
+
+  const { handleLink: pushNext } = useLink('/establish/complete');
+  const { handleLink: pushMain } = useLink('/main');
 
   const popEmoji = () => {
     confetti.current?.addConfetti({
@@ -28,7 +29,7 @@ const useEstablishAccount = () => {
   };
 
   const checkPasswordError = (res: string) => {
-    if (res.length < 6) {
+    if (res.length < 4) {
       setPasswordError('비밀번호를 올바르게 입력해주세요');
     } else {
       setPasswordError('');
@@ -43,7 +44,7 @@ const useEstablishAccount = () => {
   }, []);
 
   const onClickEstablish = () => {
-    if (password.length === 6) {
+    if (password.length === 4) {
       sessionStorage.setItem('EstablishCard', 'complete');
       pushNext();
     }

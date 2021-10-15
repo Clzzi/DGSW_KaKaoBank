@@ -19,14 +19,14 @@ const EstablishAccountPassword = (): JSX.Element => {
 
   return (
     <>
-      <StyledTitle>
-        <div>계좌개설을 위해</div>
-        <div>비밀번호를 설정해주세요</div>
-      </StyledTitle>
+      <StyledTitle>개설할 계좌 비밀번호를 설정해주세요</StyledTitle>
       <AuthForm
         title="계좌 비밀번호 설정"
         error={passwordError}
         onChange={onChangePassword}
+        length={4}
+        customErrorStyle={{ textAlign: 'center' }}
+        customTitleStyle={{ textAlign: 'center' }}
       />
       <Button
         children="개설"
