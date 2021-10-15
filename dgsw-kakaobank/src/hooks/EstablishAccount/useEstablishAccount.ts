@@ -3,24 +3,34 @@ import JSConfetti from 'js-confetti';
 import { handleEstablishAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { CSSProperties, useMemo, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import {
   accountPasswordState,
   establishAccountInfoState,
 } from 'store/establishAccount';
 import { ColorPalette } from 'styles/ColorPalette';
 import { IEstablishAccountInfo } from 'types/account/account.type';
+import makeAccountNumber from 'util/makeAccountNumber';
 
 const useEstablishAccount = () => {
   const confetti = useRef<JSConfetti | null>(null);
   const [password, setPassword] = useRecoilState<string>(accountPasswordState);
+  const [passwordError, setPasswordError] = useState('');
   const [accountInfo, setAccountInfo] = useRecoilState<IEstablishAccountInfo>(
     establishAccountInfoState,
   );
-  const [passwordError, setPasswordError] = useState('');
+
+  const resetAccountInfo = useResetRecoilState(establishAccountInfoState);
+  const resetPassword = useResetRecoilState(accountPasswordState);
 
   const { handleLink: pushNext } = useLink('/establish/complete');
   const { handleLink: pushMain } = useLink('/main');
+
+  const resetAllState = () => {
+    resetAccountInfo();
+    resetPassword();
+    setPasswordError('');
+  };
 
   const popEmoji = () => {
     confetti.current?.addConfetti({
@@ -48,6 +58,7 @@ const useEstablishAccount = () => {
     return {
       backgroundColor: ColorPalette.main,
       color: ColorPalette.fureBlack,
+      marginTop: '70px',
     };
   }, []);
 
@@ -63,7 +74,10 @@ const useEstablishAccount = () => {
     try {
       const req = { password };
       const { data } = await handleEstablishAccount(req);
-      setAccountInfo({ accountId: data.accountId, name: data.user.name });
+      setAccountInfo({
+        accountId: makeAccountNumber(data.accountId),
+        name: data.user.name,
+      });
       sessionStorage.setItem('EstablishCard', 'complete');
       pushNext();
     } catch (e: any) {
@@ -90,6 +104,7 @@ const useEstablishAccount = () => {
     popEmoji();
     confetti.current = null;
     pushMain();
+    resetAllState();
   };
 
   return {
@@ -104,6 +119,7 @@ const useEstablishAccount = () => {
     onChangePassword,
     customButtonStyle,
     onClickEstablish,
+    accountInfo,
     popEmoji,
     confetti,
   };
