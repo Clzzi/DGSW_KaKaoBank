@@ -37,7 +37,7 @@ export const handleGetAccountInfo = async (
 export const handleGetPushRecord = async (
   pushRecordDto: IRecordDto,
 ): Promise<IGetPushRecordResponse> => {
-  const url: string = `/remittance/record/receive`;
+  const url: string = `/remittance/record/send`;
   const { data } = await customAxios.post<IGetPushRecordResponse>(
     url,
     pushRecordDto,

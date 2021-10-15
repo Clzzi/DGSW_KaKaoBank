@@ -12,11 +12,21 @@ import getCompany from 'util/getCompany';
 import makeMoneyComma from 'util/makeMoneyComma';
 
 const DetailCard = (): JSX.Element => {
-  const { onClickBring, customBringButtonStyle, number, getAccountInfo, card } =
-    useDetailCard();
+  const {
+    onClickBring,
+    loadRecord,
+    onClickOption,
+    option,
+    customBringButtonStyle,
+    number,
+    record,
+    getAccountInfo,
+    card,
+  } = useDetailCard();
 
   useEffect(() => {
     getAccountInfo();
+    loadRecord();
   }, []);
 
   return (
@@ -36,18 +46,10 @@ const DetailCard = (): JSX.Element => {
           handleClick={onClickBring}
         />
       </StyledTopWrapper>
-      <StyledHistoryOption>과거순</StyledHistoryOption>
-      <StyledCardHistoryWrapper>
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-        <CardHistory />
-      </StyledCardHistoryWrapper>
+      <StyledHistoryOption onClick={onClickOption}>
+        {option}
+      </StyledHistoryOption>
+      <StyledCardHistoryWrapper>{record.length}</StyledCardHistoryWrapper>
     </>
   );
 };

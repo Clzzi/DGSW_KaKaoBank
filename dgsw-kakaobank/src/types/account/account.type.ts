@@ -1,3 +1,4 @@
+import { URecord } from 'types/common/common.type';
 import { IResponse } from 'types/response/response.type';
 import { IUser } from 'types/user/user.type';
 
@@ -60,4 +61,11 @@ export interface IGetPushRecordResponse extends IResponse {
 
 export interface IGetReceiveRecordResponse extends IResponse {
   data: IReceiveRecord[];
+}
+
+export interface IRecord {
+  money: string;
+  account: string;
+  date: string;
+  type: URecord;
 }
