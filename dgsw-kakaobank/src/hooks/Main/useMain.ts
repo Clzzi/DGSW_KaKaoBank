@@ -11,7 +11,6 @@ const useMain = () => {
   // TODO: header에서 token있으면 token으로 유저정보 가져오기
   const [myCard, setMyCard] = useRecoilState(myCardState);
 
-  const { handleLink: pushDetailCard } = useLink('/detailcard');
   const { handleLink: pushAddCard } = useLink('/add/info');
   const { handleLink: pushEstablish } = useLink('/establish/password');
   const { handleLink: pushRemittance } = useLink('/remittance/getcard');
@@ -73,7 +72,6 @@ const useMain = () => {
   return {
     customDepositButtonStyle,
     customRemittanceButtonStyle,
-    pushDetailCard,
     resetStorage,
     onClickDeposit,
     onClickAddCard,

@@ -7,15 +7,18 @@ import CardHistory from './CardHistory';
 import Button from 'components/Common/Button';
 import useDetailCard from 'hooks/DetailCard/useDetailCard';
 import { StyledMoney, StyledTitle, StyledTopWrapper } from './DetailCard.style';
+import makeAccountNumber from 'util/makeAccountNumber';
+import getCompany from 'util/getCompany';
 
 const DetailCard = (): JSX.Element => {
-  const { onClickBring, customBringButtonStyle } = useDetailCard();
+  const { onClickBring, customBringButtonStyle, number } = useDetailCard();
+  
   return (
     <>
       <StyledTopWrapper>
         <StyledTitle>
-          <div className="company">토스</div>
-          <div className="number">001-01-1234567</div>
+          <div className="company">{getCompany(number as string)}</div>
+          <div className="number">{makeAccountNumber(number as string)}</div>
         </StyledTitle>
         <StyledMoney>
           456,000

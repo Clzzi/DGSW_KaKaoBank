@@ -1,4 +1,5 @@
-import useMain from 'hooks/Main/useMain';
+import useLink from 'hooks/Common/useLink';
+import { removeHyphen } from 'util/removeHyphen';
 import { StyledCard } from './Card.style';
 
 interface ICardProps {
@@ -8,7 +9,10 @@ interface ICardProps {
 }
 
 const Card = ({ company, number, money }: ICardProps) => {
-  const { pushDetailCard } = useMain();
+  const { handleLink: pushDetailCard } = useLink(
+    `/detailcard/?number=${removeHyphen(number)}`,
+  );
+
   return (
     <StyledCard onClick={pushDetailCard}>
       <div className="title">
