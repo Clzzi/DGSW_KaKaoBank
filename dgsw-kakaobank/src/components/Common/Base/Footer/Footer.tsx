@@ -1,5 +1,6 @@
 import { StyledFooter } from './Footer.style';
 import { ReactComponent as UserButton } from 'assets/icon/userBtn.svg';
+import { ReactComponent as PasswordButton } from 'assets/icon/password.svg';
 // import { ReactComponent as ServiceButton } from 'assets/icon/squareBtn.svg';
 import { ReactComponent as MainButton } from 'assets/icon/home.svg';
 import usePathParams from 'hooks/Common/usePathParam';
@@ -9,6 +10,7 @@ const Footer = (): JSX.Element => {
   const pathParam = usePathParams();
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushProfile } = useLink('/profile');
+  const { handleLink: pushPassword } = useLink('/password');
   // const { handleLink: pushService } = useLink('/service');
 
   const FooterButton = (pathParam: string) => {
@@ -17,6 +19,7 @@ const Footer = (): JSX.Element => {
         return (
           <div className="buttonWrapper">
             <MainButton fill="#111962" cursor="pointer" onClick={pushMain} />
+            <PasswordButton cursor="pointer" onClick={pushPassword} />
             {/* <ServiceButton cursor="pointer" onClick={pushService} /> */}
             <UserButton cursor="pointer" onClick={pushProfile} />
           </div>
@@ -25,6 +28,11 @@ const Footer = (): JSX.Element => {
         return (
           <div className="buttonWrapper">
             <MainButton cursor="pointer" onClick={pushMain} />
+            <PasswordButton
+              fill="#111962"
+              cursor="pointer"
+              onClick={pushPassword}
+            />
             {/* <ServiceButton
               fill="#111962"
               cursor="pointer"
@@ -38,6 +46,7 @@ const Footer = (): JSX.Element => {
         return (
           <div className="buttonWrapper">
             <MainButton cursor="pointer" onClick={pushMain} />
+            <PasswordButton cursor="pointer" onClick={pushPassword} />
             {/* <ServiceButton cursor="pointer" onClick={pushService} /> */}
             <UserButton fill="#111962" cursor="pointer" onClick={pushProfile} />
           </div>

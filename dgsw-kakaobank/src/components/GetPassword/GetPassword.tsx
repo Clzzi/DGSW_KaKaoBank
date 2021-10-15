@@ -29,7 +29,7 @@ const GetPassword = ({
     <>
       <StyledTitle>{title}</StyledTitle>
       <AuthForm
-        title="간편인증번호 6자리를 입력하세요"
+        title="간편비밀번호 6자리를 입력하세요"
         error={error}
         onChange={onChange}
       />
