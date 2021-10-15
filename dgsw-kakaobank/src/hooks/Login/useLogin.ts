@@ -11,7 +11,7 @@ import { ChangeEvent, useState } from 'react';
 import { ELoginEnum } from 'enum/loginEnum';
 import useLink from 'hooks/Common/useLink';
 import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
-import { handleLogin } from 'lib/api/auth/auth.api';
+import { handleEasyLogin, handleLogin } from 'lib/api/auth/auth.api';
 import Token from 'lib/Token';
 import { userInfoState } from 'store/user';
 
@@ -82,21 +82,19 @@ const useLogin = () => {
     }
   };
 
-  const checkEmptyState = () => {
+  const onClickLoginBtn = () => {
     if (isEasyLogin) {
       if (easyPw.length !== 6) {
         Toast.errorToast('간편비밀번호 6자리를 제대로 입력해주세요');
         return;
       }
-      
-      // TODO: login, setToken, setUserInfo, pushMain
+      easyLogin();
     } else {
       if (id.length <= 0 || pw.length <= 0) {
         Toast.errorToast('아이디 또는 비밀번호를 제대로 입력해주세요');
         return;
       }
-      // TODO: login, setToken, setUserInfo, pushMain
-
+      login();
     }
   };
 
@@ -115,7 +113,23 @@ const useLogin = () => {
     }
   };
 
-  
+  const easyLogin = async () => {
+    try {
+      const req = {
+        easyLoginId: Token.getToken('easyToken', 'cookie'),
+        key: easyPw,
+      };
+      const { data } = await handleEasyLogin(req);
+      setLoginToken({
+        accessToken: data.token,
+        refreshToken: data.refreshToken,
+      });
+      setUserInfo(data.user);
+      pushMain();
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
+  };
 
   const setLoginToken = ({
     accessToken,
@@ -140,7 +154,7 @@ const useLogin = () => {
     onChangePwState,
     onChnageEasyPwState,
     onChangeEasyLogin,
-    checkEmptyState,
+    onClickLoginBtn,
   };
 };
 

@@ -16,7 +16,7 @@ const Login = () => {
     onChangePwState,
     onChnageEasyPwState,
     onChangeEasyLogin,
-    checkEmptyState,
+    onClickLoginBtn,
   } = useLogin();
 
   return (
@@ -57,7 +57,7 @@ const Login = () => {
           />
         </StyledLoginForm>
       )}
-      <Button children="로그인" handleClick={checkEmptyState} />
+      <Button children="로그인" handleClick={onClickLoginBtn} />
     </div>
   );
 };

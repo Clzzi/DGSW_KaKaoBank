@@ -1,5 +1,11 @@
 import { customAxios } from 'lib/Axios';
-import { ILoginDto, ILoginResponse, IRegisterDto } from 'types/auth/auth.type';
+import {
+  IEasyLoginDto,
+  IEasyLoginResponse,
+  ILoginDto,
+  ILoginResponse,
+  IRegisterDto,
+} from 'types/auth/auth.type';
 import { IResponse } from 'types/response/response.type';
 
 export const handleRegister = async (
@@ -16,6 +22,15 @@ export const handleLogin = async (
   console.log(loginDto);
   const url: string = `/auth/login`;
   const { data } = await customAxios.post<ILoginResponse>(url, loginDto);
+  return data;
+};
+
+export const handleEasyLogin = async (
+  loginDto: IEasyLoginDto,
+): Promise<IEasyLoginResponse> => {
+  console.log(loginDto);
+  const url: string = `/auth/easy/login`;
+  const { data } = await customAxios.post<IEasyLoginResponse>(url, loginDto);
   console.log(data);
   return data;
 };

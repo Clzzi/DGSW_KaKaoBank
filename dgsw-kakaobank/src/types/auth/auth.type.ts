@@ -39,3 +39,16 @@ export interface ILoginResponse extends IResponse {
     refreshToken: string;
   };
 }
+
+export interface IEasyLoginDto {
+  easyLoginId: string;
+  key: string;
+}
+
+export interface IEasyLoginResponse extends IResponse {
+  data: {
+    user: IUser;
+    token: string;
+    refreshToken: string;
+  };
+}
