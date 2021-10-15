@@ -25,6 +25,7 @@ export const StyledTitle = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    border: none;
   }
 `;
 

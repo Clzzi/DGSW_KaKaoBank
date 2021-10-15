@@ -23,7 +23,9 @@ const Login = () => {
     <div>
       <StyledTitle>
         <div>로그인</div>
-        <button onClick={onChangeEasyLogin}>간편로그인</button>
+        <button onClick={onChangeEasyLogin}>
+          {isEasyLogin ? '로그인' : '간편로그인'}
+        </button>
       </StyledTitle>
 
       {isEasyLogin ? (

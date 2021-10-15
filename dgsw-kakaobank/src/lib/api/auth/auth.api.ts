@@ -12,7 +12,8 @@ interface IRegisterDto {
 export const handleRegister = async (
   registerDto: IRegisterDto,
 ): Promise<IResponse> => {
-  const url: string = `/auth/regitser`;
+  console.log(registerDto);
+  const url: string = `/auth/register`;
   const { data } = await customAxios.post<IResponse>(url, registerDto);
   return data;
 };

@@ -6,8 +6,8 @@ import { refreshToken } from './refreshToken';
 export const customAxios: AxiosInstance = axios.create({
   baseURL: SERVER,
   headers: {
-    'x-access-token': Token.getToken('access-token', 'session'),
     'Access-Control-Allow-Origin': '*',
+    'x-access-token': Token.getToken('access-token', 'session'),
   },
 });
 

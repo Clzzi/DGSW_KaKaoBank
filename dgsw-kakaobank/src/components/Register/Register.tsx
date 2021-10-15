@@ -12,7 +12,7 @@ const Register = () => {
     registerState,
     errorState,
     onChangeRegisterState,
-    checkEmpty,
+    onClickRegister,
     resetAllState,
   } = useRegister();
 
@@ -82,7 +82,7 @@ const Register = () => {
         customInputStyle={{ marginBottom: '4px' }}
       />
       <Term onClick={() => setCheckTerm((prev) => !prev)} check={checkTerm} />
-      <Button children="회원가입" handleClick={checkEmpty} />
+      <Button children="회원가입" handleClick={onClickRegister} />
     </div>
   );
 };

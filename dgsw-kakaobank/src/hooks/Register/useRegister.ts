@@ -8,6 +8,7 @@ import makePhoneNumber from 'util/makePhoneNumber';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import registerValidation from 'validation/register.validation';
 import { registerAtom, registerErrorAtom } from 'store/register';
+import useLink from 'hooks/Common/useLink';
 
 const useRegister = () => {
   const [registerState, setRegisterState] = useRecoilState(registerAtom);
@@ -15,6 +16,7 @@ const useRegister = () => {
   const [checkTerm, setCheckTerm] = useState(false);
   const resetRegisterState = useResetRecoilState(registerAtom);
   const resetErrorState = useResetRecoilState(registerErrorAtom);
+  const { handleLink: pushLogin } = useLink('/login');
 
   const onChangeRegisterState = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value }: { name: string; value: string } = e.target;
@@ -97,7 +99,7 @@ const useRegister = () => {
     }
   };
 
-  const checkEmpty = () => {
+  const onClickRegister = () => {
     if (
       registerValidation.checkEmptyState(registerState) &&
       checkTerm &&
@@ -127,20 +129,22 @@ const useRegister = () => {
       };
       await handleRegister(data);
       resetAllState();
+      pushLogin();
     } catch (e: any) {
-      Toast.errorToast(e.data.response.message);
+      Toast.errorToast(e.response.data.message);
     }
   };
 
   const resetAllState = () => {
     resetRegisterState();
     resetErrorState();
+    setCheckTerm(false);
   };
 
   return {
     registerState,
     errorState,
-    checkEmpty,
+    onClickRegister,
     onChangeRegisterState,
     checkTerm,
     setCheckTerm,
