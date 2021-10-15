@@ -10,7 +10,10 @@ import Toast from 'lib/Toast';
 import { ChangeEvent, useState } from 'react';
 import { ELoginEnum } from 'enum/loginEnum';
 import useLink from 'hooks/Common/useLink';
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil';
+import { handleLogin } from 'lib/api/auth/auth.api';
+import Token from 'lib/Token';
+import { userInfoState } from 'store/user';
 
 const useLogin = () => {
   const { handleLink: pushMain } = useLink('/main');
@@ -21,13 +24,15 @@ const useLogin = () => {
   const [idError, setIdError] = useRecoilState(idErrorState);
   const [pwError, setPwError] = useRecoilState(pwErrorState);
   const [easyPwError, setEasyPwError] = useRecoilState(easyPwErrorState);
+  const setUserInfo = useSetRecoilState(userInfoState);
+
   const resetIdState = useResetRecoilState(idState);
   const resetPwState = useResetRecoilState(pwState);
   const resetEasyPwState = useResetRecoilState(easyPwState);
   const resetIdErrorState = useResetRecoilState(idErrorState);
   const resetPwErrorState = useResetRecoilState(pwErrorState);
   const resetEasyPwErrorState = useResetRecoilState(easyPwErrorState);
-  
+
   const onChangeEasyLogin = () => {
     setIsEasyLogin((prev) => !prev);
     resetIdState();
@@ -83,16 +88,44 @@ const useLogin = () => {
         Toast.errorToast('간편비밀번호 6자리를 제대로 입력해주세요');
         return;
       }
-      Toast.successToast('ok');
-      pushMain();
+      
+      // TODO: login, setToken, setUserInfo, pushMain
     } else {
       if (id.length <= 0 || pw.length <= 0) {
         Toast.errorToast('아이디 또는 비밀번호를 제대로 입력해주세요');
         return;
       }
-      Toast.successToast('ok');
-      pushMain();
+      // TODO: login, setToken, setUserInfo, pushMain
+
     }
+  };
+
+  const login = async () => {
+    try {
+      const req = { id, pw };
+      const { data } = await handleLogin(req);
+      setLoginToken({
+        accessToken: data.token,
+        refreshToken: data.refreshToken,
+      });
+      setUserInfo(data.user);
+      pushMain();
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
+  };
+
+  
+
+  const setLoginToken = ({
+    accessToken,
+    refreshToken,
+  }: {
+    accessToken: string;
+    refreshToken: string;
+  }) => {
+    Token.setToken('access-token', accessToken, 'session');
+    Token.setToken('refresh-token', refreshToken, 'session');
   };
 
   return {

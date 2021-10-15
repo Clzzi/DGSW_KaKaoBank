@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 import {
   IRegisterErrorTypes,
   IRegisterTypes,
-} from 'types/register/register.type';
+} from 'types/auth/auth.type';
 
 export const registerAtom = atom<IRegisterTypes>({
   key: 'registerAtom',
