@@ -1,7 +1,16 @@
 import useLink from 'hooks/Common/useLink';
+import { handleGetMyAccount } from 'lib/api/account/account.api';
+import Toast from 'lib/Toast';
 import { CSSProperties, useMemo } from 'react';
+import { useRecoilState } from 'recoil';
+import { myCardState } from 'store/account';
+import { userInfoState } from 'store/user';
 
 const useMain = () => {
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+  // TODO: header에서 token있으면 token으로 유저정보 가져오기
+  const [myCard, setMyCard] = useRecoilState(myCardState);
+
   const { handleLink: pushDetailCard } = useLink('/detailcard');
   const { handleLink: pushAddCard } = useLink('/add/info');
   const { handleLink: pushEstablish } = useLink('/establish/password');
@@ -23,6 +32,15 @@ const useMain = () => {
       height: '60px',
     };
   }, []);
+
+  const getMyAccount = async () => {
+    try {
+      const { data } = await handleGetMyAccount();
+      setMyCard(data);
+    } catch (e: any) {
+      Toast.infoToast(e.response.data.message);
+    }
+  };
 
   const onClickAddCard = () => {
     sessionStorage.setItem('AddCard', 'getInfo');
@@ -49,7 +67,7 @@ const useMain = () => {
     sessionStorage.removeItem('Remittance');
     sessionStorage.removeItem('EstablishCard');
     sessionStorage.removeItem('Deposit');
-    sessionStorage.removeItem("Bring");
+    sessionStorage.removeItem('Bring');
   };
 
   return {
@@ -59,8 +77,11 @@ const useMain = () => {
     resetStorage,
     onClickDeposit,
     onClickAddCard,
+    getMyAccount,
     onClickRemittance,
     onClickEstablish,
+    myCard,
+    userInfo,
   };
 };
 

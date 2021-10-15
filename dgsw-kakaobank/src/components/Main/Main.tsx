@@ -2,6 +2,10 @@ import Button from 'components/Common/Button';
 import Card from 'components/Main/Card';
 import useMain from 'hooks/Main/useMain';
 import { useEffect } from 'react';
+import { IAccount } from 'types/account/account.type';
+import getCompany from 'util/getCompany';
+import makeAccountNumber from 'util/makeAccountNumber';
+import makeMoneyComma from 'util/makeMoneyComma';
 import AddCard from './AddCard';
 import { StyledButton, StyledMainTitle } from './Main.style';
 
@@ -12,17 +16,21 @@ const Main = () => {
     resetStorage,
     onClickDeposit,
     onClickRemittance,
+    myCard,
+    getMyAccount,
+    userInfo,
     customRemittanceButtonStyle,
   } = useMain();
 
   useEffect(() => {
     resetStorage();
+    getMyAccount();
   }, []);
 
   return (
     <div>
       <StyledMainTitle>
-        <span>손민재</span>
+        <span>{userInfo.name}</span>
         <button onClick={onClickEstablish}>계좌개설</button>
       </StyledMainTitle>
       <StyledButton>
@@ -37,9 +45,15 @@ const Main = () => {
           handleClick={onClickDeposit}
         />
       </StyledButton>
-      <Card company="토스" number="001-01-1234567" money="123,123" />
-      <Card company="토스" number="001-01-1234567" money="123,123" />
-      <Card company="토스" number="001-01-1234567" money="123,123" />
+      {myCard.map((card: IAccount) => {
+        return (
+          <Card
+            company={getCompany(card.accountId)}
+            number={makeAccountNumber(card.accountId)}
+            money={makeMoneyComma(card.money)}
+          />
+        );
+      })}
       <AddCard />
     </div>
   );

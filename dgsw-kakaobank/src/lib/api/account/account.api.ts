@@ -1,6 +1,7 @@
 import {
   IEstablishAccountDto,
   IEstablishAccountResponse,
+  IGetMyAccountResponse,
 } from 'types/account/account.type';
 import { customAxios } from 'lib/Axios';
 
@@ -12,5 +13,11 @@ export const handleEstablishAccount = async (
     url,
     establishAccountDto,
   );
+  return data;
+};
+
+export const handleGetMyAccount = async (): Promise<IGetMyAccountResponse> => {
+  const url: string = `/account/find/my`;
+  const { data } = await customAxios.get<IGetMyAccountResponse>(url);
   return data;
 };

@@ -19,3 +19,13 @@ export interface IEstablishAccountInfo {
   accountId: string;
   name: string;
 }
+
+export interface IGetMyAccountResponse {
+  data: IAccount[];
+}
+
+export interface IAccount {
+  accountId: string;
+  money: string;
+  userPhone: string;
+}
