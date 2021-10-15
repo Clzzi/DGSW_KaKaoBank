@@ -2,6 +2,7 @@ import { customAxios } from 'lib/Axios';
 import {
   IEasyLoginDto,
   IEasyLoginResponse,
+  IEasyRegisterResponse,
   ILoginDto,
   ILoginResponse,
   IRegisterDto,
@@ -16,10 +17,20 @@ export const handleRegister = async (
   return data;
 };
 
+export const handleEasyRegister = async (
+  registerDto: string,
+): Promise<IEasyRegisterResponse> => {
+  const url: string = `/auth/easy/register`;
+  const { data } = await customAxios.post<IEasyRegisterResponse>(
+    url,
+    registerDto,
+  );
+  return data;
+};
+
 export const handleLogin = async (
   loginDto: ILoginDto,
 ): Promise<ILoginResponse> => {
-  console.log(loginDto);
   const url: string = `/auth/login`;
   const { data } = await customAxios.post<ILoginResponse>(url, loginDto);
   return data;
@@ -28,7 +39,6 @@ export const handleLogin = async (
 export const handleEasyLogin = async (
   loginDto: IEasyLoginDto,
 ): Promise<IEasyLoginResponse> => {
-  console.log(loginDto);
   const url: string = `/auth/easy/login`;
   const { data } = await customAxios.post<IEasyLoginResponse>(url, loginDto);
   console.log(data);

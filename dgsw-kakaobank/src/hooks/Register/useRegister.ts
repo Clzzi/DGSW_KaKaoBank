@@ -16,6 +16,7 @@ const useRegister = () => {
   const [checkTerm, setCheckTerm] = useState(false);
   const resetRegisterState = useResetRecoilState(registerAtom);
   const resetErrorState = useResetRecoilState(registerErrorAtom);
+  
   const { handleLink: pushLogin } = useLink('/login');
 
   const onChangeRegisterState = (e: ChangeEvent<HTMLInputElement>) => {

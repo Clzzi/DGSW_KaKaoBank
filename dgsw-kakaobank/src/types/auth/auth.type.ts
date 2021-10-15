@@ -52,3 +52,7 @@ export interface IEasyLoginResponse extends IResponse {
     refreshToken: string;
   };
 }
+
+export interface IEasyRegisterResponse extends IResponse {
+  data: string
+}
