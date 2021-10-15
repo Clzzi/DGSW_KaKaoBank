@@ -18,7 +18,7 @@ export const refreshToken = async (
       Token.setToken('access-token', token, 'session');
       accessToken = token;
     }
-    config.headers['x-access-token'] = accessToken;
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
 
   return config;
