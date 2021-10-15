@@ -13,7 +13,7 @@ const Header = ({
   isLoadInfo: boolean;
   path: string;
 }) => {
-  const { loadMyInfo, customButtonyStyle } = useHeader();
+  const { loadMyInfo, customButtonyStyle, logout } = useHeader();
   const { handleLink: pushPath } = useLink(path);
   useEffect(() => {
     if (isLoadInfo) {
@@ -28,7 +28,11 @@ const Header = ({
           <div className="mainTitle">카카오뱅크</div>
           <div className="subTitle">in DGSW</div>
         </div>
-        {isLogout && <Button customStyle={customButtonyStyle}>로그아웃</Button>}
+        {isLogout && (
+          <Button customStyle={customButtonyStyle} handleClick={logout}>
+            로그아웃
+          </Button>
+        )}
       </div>
     </StyleHeader>
   );

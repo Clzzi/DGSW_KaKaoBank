@@ -55,6 +55,7 @@ const useHeader = () => {
   return {
     customButtonyStyle,
     loadMyInfo,
+    logout,
   };
 };
 

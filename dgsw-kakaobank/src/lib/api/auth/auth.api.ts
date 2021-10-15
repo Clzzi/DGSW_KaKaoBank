@@ -42,6 +42,5 @@ export const handleEasyLogin = async (
 ): Promise<IEasyLoginResponse> => {
   const url: string = `/auth/easy/login`;
   const { data } = await customAxios.post<IEasyLoginResponse>(url, loginDto);
-  console.log(data);
   return data;
 };

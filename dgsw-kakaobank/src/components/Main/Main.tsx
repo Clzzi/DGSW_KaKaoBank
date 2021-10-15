@@ -24,7 +24,7 @@ const Main = () => {
 
   useEffect(() => {
     resetStorage();
-    // getMyAccount();
+    getMyAccount();
   }, []);
 
   return (
@@ -44,11 +44,12 @@ const Main = () => {
           customStyle={customDepositButtonStyle}
           handleClick={onClickDeposit}
         />
-    </StyledButton>
+      </StyledButton>
       {myCard &&
         myCard.map((card: IAccount) => {
           return (
             <Card
+              key={card.accountId}
               company={getCompany(card.accountId)}
               number={makeAccountNumber(card.accountId)}
               money={makeMoneyComma(card.money)}
