@@ -58,5 +58,5 @@ export interface IEasyLoginResponse extends IResponse {
 }
 
 export interface IEasyRegisterResponse extends IResponse {
-  data: string
+  data: string;
 }

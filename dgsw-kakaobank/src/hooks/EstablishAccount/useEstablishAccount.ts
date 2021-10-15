@@ -1,14 +1,22 @@
 import useLink from 'hooks/Common/useLink';
 import JSConfetti from 'js-confetti';
+import { handleEstablishAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { CSSProperties, useMemo, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { accountPasswordState } from 'store/establishAccount';
+import {
+  accountPasswordState,
+  establishAccountInfoState,
+} from 'store/establishAccount';
 import { ColorPalette } from 'styles/ColorPalette';
+import { IEstablishAccountInfo } from 'types/account/account.type';
 
 const useEstablishAccount = () => {
   const confetti = useRef<JSConfetti | null>(null);
   const [password, setPassword] = useRecoilState<string>(accountPasswordState);
+  const [accountInfo, setAccountInfo] = useRecoilState<IEstablishAccountInfo>(
+    establishAccountInfoState,
+  );
   const [passwordError, setPasswordError] = useState('');
 
   const { handleLink: pushNext } = useLink('/establish/complete');
@@ -45,8 +53,21 @@ const useEstablishAccount = () => {
 
   const onClickEstablish = () => {
     if (password.length === 4) {
+      establishAccount();
+    } else {
+      Toast.infoToast('비밀번호를 제대로 적어주세요');
+    }
+  };
+
+  const establishAccount = async () => {
+    try {
+      const req = { password };
+      const { data } = await handleEstablishAccount(req);
+      setAccountInfo({ accountId: data.accountId, name: data.user.name });
       sessionStorage.setItem('EstablishCard', 'complete');
       pushNext();
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
     }
   };
 

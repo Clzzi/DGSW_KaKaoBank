@@ -12,7 +12,5 @@ export const handleEstablishAccount = async (
     url,
     establishAccountDto,
   );
-  console.log(establishAccountDto);
-  console.log(data);
   return data;
 };
