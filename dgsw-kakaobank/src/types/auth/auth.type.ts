@@ -45,6 +45,10 @@ export interface IEasyLoginDto {
   key: string;
 }
 
+export interface IEasyRegisterDto {
+  key: string;
+}
+
 export interface IEasyLoginResponse extends IResponse {
   data: {
     user: IUser;

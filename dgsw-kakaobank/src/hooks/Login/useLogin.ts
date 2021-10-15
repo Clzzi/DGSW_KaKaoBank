@@ -88,6 +88,10 @@ const useLogin = () => {
         Toast.errorToast('간편비밀번호 6자리를 제대로 입력해주세요');
         return;
       }
+      if (Token.getToken('easyToken', 'cookie') === undefined) {
+        Toast.infoToast('간편비밀번호 설정을 해주세요');
+        return;
+      }
       easyLogin();
     } else {
       if (id.length <= 0 || pw.length <= 0) {

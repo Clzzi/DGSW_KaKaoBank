@@ -2,6 +2,7 @@ import { customAxios } from 'lib/Axios';
 import {
   IEasyLoginDto,
   IEasyLoginResponse,
+  IEasyRegisterDto,
   IEasyRegisterResponse,
   ILoginDto,
   ILoginResponse,
@@ -18,7 +19,7 @@ export const handleRegister = async (
 };
 
 export const handleEasyRegister = async (
-  registerDto: string,
+  registerDto: IEasyRegisterDto,
 ): Promise<IEasyRegisterResponse> => {
   const url: string = `/auth/easy/register`;
   const { data } = await customAxios.post<IEasyRegisterResponse>(

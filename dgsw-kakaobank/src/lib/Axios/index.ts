@@ -7,7 +7,7 @@ export const customAxios: AxiosInstance = axios.create({
   baseURL: SERVER,
   headers: {
     'Access-Control-Allow-Origin': '*',
-    'x-access-token': Token.getToken('access-token', 'session'),
+    Authorization: `Bearer ${Token.getToken('access-token', 'session')}`,
   },
 });
 
