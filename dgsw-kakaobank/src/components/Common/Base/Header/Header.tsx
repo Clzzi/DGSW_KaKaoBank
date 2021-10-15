@@ -1,21 +1,29 @@
 import Button from 'components/Common/Button';
 import useLink from 'hooks/Common/useLink';
-import { CSSProperties } from 'react';
-import { fontPalette } from 'styles/FontPalette';
+import useHeader from 'hooks/Header/useHeader';
+import { useEffect } from 'react';
 import { StyleHeader } from './Header.style';
 
-const Header = ({ isLogout }: { isLogout: boolean }) => {
-  const { handleLink: pushMain } = useLink('/main');
-  const customButtonyStyle: CSSProperties = {
-    width: '100px',
-    height: '36px',
-    fontSize: `${fontPalette.font16}`,
-    fontFamily: 'AppleB',
-    fontWeight: 'normal',
-  };
+const Header = ({
+  isLogout,
+  isLoadInfo,
+  path,
+}: {
+  isLogout: boolean;
+  isLoadInfo: boolean;
+  path: string;
+}) => {
+  const { loadMyInfo, customButtonyStyle } = useHeader();
+  const { handleLink: pushPath } = useLink(path);
+  useEffect(() => {
+    if (isLoadInfo) {
+      loadMyInfo();
+    }
+  }, [isLoadInfo]);
+
   return (
     <StyleHeader>
-      <div className={'HeaderWrapper'} onClick={pushMain} >
+      <div className={'HeaderWrapper'} onClick={pushPath}>
         <div className="title">
           <div className="mainTitle">카카오뱅크</div>
           <div className="subTitle">in DGSW</div>

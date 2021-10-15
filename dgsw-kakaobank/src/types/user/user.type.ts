@@ -4,3 +4,7 @@ export interface IUser {
   name: string;
   birth: string;
 }
+
+export interface IGetMyInfoResponse {
+  data: IUser;
+}

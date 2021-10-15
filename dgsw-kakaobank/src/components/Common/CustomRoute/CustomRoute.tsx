@@ -1,18 +1,16 @@
+import LoginPage from 'pages/LoginPage';
+import Token from 'lib/Token';
 import { FC } from 'react';
 import { Route } from 'react-router';
 
 interface ICustonRouteProps {
   path: string | string[];
   component: FC;
-  fallback: FC;
   exact?: boolean;
-  isAllow: () => boolean;
 }
 
 const CustomRoute = ({
   component,
-  fallback,
-  isAllow,
   path,
   exact,
 }: ICustonRouteProps): JSX.Element => {
@@ -20,7 +18,9 @@ const CustomRoute = ({
     <Route
       exact={exact ? true : false}
       path={path}
-      component={isAllow() ? component : fallback}
+      component={
+        Token.getToken('refresh-token', 'session') ? component : LoginPage
+      }
     />
   );
 };

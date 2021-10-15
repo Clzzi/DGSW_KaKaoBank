@@ -11,6 +11,8 @@ interface IPageTemplateProps {
   isLogout: boolean;
   isFooter: boolean;
   isHeader: boolean;
+  isLoadInfo?: boolean;
+  path?: string;
 }
 
 const PageTemplate = ({
@@ -18,10 +20,14 @@ const PageTemplate = ({
   children,
   isLogout,
   isFooter,
+  path = '/main',
+  isLoadInfo = true,
 }: IPageTemplateProps) => {
   return (
     <StyledPageTemplate>
-      {isHeader && <Header isLogout={isLogout} />}
+      {isHeader && (
+        <Header path={path} isLoadInfo={isLoadInfo} isLogout={isLogout} />
+      )}
       <StyledPageTemplateContent>{children}</StyledPageTemplateContent>
       {isFooter && <Footer />}
     </StyledPageTemplate>

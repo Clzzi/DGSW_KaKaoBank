@@ -24,13 +24,13 @@ const Main = () => {
 
   useEffect(() => {
     resetStorage();
-    getMyAccount();
+    // getMyAccount();
   }, []);
 
   return (
     <div>
       <StyledMainTitle>
-        <span>{userInfo.name}</span>
+        <span>{userInfo && userInfo.name}</span>
         <button onClick={onClickEstablish}>계좌개설</button>
       </StyledMainTitle>
       <StyledButton>
@@ -44,16 +44,17 @@ const Main = () => {
           customStyle={customDepositButtonStyle}
           handleClick={onClickDeposit}
         />
-      </StyledButton>
-      {myCard.map((card: IAccount) => {
-        return (
-          <Card
-            company={getCompany(card.accountId)}
-            number={makeAccountNumber(card.accountId)}
-            money={makeMoneyComma(card.money)}
-          />
-        );
-      })}
+    </StyledButton>
+      {myCard &&
+        myCard.map((card: IAccount) => {
+          return (
+            <Card
+              company={getCompany(card.accountId)}
+              number={makeAccountNumber(card.accountId)}
+              money={makeMoneyComma(card.money)}
+            />
+          );
+        })}
       <AddCard />
     </div>
   );
