@@ -1,5 +1,6 @@
 import { IResponse } from 'types/response/response.type';
 import { IUser } from 'types/user/user.type';
+import { IDeposit } from './deposit.type';
 
 export interface IEstablishAccountResponse extends IResponse {
   data: {
@@ -28,4 +29,16 @@ export interface IAccount {
   accountId: string;
   money: string;
   userPhone: string;
+}
+
+export interface IGetAccountInfoResponse {
+  data: IAccount;
+}
+
+export interface IGetDepositRecord {
+  accountId: string;
+}
+
+export interface IGetDepositRecordResponse extends IResponse {
+  data: IDeposit[]
 }

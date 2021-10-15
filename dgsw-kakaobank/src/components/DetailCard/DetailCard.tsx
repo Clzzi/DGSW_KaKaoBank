@@ -2,17 +2,23 @@ import {
   StyledCardHistoryWrapper,
   StyledHistoryOption,
 } from './CardHistory/CardHistory.style';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CardHistory from './CardHistory';
 import Button from 'components/Common/Button';
 import useDetailCard from 'hooks/DetailCard/useDetailCard';
 import { StyledMoney, StyledTitle, StyledTopWrapper } from './DetailCard.style';
 import makeAccountNumber from 'util/makeAccountNumber';
 import getCompany from 'util/getCompany';
+import makeMoneyComma from 'util/makeMoneyComma';
 
 const DetailCard = (): JSX.Element => {
-  const { onClickBring, customBringButtonStyle, number } = useDetailCard();
-  
+  const { onClickBring, customBringButtonStyle, number, getAccountInfo, card } =
+    useDetailCard();
+
+  useEffect(() => {
+    getAccountInfo();
+  }, []);
+
   return (
     <>
       <StyledTopWrapper>
@@ -21,7 +27,7 @@ const DetailCard = (): JSX.Element => {
           <div className="number">{makeAccountNumber(number as string)}</div>
         </StyledTitle>
         <StyledMoney>
-          456,000
+          {makeMoneyComma(card.money)}
           <span className="won"> 원</span>
         </StyledMoney>
         <Button
