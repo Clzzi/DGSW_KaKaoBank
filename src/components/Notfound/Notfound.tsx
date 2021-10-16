@@ -6,7 +6,7 @@ const Notfound = (): JSX.Element => {
   const { handleLink: pushMain } = useLink('/main');
   return (
     <StyledTitle>
-      잘못된 접근입니다.
+      잘못된 접근입니다
       <br />
       메인으로 돌아가세요
       <Button
