@@ -19,7 +19,7 @@ export const detailCardInfoState = atom<IAccount>({
 
 export const detailCardOptionState = atom<UOption>({
   key: 'detailCardOptionState',
-  default: '최신순',
+  default: '과거순',
 });
 
 export const detailCardRecordState = atom<IRecord[]>({
