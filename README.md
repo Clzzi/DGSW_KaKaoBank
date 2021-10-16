@@ -1,4 +1,4 @@
 # DGSW_KaKaoBank
+> 학교 프로그래밍 실무 시간에 만든 카카오뱅크 클론코딩입니다.
 
-### Figma [주소](https://www.figma.com/file/3FD17ieQwgU4w2LKvIgQad/KaKaoBank-in-DGSW?node-id=4%3A5)
-
+---
