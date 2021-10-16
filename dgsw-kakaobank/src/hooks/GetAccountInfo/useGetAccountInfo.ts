@@ -1,7 +1,7 @@
 import useLink from 'hooks/Common/useLink';
 import { handleGetMyAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
 import { IAccount } from 'types/account/account.type';
@@ -59,7 +59,7 @@ const useGetAccountInfo = () => {
       history.push(`/remittance/setcard?number=${card}`);
     } else {
       sessionStorage.setItem('Bring', 'money');
-      history.push(`/bring/money&number=${card}`);
+      history.push(`/bring/money?number=${card}`);
     }
   };
 

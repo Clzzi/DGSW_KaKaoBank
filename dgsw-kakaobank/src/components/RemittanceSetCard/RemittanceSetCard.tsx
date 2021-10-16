@@ -31,7 +31,7 @@ const RemittanceSetCard = (): JSX.Element => {
   useEffect(() => {
     checkStorage();
     getAccountInfo();
-  }, []);
+  }, [checkStorage]);
 
   return (
     <>

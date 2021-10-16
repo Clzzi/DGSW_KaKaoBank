@@ -20,7 +20,7 @@ const BringMoney = (): JSX.Element => {
 
   useEffect(() => {
     checkStorage();
-  }, []);
+  }, [checkStorage]);
 
   return (
     <>

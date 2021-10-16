@@ -23,7 +23,7 @@ const GetPassword = ({
 
   useEffect(() => {
     checkStorage(type);
-  }, []);
+  }, [checkStorage, type]);
 
   return (
     <>

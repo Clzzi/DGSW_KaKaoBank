@@ -19,7 +19,7 @@ const Card = ({
 
   useEffect(() => {
     handleClick({ check, number });
-  }, [check]);
+  }, [check, number]);
 
   return (
     <StyledCard

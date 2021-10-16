@@ -32,7 +32,7 @@ const Complete = (Props: ICompleteProps): JSX.Element => {
 
   useEffect(() => {
     checkStorage(type);
-  }, []);
+  }, [checkStorage, type]);
 
   return (
     <>

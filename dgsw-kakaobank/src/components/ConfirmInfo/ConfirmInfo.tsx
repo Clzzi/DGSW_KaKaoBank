@@ -23,7 +23,7 @@ const ConfirmInfo = ({
 
   useEffect(() => {
     checkStorage();
-  }, []);
+  }, [checkStorage]);
 
   return (
     <>

@@ -19,7 +19,7 @@ const Header = ({
     if (isLoadInfo) {
       loadMyInfo();
     }
-  }, [isLoadInfo]);
+  }, [isLoadInfo, loadMyInfo]);
 
   return (
     <StyleHeader>

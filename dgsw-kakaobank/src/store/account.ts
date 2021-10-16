@@ -1,10 +1,5 @@
 import { atom } from 'recoil';
-import {
-  IAccount,
-  IPushRecord,
-  IReceiveRecord,
-  IRecord,
-} from 'types/account/account.type';
+import { IAccount, IRecord } from 'types/account/account.type';
 import { UOption } from 'types/common/common.type';
 
 export const myCardState = atom<IAccount[]>({
