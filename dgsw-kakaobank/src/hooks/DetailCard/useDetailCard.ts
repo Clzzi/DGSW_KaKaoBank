@@ -6,7 +6,7 @@ import {
   handleGetReceiveRecord,
 } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
-import { CSSProperties, useMemo } from 'react';
+import { CSSProperties, RefObject, useMemo, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import {
   detailCardInfoState,
@@ -27,6 +27,7 @@ const useDetailCard = () => {
   const [record, setRecord] = useRecoilState(detailCardRecordState);
   const [option, setOption] = useRecoilState(detailCardOptionState);
   const [card, setCard] = useRecoilState(detailCardInfoState);
+  const copyRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
   const customBringButtonStyle: CSSProperties = useMemo(() => {
     return {
@@ -153,6 +154,7 @@ const useDetailCard = () => {
 
   return {
     onClickBring,
+    copyRef,
     customBringButtonStyle,
     number,
     getAccountInfo,

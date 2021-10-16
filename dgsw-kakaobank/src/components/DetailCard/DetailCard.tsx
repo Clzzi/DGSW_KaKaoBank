@@ -18,6 +18,7 @@ const DetailCard = (): JSX.Element => {
     onClickOption,
     option,
     customBringButtonStyle,
+    copyRef,
     number,
     record,
     getAccountInfo,
@@ -34,7 +35,9 @@ const DetailCard = (): JSX.Element => {
       <StyledTopWrapper>
         <StyledTitle>
           <div className="company">{getCompany(number as string)}</div>
-          <div className="number">{makeAccountNumber(number as string)}</div>
+          <div className="number" ref={copyRef}>
+            {makeAccountNumber(number as string)}
+          </div>
         </StyledTitle>
         <StyledMoney>
           {makeMoneyComma(card.money)}
