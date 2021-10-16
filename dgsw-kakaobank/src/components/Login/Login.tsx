@@ -24,17 +24,11 @@ const Login = () => {
       <StyledTitle>
         <div>로그인</div>
         <button onClick={onChangeEasyLogin}>
-          {isEasyLogin ? '로그인' : '간편로그인'}
+          {isEasyLogin ? '간편로그인' : '로그인'}
         </button>
       </StyledTitle>
 
       {isEasyLogin ? (
-        <AuthForm
-          title="간편비밀번호 6자리를 입력하세요"
-          error={easyPwError}
-          onChange={onChnageEasyPwState}
-        />
-      ) : (
         <StyledLoginForm>
           <Form
             onChange={onChangeIdState}
@@ -56,6 +50,12 @@ const Login = () => {
             customInputStyle={{ marginBottom: '4px' }}
           />
         </StyledLoginForm>
+      ) : (
+        <AuthForm
+          title="간편비밀번호 6자리를 입력하세요"
+          error={easyPwError}
+          onChange={onChnageEasyPwState}
+        />
       )}
       <Button children="로그인" handleClick={onClickLoginBtn} />
     </div>

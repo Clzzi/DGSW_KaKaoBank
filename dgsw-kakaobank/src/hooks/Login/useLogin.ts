@@ -84,6 +84,12 @@ const useLogin = () => {
 
   const onClickLoginBtn = () => {
     if (isEasyLogin) {
+      if (id.length <= 0 || pw.length <= 0) {
+        Toast.errorToast('아이디 또는 비밀번호를 제대로 입력해주세요');
+        return;
+      }
+      login();
+    } else {
       if (easyPw.length !== 6) {
         Toast.errorToast('간편비밀번호 6자리를 제대로 입력해주세요');
         return;
@@ -93,12 +99,6 @@ const useLogin = () => {
         return;
       }
       easyLogin();
-    } else {
-      if (id.length <= 0 || pw.length <= 0) {
-        Toast.errorToast('아이디 또는 비밀번호를 제대로 입력해주세요');
-        return;
-      }
-      login();
     }
   };
 
