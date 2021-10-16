@@ -26,13 +26,3 @@ export const detailCardRecordState = atom<IRecord[]>({
   key: 'detailCardRecord',
   default: [] as IRecord[],
 });
-
-export const pushRecordState = atom<IPushRecord[]>({
-  key: 'pushRecordState',
-  default: [] as IPushRecord[],
-});
-
-export const receiveRecordState = atom<IReceiveRecord[]>({
-  key: 'receiveRecordState',
-  default: [] as IReceiveRecord[],
-});

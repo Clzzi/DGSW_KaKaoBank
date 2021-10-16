@@ -6,21 +6,18 @@ import {
   handleGetReceiveRecord,
 } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
-import { CSSProperties, useEffect, useMemo } from 'react';
+import { CSSProperties, useMemo } from 'react';
 import { useRecoilState } from 'recoil';
 import {
   detailCardInfoState,
   detailCardOptionState,
   detailCardRecordState,
-  pushRecordState,
-  receiveRecordState,
 } from 'store/account';
 import {
   IPushRecord,
   IReceiveRecord,
   IRecord,
 } from 'types/account/account.type';
-import { UOption } from 'types/common/common.type';
 import makeAccountNumber from 'util/makeAccountNumber';
 import makeDate from 'util/makeDate';
 import makeMoneyComma from 'util/makeMoneyComma';
@@ -28,15 +25,9 @@ import makeMoneyComma from 'util/makeMoneyComma';
 const useDetailCard = () => {
   const { number } = useQueryString();
   const { handleLink: pushBring } = useLink('/bring/getcard');
-  const [pushRecord, setPushRecord] = useRecoilState(pushRecordState);
-  const [receiveRecord, setReceiveRecord] = useRecoilState(receiveRecordState);
   const [record, setRecord] = useRecoilState(detailCardRecordState);
   const [option, setOption] = useRecoilState(detailCardOptionState);
   const [card, setCard] = useRecoilState(detailCardInfoState);
-
-  useEffect(() => {
-    console.log(record);
-  }, [record]);
 
   const customBringButtonStyle: CSSProperties = useMemo(() => {
     return {
@@ -81,11 +72,17 @@ const useDetailCard = () => {
     }
   };
 
-  const handleRecord = ({push, receive}:{push:IPushRecord, receive:IReceiveRecord}) => {
+  const handleRecord = ({
+    push,
+    receive,
+  }: {
+    push: IPushRecord[];
+    receive: IReceiveRecord[];
+  }) => {
     const recordArr: IRecord[] = [];
 
-    pushRecord &&
-      pushRecord.forEach((record: IPushRecord) => {
+    push &&
+      push.forEach((record: IPushRecord) => {
         recordArr.push({
           account: makeAccountNumber(record.reciverId),
           money: makeMoneyComma(record.money),
@@ -94,8 +91,8 @@ const useDetailCard = () => {
         });
       });
 
-    receiveRecord &&
-      receiveRecord.forEach((record: IReceiveRecord) => {
+    receive &&
+      receive.forEach((record: IReceiveRecord) => {
         recordArr.push({
           account: makeAccountNumber(record.senderId),
           money: makeMoneyComma(record.money),
@@ -110,13 +107,15 @@ const useDetailCard = () => {
   const loadRecord = async () => {
     const push = await getPushRemittanceRecord();
     const receive = await getReceiveRemittanceRecord();
-    handleRecord({push, receive});
+    if (push && receive) {
+      handleRecord({ push, receive });
+    }
   };
 
   const setRecordNewest = () => {
     record &&
       setRecord(
-        record.sort((a, b) => {
+        [...record].sort((a, b) => {
           if (a.date < b.date) {
             return -1;
           } else if (a.date > b.date) {
@@ -131,7 +130,7 @@ const useDetailCard = () => {
   const setRecordOldest = () => {
     record &&
       setRecord(
-        record.sort((a, b) => {
+        [...record].sort((a, b) => {
           if (a.date > b.date) {
             return -1;
           } else if (a.date < b.date) {
@@ -146,17 +145,9 @@ const useDetailCard = () => {
   const onClickOption = () => {
     if (option === '최신순') {
       setOption('과거순');
-      onChangeOption('과거순');
-    } else {
-      setOption('최신순');
-      onChangeOption('최신순');
-    }
-  };
-
-  const onChangeOption = (option: UOption) => {
-    if (option === '과거순') {
       setRecordOldest();
     } else {
+      setOption('최신순');
       setRecordNewest();
     }
   };
@@ -167,7 +158,6 @@ const useDetailCard = () => {
     number,
     getAccountInfo,
     onClickOption,
-    onChangeOption,
     option,
     loadRecord,
     card,
