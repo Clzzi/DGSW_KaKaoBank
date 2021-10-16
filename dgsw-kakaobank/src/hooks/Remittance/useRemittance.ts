@@ -1,7 +1,3 @@
-import Toast from 'lib/Toast';
-import { fontPalette } from 'styles/FontPalette';
-import useLink from 'hooks/Common/useLink';
-import makeAccountNumber from 'util/makeAccountNumber';
 import {
   ChangeEvent,
   CSSProperties,
@@ -9,16 +5,19 @@ import {
   useMemo,
   useState,
 } from 'react';
+import Toast from 'lib/Toast';
+import { fontPalette } from 'styles/FontPalette';
+import useLink from 'hooks/Common/useLink';
+import makeAccountNumber from 'util/makeAccountNumber';
 
 const useRemittance = () => {
   const [account, setAccount] = useState<string>('');
-  const [money, setMoney] = useState<string>('10000');
+  const [money, setMoney] = useState<string>('1');
   const [accountError, setAccountError] = useState<string>('');
   const [moneyError, setMoneyError] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [password, setPassword] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
-
 
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink('/remittance/confirm');

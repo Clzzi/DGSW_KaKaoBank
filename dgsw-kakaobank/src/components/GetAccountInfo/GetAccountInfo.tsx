@@ -9,10 +9,8 @@ import makeMoneyComma from 'util/makeMoneyComma';
 
 const GetAccountInfo = ({
   title,
-  nextUrl,
 }: {
   title: UGetAccountTitle;
-  nextUrl: string;
 }): JSX.Element => {
   const {
     resetCard,
@@ -22,7 +20,7 @@ const GetAccountInfo = ({
     cardList,
     onClickNext,
     card,
-  } = useGetAccountInfo(nextUrl);
+  } = useGetAccountInfo();
 
   useEffect(() => {
     resetCard();

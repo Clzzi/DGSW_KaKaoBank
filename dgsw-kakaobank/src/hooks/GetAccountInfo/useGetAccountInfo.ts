@@ -1,22 +1,22 @@
 import useLink from 'hooks/Common/useLink';
 import { handleGetMyAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
-import { pushAccountMoneyState } from 'store/remittance';
 import { IAccount } from 'types/account/account.type';
 import { UGetAccountTitle } from 'types/common/common.type';
 import { removeHyphen } from 'util/removeHyphen';
+import { useHistory } from 'react-router';
+import { History } from 'history';
 
-const useGetAccountInfo = (nextUrl: string) => {
+const useGetAccountInfo = () => {
   const { handleLink: pushMain } = useLink('/main');
-  const { handleLink: pushNext } = useLink(nextUrl);
-
+  const history: History = useHistory();
   const [card, setCard] = useRecoilState<string>(cardState);
-  const resetCard = useResetRecoilState(cardState);
+  const [money, setMoney] = useState<string>('');
   const [cardList, setCardList] = useState<IAccount[]>();
-  const [money, setMoney] = useRecoilState(pushAccountMoneyState);
+  const resetCard = useResetRecoilState(cardState);
 
   const onClickCard = ({
     number,
@@ -56,10 +56,11 @@ const useGetAccountInfo = (nextUrl: string) => {
 
     if (title === '송금하기') {
       sessionStorage.setItem('Remittance', 'setCard');
+      history.push(`/remittance/setcard?number=${card}`);
     } else {
       sessionStorage.setItem('Bring', 'money');
+      history.push(`/bring/money&number=${card}`);
     }
-    pushNext();
   };
 
   const getMyAccount = async () => {
