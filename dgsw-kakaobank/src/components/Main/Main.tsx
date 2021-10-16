@@ -1,5 +1,6 @@
 import Button from 'components/Common/Button';
 import Card from 'components/Main/Card';
+import { ThemeEnum } from 'enum/ThemeEnum';
 import useMain from 'hooks/Main/useMain';
 import { useEffect } from 'react';
 import { IAccount } from 'types/account/account.type';
@@ -14,9 +15,12 @@ const Main = () => {
     customButtonStyle,
     onClickEstablish,
     resetStorage,
+    handleChangeTheme,
+    currentTheme,
     onClickRemittance,
     myCard,
     getMyAccount,
+    darkThemeButtonStyle,
     userInfo,
   } = useMain();
 
@@ -36,6 +40,15 @@ const Main = () => {
           children="송금"
           customStyle={customButtonStyle}
           handleClick={onClickRemittance}
+        />
+        <Button
+          children={currentTheme === ThemeEnum.DARK ? '라이트모드' : '다크모드'}
+          customStyle={
+            currentTheme === ThemeEnum.DARK
+              ? customButtonStyle
+              : darkThemeButtonStyle
+          }
+          handleClick={handleChangeTheme}
         />
       </StyledButton>
       {myCard &&

@@ -4,12 +4,9 @@ import useTheme from 'hooks/Theme/useTheme';
 const GlobalStyle = () => {
   const { theme } = useTheme();
   const styles = css`
-    
-
     * {
       padding: 0;
       margin: 0;
-      color: ${theme.fontColor};
       box-sizing: border-box;
     }
 

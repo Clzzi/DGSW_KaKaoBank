@@ -1,6 +1,7 @@
 import Button from 'components/Common/Button';
 import useLink from 'hooks/Common/useLink';
 import useHeader from 'hooks/Header/useHeader';
+import useTheme from 'hooks/Theme/useTheme';
 import { useEffect } from 'react';
 import { StyleHeader } from './Header.style';
 
@@ -15,6 +16,7 @@ const Header = ({
 }) => {
   const { loadMyInfo, customButtonyStyle, logout } = useHeader();
   const { handleLink: pushPath } = useLink(path);
+
   useEffect(() => {
     if (isLoadInfo) {
       loadMyInfo();
