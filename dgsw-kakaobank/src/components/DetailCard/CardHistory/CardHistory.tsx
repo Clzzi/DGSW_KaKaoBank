@@ -1,27 +1,34 @@
+import { URecord } from 'types/common/common.type';
+import makeDate from 'util/makeDate';
 import {
   StyledCardHistory,
   StyledInfo,
   StyledMoney,
 } from './CardHistory.style';
 
-const CardHistory = (): JSX.Element => {
+interface ICardHistoryProps {
+  date: string;
+  account: string;
+  money: string;
+  type: URecord;
+}
+
+const CardHistory = ({
+  account,
+  date,
+  money,
+  type,
+}: ICardHistoryProps): JSX.Element => {
   return (
     <StyledCardHistory>
       <StyledInfo>
-        <div className="date">08.31</div>
-        <div className="name">손민재</div>
+        <div className="date">{makeDate(date)}</div>
+        <div className="account">{account}</div>
       </StyledInfo>
 
-      <StyledMoney>
-        <div className="money">
-          -19,000
-          <span className="won"> 원</span>
-        </div>
-
-        <div className="balance">
-          1,000
-          <span className="won"> 원</span>
-        </div>
+      <StyledMoney type={type}>
+        {type === 'receive' ? money : `-${money}`}
+        <span className="won"> 원</span>
       </StyledMoney>
     </StyledCardHistory>
   );

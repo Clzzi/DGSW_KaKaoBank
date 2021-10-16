@@ -16,7 +16,6 @@ const DetailCard = (): JSX.Element => {
     onClickBring,
     loadRecord,
     onClickOption,
-    option,
     customBringButtonStyle,
     number,
     record,
@@ -46,10 +45,20 @@ const DetailCard = (): JSX.Element => {
           handleClick={onClickBring}
         />
       </StyledTopWrapper>
-      <StyledHistoryOption onClick={onClickOption}>
-        {option}
-      </StyledHistoryOption>
-      <StyledCardHistoryWrapper>{record.length}</StyledCardHistoryWrapper>
+      <StyledHistoryOption onClick={onClickOption}></StyledHistoryOption>
+      <StyledCardHistoryWrapper>
+        {record &&
+          record.map((v) => {
+            return (
+              <CardHistory
+                account={v.account}
+                money={v.money}
+                type={v.type}
+                date={v.date}
+              />
+            );
+          })}
+      </StyledCardHistoryWrapper>
     </>
   );
 };

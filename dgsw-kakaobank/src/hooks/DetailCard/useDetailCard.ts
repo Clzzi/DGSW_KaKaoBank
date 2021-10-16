@@ -87,7 +87,7 @@ const useDetailCard = () => {
           account: makeAccountNumber(record.reciverId),
           money: makeMoneyComma(record.money),
           type: 'push',
-          date: makeDate(record.createdAt),
+          date: record.createdAt,
         });
       });
 

@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 import { ColorPalette } from 'styles/ColorPalette';
 import { fontPalette } from 'styles/FontPalette';
+import { URecord } from 'types/common/common.type';
+
+interface IMoneyProps {
+  type: URecord;
+}
 
 export const StyledCardHistory = styled.div`
   display: flex;
@@ -12,30 +17,24 @@ export const StyledCardHistory = styled.div`
   border-bottom: solid 1.5px ${ColorPalette.grey};
 `;
 
-export const StyledMoney = styled.div`
+export const StyledMoney = styled.div<IMoneyProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   text-align: end;
-  .money {
+  align-items: center;
+  font-family: 'AppleB';
+  font-size: ${fontPalette.font24};
+  color: ${(props) =>
+    props.type === 'push' ? ColorPalette.fureBlack : ColorPalette.darkBlue};
+  font-weight: bold;
+  .won {
     font-family: 'AppleB';
-    font-size: ${fontPalette.font20};
-    color: ${ColorPalette.fureBlack};
-    font-weight: bold;
-    .won {
-      font-family: 'AppleB';
-      font-size: ${fontPalette.font18};
-      color: ${ColorPalette.fureBlack};
-    }
-  }
-  .balance {
-    font-family: 'AppleB';
-    font-size: ${fontPalette.font16};
-    color: ${ColorPalette.darkGrey};
-    .won {
-      font-family: 'AppleB';
-      font-size: ${fontPalette.font14};
-      color: ${ColorPalette.darkGrey};
-    }
+    font-size: ${fontPalette.font24};
+    color: ${(props) =>
+      props.type === 'push' ? ColorPalette.fureBlack : ColorPalette.darkBlue};
+    margin-left: 4px;
+    font-weight: normal;
   }
 `;
 
@@ -49,7 +48,7 @@ export const StyledInfo = styled.div`
     color: ${ColorPalette.darkGrey};
     margin-right: 20px;
   }
-  .name {
+  .account {
     font-size: ${fontPalette.font16};
     color: ${ColorPalette.fureBlack};
   }
