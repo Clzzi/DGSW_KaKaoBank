@@ -118,16 +118,10 @@ const useRemittance = () => {
     history.push(
       `/remittance/confirm?push=${number}&receive=${modalInfo}&money=${money}`,
     );
-  };
-
-  const onClickComplete = () => {
-    sessionStorage.removeItem('Remittance');
-    pushMain();
-  };
+  }
 
   return {
     getAccountInfo,
-    onClickComplete,
     onClickModalYes,
     openModal,
     setOpenModal,
