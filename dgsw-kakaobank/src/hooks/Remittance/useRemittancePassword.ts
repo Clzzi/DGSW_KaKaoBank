@@ -50,6 +50,9 @@ const useRemittancePassword = () => {
       Toast.infoToast('비밀번호를 제대로 적어주세요');
       return;
     }
+
+    
+
     remittance();
   };
 

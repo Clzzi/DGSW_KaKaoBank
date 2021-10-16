@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  CSSProperties,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
 import Toast from 'lib/Toast';
 import { fontPalette } from 'styles/FontPalette';
 import useLink from 'hooks/Common/useLink';
@@ -27,8 +21,6 @@ const useRemittance = () => {
   const [modalInfo, setModalInfo] = useState<string>();
 
   const { handleLink: pushMain } = useLink('/main');
-  const { handleLink: pushComplete } = useLink('/remittance/complete');
-  const { handleLink: pushPassword } = useLink('/remittance/password');
 
   const customTitleInputStyle: CSSProperties = useMemo(() => {
     return {
@@ -107,9 +99,14 @@ const useRemittance = () => {
       money.length <= 0
     ) {
       Toast.errorToast('계좌번호 또는 금액을 제대로 입력해주세요');
-    } else {
-      await getReceiveAccountInfo();
+      return;
     }
+    if (removeHyphen(account) === number) {
+      Toast.errorToast('자기자신에게는 송금할 수 없습니다.');
+      return;
+    }
+
+    await getReceiveAccountInfo();
   };
 
   const onClickModalYes = () => {
@@ -118,7 +115,7 @@ const useRemittance = () => {
     history.push(
       `/remittance/confirm?push=${number}&receive=${modalInfo}&money=${money}`,
     );
-  }
+  };
 
   return {
     getAccountInfo,
