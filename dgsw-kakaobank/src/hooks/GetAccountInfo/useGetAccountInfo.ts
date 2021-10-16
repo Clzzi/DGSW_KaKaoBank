@@ -15,29 +15,16 @@ const useGetAccountInfo = (nextUrl: string) => {
   };
 
   const checkStorage = (title: UGetAccountTitle) => {
-    switch (title) {
-      case '송금하기':
-        if (sessionStorage.getItem('Remittance') !== 'getCard') {
-          Toast.errorToast('비정상적인 접근입니다.');
-          pushMain();
-        }
-        break;
-      case '입금하기':
-        if (sessionStorage.getItem('Deposit') !== 'getCard') {
-          Toast.errorToast('비정상적인 접근입니다.');
-          pushMain();
-        }
-        break;
-      case '은행선택':
-        if (sessionStorage.getItem('Bring') !== 'getCard') {
-          Toast.errorToast('비정상적인 접근입니다.');
-          pushMain();
-        }
-        break;
-      default:
+    if (title === '송금하기') {
+      if (sessionStorage.getItem('Remittance') !== 'getCard') {
         Toast.errorToast('비정상적인 접근입니다.');
         pushMain();
-        break;
+      }
+    } else {
+      if (sessionStorage.getItem('Bring') !== 'getCard') {
+        Toast.errorToast('비정상적인 접근입니다.');
+        pushMain();
+      }
     }
   };
 
@@ -45,16 +32,10 @@ const useGetAccountInfo = (nextUrl: string) => {
     if (card.length <= 0) {
       Toast.infoToast('카드를 선택해주세요');
     } else {
-      switch (title) {
-        case '송금하기':
-          sessionStorage.setItem('Remittance', 'setCard');
-          break;
-        case '입금하기':
-          sessionStorage.setItem('Deposit', 'money');
-          break;
-        default:
-          sessionStorage.setItem('Bring', 'money');
-          break;
+      if (title === '송금하기') {
+        sessionStorage.setItem('Remittance', 'setCard');
+      } else {
+        sessionStorage.setItem('Bring', 'money');
       }
       pushNext();
     }

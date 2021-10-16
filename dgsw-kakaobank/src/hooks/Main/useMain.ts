@@ -8,27 +8,17 @@ import { userInfoState } from 'store/user';
 
 const useMain = () => {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
-  // TODO: header에서 token있으면 token으로 유저정보 가져오기
   const [myCard, setMyCard] = useRecoilState(myCardState);
 
   const { handleLink: pushAddCard } = useLink('/add/info');
   const { handleLink: pushEstablish } = useLink('/establish/password');
   const { handleLink: pushRemittance } = useLink('/remittance/getcard');
-  const { handleLink: pushDeposit } = useLink('/deposit/getcard');
 
-  const customRemittanceButtonStyle: CSSProperties = useMemo(() => {
+  const customButtonStyle: CSSProperties = useMemo(() => {
     return {
-      width: '210px',
       backgroundColor: '#FFDC00',
       height: '60px',
       color: '#000000',
-    };
-  }, []);
-
-  const customDepositButtonStyle: CSSProperties = useMemo(() => {
-    return {
-      width: '210px',
-      height: '60px',
     };
   }, []);
 
@@ -56,24 +46,16 @@ const useMain = () => {
     pushRemittance();
   };
 
-  const onClickDeposit = () => {
-    sessionStorage.setItem('Deposit', 'getCard');
-    pushDeposit();
-  };
-
   const resetStorage = () => {
     sessionStorage.removeItem('AddCard');
     sessionStorage.removeItem('Remittance');
     sessionStorage.removeItem('EstablishCard');
-    sessionStorage.removeItem('Deposit');
     sessionStorage.removeItem('Bring');
   };
 
   return {
-    customDepositButtonStyle,
-    customRemittanceButtonStyle,
+    customButtonStyle,
     resetStorage,
-    onClickDeposit,
     onClickAddCard,
     getMyAccount,
     onClickRemittance,

@@ -18,12 +18,6 @@ export { default as RemittanceConfirm } from './RemittanceConfirmPage';
 export { default as RemittanceGetPassword } from './RemittanceGetPasswordPage';
 export { default as RemittanceComplete } from './RemittanceCompletePage';
 
-export { default as DepositGetCard } from './DepositGetCardPage';
-export { default as DepositMoney } from './DepositMoneyPage';
-export { default as DepositConfirm } from './DepositConfirmPage';
-export { default as DepositGetPassword } from './DepositGetPasswordPage';
-export { default as DepositComplete } from './DepositCompletePage';
-
 export { default as BringGetCard } from './BringGetCardPage';
 export { default as BringMoney } from './BringMoneyPage';
 export { default as BringGetPassword } from './BringGetPasswordPage';

@@ -53,16 +53,6 @@ const Routes = () => {
         component={Pages.RemittanceComplete}
       />
 
-      <Route exact path="/deposit/getcard" component={Pages.DepositGetCard} />
-      <Route exact path="/deposit/money" component={Pages.DepositMoney} />
-      <Route exact path="/deposit/confirm" component={Pages.DepositConfirm} />
-      <Route
-        exact
-        path="/deposit/password"
-        component={Pages.DepositGetPassword}
-      />
-      <Route exact path="/deposit/complete" component={Pages.DepositComplete} />
-
       <Route exact path="/bring/getcard" component={Pages.BringGetCard} />
       <Route exact path="/bring/money" component={Pages.BringMoney} />
       <Route exact path="/bring/password" component={Pages.BringGetPassword} />

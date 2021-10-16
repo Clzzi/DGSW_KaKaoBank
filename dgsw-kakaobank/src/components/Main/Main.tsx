@@ -11,15 +11,13 @@ import { StyledButton, StyledMainTitle } from './Main.style';
 
 const Main = () => {
   const {
-    customDepositButtonStyle,
+    customButtonStyle,
     onClickEstablish,
     resetStorage,
-    onClickDeposit,
     onClickRemittance,
     myCard,
     getMyAccount,
     userInfo,
-    customRemittanceButtonStyle,
   } = useMain();
 
   useEffect(() => {
@@ -36,13 +34,8 @@ const Main = () => {
       <StyledButton>
         <Button
           children="송금"
-          customStyle={customRemittanceButtonStyle}
+          customStyle={customButtonStyle}
           handleClick={onClickRemittance}
-        />
-        <Button
-          children="입금"
-          customStyle={customDepositButtonStyle}
-          handleClick={onClickDeposit}
         />
       </StyledButton>
       {myCard &&

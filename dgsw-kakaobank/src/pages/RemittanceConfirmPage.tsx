@@ -13,7 +13,6 @@ const RemittanceConfirmPage = (): JSX.Element => {
         commission="1,000"
         money="34,221"
         onClick={onClickConfirmYes}
-        type="송금"
       />
     </PageTemplate>
   );

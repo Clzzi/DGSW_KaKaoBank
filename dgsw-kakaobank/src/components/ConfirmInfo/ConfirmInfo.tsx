@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
 import useConfirmInfo from 'hooks/ConfirmInfo/useConfirmInfo';
 import { StyledWrapper, StyledTitle, StyledButton } from './ConfirmInfo.style';
-import { UConfirmInfo } from 'types/common/common.type';
 
 interface IConfirmInfoProps {
   title: string;
   give?: string;
   receive?: string;
-  deposit?: string;
   money: string;
   commission?: string;
-  type: UConfirmInfo;
   onClick: () => void;
 }
 
@@ -18,16 +15,14 @@ const ConfirmInfo = ({
   title,
   money,
   commission,
-  deposit,
   give,
   receive,
-  type,
   onClick,
 }: IConfirmInfoProps): JSX.Element => {
   const { onClickNo, checkStorage } = useConfirmInfo();
 
   useEffect(() => {
-    checkStorage(type);
+    checkStorage();
   }, []);
 
   return (
@@ -44,12 +39,6 @@ const ConfirmInfo = ({
           <div className="line">
             <div className="property">받은계좌: </div>
             <div className="content">{receive}</div>
-          </div>
-        )}
-        {deposit && (
-          <div className="line">
-            <div className="property">입금계좌: </div>
-            <div className="content">{deposit}</div>
           </div>
         )}
         <div className="line">

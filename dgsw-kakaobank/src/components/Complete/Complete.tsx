@@ -9,8 +9,6 @@ interface ICompleteProps {
   type: UGetPassword;
   bringAccount?: string;
   bringMoney?: string;
-  depositAccount?: string;
-  depositMoney?: string;
   remittanceGiveAccount?: string;
   remittanceReceiveAccount?: string;
   remittanceMoney?: string;
@@ -22,11 +20,9 @@ const Complete = (Props: ICompleteProps): JSX.Element => {
   const { checkStorage } = useComplete();
   const {
     title,
-    depositAccount,
     bringMoney,
     bringAccount,
     type,
-    depositMoney,
     remittanceCommission,
     remittanceGiveAccount,
     remittanceMoney,
@@ -70,20 +66,6 @@ const Complete = (Props: ICompleteProps): JSX.Element => {
           <div className="line">
             <span className="property">수수료: </span>
             <span className="content">{remittanceCommission} 원</span>
-          </div>
-        )}
-
-        {depositAccount && (
-          <div className="line">
-            <span className="property">입금 계좌: </span>
-            <span className="content">{depositAccount}</span>
-          </div>
-        )}
-
-        {depositMoney && (
-          <div className="line">
-            <span className="property">입금한 금액: </span>
-            <span className="content">{depositMoney} 원</span>
           </div>
         )}
 
