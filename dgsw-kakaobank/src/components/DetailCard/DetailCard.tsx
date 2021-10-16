@@ -10,6 +10,7 @@ import { StyledMoney, StyledTitle, StyledTopWrapper } from './DetailCard.style';
 import makeAccountNumber from 'util/makeAccountNumber';
 import getCompany from 'util/getCompany';
 import makeMoneyComma from 'util/makeMoneyComma';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 const DetailCard = (): JSX.Element => {
   const {
@@ -18,7 +19,6 @@ const DetailCard = (): JSX.Element => {
     onClickOption,
     option,
     customBringButtonStyle,
-    copyRef,
     number,
     record,
     getAccountInfo,
@@ -35,9 +35,9 @@ const DetailCard = (): JSX.Element => {
       <StyledTopWrapper>
         <StyledTitle>
           <div className="company">{getCompany(number as string)}</div>
-          <div className="number" ref={copyRef}>
-            {makeAccountNumber(number as string)}
-          </div>
+          <CopyToClipboard text={number as string}>
+            <div className="number">{makeAccountNumber(number as string)}</div>
+          </CopyToClipboard>
         </StyledTitle>
         <StyledMoney>
           {makeMoneyComma(card.money)}

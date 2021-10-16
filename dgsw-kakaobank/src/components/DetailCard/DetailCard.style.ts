@@ -39,6 +39,7 @@ export const StyledTitle = styled.div`
     color: ${ColorPalette.fureWhite};
     text-decoration-line: underline;
     text-underline-offset: 2px;
+    cursor: pointer;
   }
 `;
 
