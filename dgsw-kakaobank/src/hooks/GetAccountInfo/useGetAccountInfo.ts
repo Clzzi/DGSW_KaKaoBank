@@ -1,17 +1,23 @@
 import useLink from 'hooks/Common/useLink';
+import { handleGetMyAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
+import { useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { cardState } from 'store/getAccountInfo';
+import { IAccount } from 'types/account/account.type';
 import { UGetAccountTitle } from 'types/common/common.type';
+import { removeHyphen } from 'util/removeHyphen';
 
 const useGetAccountInfo = (nextUrl: string) => {
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink(nextUrl);
+
   const [card, setCard] = useRecoilState<string>(cardState);
   const resetCard = useResetRecoilState(cardState);
+  const [cardList, setCardList] = useState<IAccount[]>();
 
   const onClickCard = (number: string) => {
-    setCard(number);
+    setCard(removeHyphen(number));
   };
 
   const checkStorage = (title: UGetAccountTitle) => {
@@ -41,10 +47,21 @@ const useGetAccountInfo = (nextUrl: string) => {
     }
   };
 
+  const getMyAccount = async () => {
+    try {
+      const { data } = await handleGetMyAccount();
+      setCardList(data);
+    } catch (e: any) {
+      Toast.infoToast(e.response.data.message);
+    }
+  };
+
   return {
     onClickCard,
     resetCard,
     card,
+    cardList,
+    getMyAccount,
     onClickNext,
     checkStorage,
   };

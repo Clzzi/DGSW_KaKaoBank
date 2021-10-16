@@ -3,6 +3,9 @@ import Card from './Card';
 import { StyledButton, StyledTitle } from './GetAccountInfo.style';
 import useGetAccountInfo from 'hooks/GetAccountInfo/useGetAccountInfo';
 import { UGetAccountTitle } from 'types/common/common.type';
+import getCompany from 'util/getCompany';
+import makeAccountNumber from 'util/makeAccountNumber';
+import makeMoneyComma from 'util/makeMoneyComma';
 
 const GetAccountInfo = ({
   title,
@@ -11,45 +14,38 @@ const GetAccountInfo = ({
   title: UGetAccountTitle;
   nextUrl: string;
 }): JSX.Element => {
-  const { resetCard, checkStorage, onClickCard, onClickNext, card } =
-    useGetAccountInfo(nextUrl);
+  const {
+    resetCard,
+    checkStorage,
+    onClickCard,
+    getMyAccount,
+    cardList,
+    onClickNext,
+    card,
+  } = useGetAccountInfo(nextUrl);
 
   useEffect(() => {
     resetCard();
     checkStorage(title);
+    getMyAccount();
   }, []);
 
   return (
     <>
       <StyledTitle>{title}</StyledTitle>
-      <Card
-        company="토스"
-        handleClick={onClickCard}
-        money="456,000"
-        number="001-01-1234567"
-        check={card === '001-01-1234567'}
-      />
-      <Card
-        company="카카오뱅크"
-        handleClick={onClickCard}
-        money="333,000"
-        number="002-02-1234567"
-        check={card === '002-02-1234567'}
-      />
-      <Card
-        company="신한은행"
-        handleClick={onClickCard}
-        money="420,000"
-        number="003-03-1234567"
-        check={card === '003-03-1234567'}
-      />
-      <Card
-        company="토스2"
-        handleClick={onClickCard}
-        money="123,000"
-        number="004-04-1234567"
-        check={card === '004-04-1234567'}
-      />
+      {cardList &&
+        cardList.map((c) => {
+          return (
+            <Card
+              key={c.accountId}
+              company={getCompany(c.accountId)}
+              handleClick={onClickCard}
+              money={makeMoneyComma(c.money)}
+              number={makeAccountNumber(c.accountId)}
+              check={card === c.accountId}
+            />
+          );
+        })}
       <StyledButton onClick={() => onClickNext(title)}>다음</StyledButton>
     </>
   );

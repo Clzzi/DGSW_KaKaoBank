@@ -2,12 +2,12 @@ import useLink from 'hooks/Common/useLink';
 import { handleGetMyAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { CSSProperties, useMemo } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { myCardState } from 'store/account';
 import { userInfoState } from 'store/user';
 
 const useMain = () => {
-  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+  const userInfo = useRecoilValue(userInfoState);
   const [myCard, setMyCard] = useRecoilState(myCardState);
 
   const { handleLink: pushAddCard } = useLink('/add/info');
