@@ -58,7 +58,7 @@ const Routes = () => {
       <Route exact path="/bring/password" component={Pages.BringGetPassword} />
       <Route exact path="/bring/complete" component={Pages.BringComplete} />
 
-      {/* <Redirect path="*" to="/notfound" /> */}
+      <Redirect path="*" to="/notfound" />
     </Switch>
   );
 };

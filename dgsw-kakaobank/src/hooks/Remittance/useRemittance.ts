@@ -9,8 +9,15 @@ import Toast from 'lib/Toast';
 import { fontPalette } from 'styles/FontPalette';
 import useLink from 'hooks/Common/useLink';
 import makeAccountNumber from 'util/makeAccountNumber';
+import useQueryString from 'hooks/Common/useQueryString';
+import { handleGetAccountInfo } from 'lib/api/account/account.api';
+import { useHistory } from 'react-router';
+import { History } from 'history';
+import { removeHyphen } from 'util/removeHyphen';
 
 const useRemittance = () => {
+  const { number } = useQueryString();
+  const history: History = useHistory();
   const [account, setAccount] = useState<string>('');
   const [money, setMoney] = useState<string>('1');
   const [accountError, setAccountError] = useState<string>('');
@@ -18,9 +25,10 @@ const useRemittance = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [password, setPassword] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
+  const [balance, setBalance] = useState<string>('0');
+  const [modalInfo, setModalInfo] = useState<string>();
 
   const { handleLink: pushMain } = useLink('/main');
-  const { handleLink: pushNext } = useLink('/remittance/confirm');
   const { handleLink: pushComplete } = useLink('/remittance/complete');
   const { handleLink: pushPassword } = useLink('/remittance/password');
 
@@ -40,6 +48,15 @@ const useRemittance = () => {
       padding: '20px',
     };
   }, []);
+
+  const getAccountInfo = async () => {
+    try {
+      const { data } = await handleGetAccountInfo(number as string);
+      setBalance(data.money);
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
+  };
 
   const checkStorage = () => {
     if (sessionStorage.getItem('Remittance') !== 'setCard') {
@@ -85,30 +102,42 @@ const useRemittance = () => {
   };
 
   const checkMoneyError = (value: string) => {
-    if (value.length <= 0) {
+    if (value.length <= 0 || parseInt(value) > parseInt(balance)) {
       setMoneyError('금액을 제대로 입력해주세요');
     } else {
       setMoneyError('');
     }
   };
 
-  const onClickNext = () => {
-    if (
-      accountError === '' &&
-      moneyError === '' &&
-      account.length === 14 &&
-      money.length > 0
-    ) {
+  const getReceiveAccountInfo = async () => {
+    try {
+      const { data } = await handleGetAccountInfo(removeHyphen(account));
+      setModalInfo(data.accountId);
       setOpenModal(true);
+    } catch (e: any) {
+      Toast.errorToast('등록되어있지 않은 계좌번호입니다.');
+    }
+  };
+
+  const onClickNext = async () => {
+    if (
+      accountError !== '' ||
+      moneyError !== '' ||
+      account.length !== 14 ||
+      money.length <= 0
+    ) {
+      Toast.errorToast('계좌번호 또는 금액을 제대로 입력해주세요');
     } else {
-      Toast.errorToast('제대로 입력해주셍요');
+      await getReceiveAccountInfo();
     }
   };
 
   const onClickModalYes = () => {
     sessionStorage.setItem('Remittance', 'confirm');
     setOpenModal(false);
-    pushNext();
+    history.push(
+      `/remittance/confirm?push=${number}&receive=${modalInfo}&money=${money}`,
+    );
   };
 
   const onClickNextAuth = () => {
@@ -124,11 +153,14 @@ const useRemittance = () => {
   };
 
   return {
+    getAccountInfo,
     onClickComplete,
     onClickModalYes,
     openModal,
     setOpenModal,
     customInputStyle,
+    balance,
+    modalInfo,
     customTitleInputStyle,
     account,
     money,

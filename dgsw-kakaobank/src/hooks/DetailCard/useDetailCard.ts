@@ -19,7 +19,6 @@ import {
   IRecord,
 } from 'types/account/account.type';
 import makeAccountNumber from 'util/makeAccountNumber';
-import makeDate from 'util/makeDate';
 import makeMoneyComma from 'util/makeMoneyComma';
 
 const useDetailCard = () => {
