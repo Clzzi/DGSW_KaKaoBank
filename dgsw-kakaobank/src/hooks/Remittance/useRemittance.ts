@@ -65,11 +65,6 @@ const useRemittance = () => {
     }
   };
 
-  const onClickConfirmYes = () => {
-    sessionStorage.setItem('Remittance', 'password');
-    pushPassword();
-  };
-
   const onChangePassword = (value: string) => {
     setPassword(value);
     checkPasswordError(value);
@@ -170,7 +165,6 @@ const useRemittance = () => {
     onChangeAccountNumber,
     onChangeMoney,
     accountError,
-    onClickConfirmYes,
     checkStorage,
     onChangePassword,
     passwordError,

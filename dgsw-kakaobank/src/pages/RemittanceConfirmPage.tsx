@@ -1,17 +1,19 @@
 import PageTemplate from 'components/Common/Base/PageTemplate';
 import ConfirmInfo from 'components/ConfirmInfo';
-import useRemittance from 'hooks/Remittance/useRemittance';
+import useRemittanceConfirm from 'hooks/Remittance/useRemittanceConfirm';
+import makeAccountNumber from 'util/makeAccountNumber';
+import makeMoneyComma from 'util/makeMoneyComma';
 
 const RemittanceConfirmPage = (): JSX.Element => {
-  const { onClickConfirmYes } = useRemittance();
+  const { push, receive, money, onClickConfirmYes } = useRemittanceConfirm();
   return (
     <PageTemplate isHeader isFooter={false} isLogout={false}>
       <ConfirmInfo
-        title="신중빈에게 송금 하시겠습니까?"
-        give="001-01-1234567"
-        receive="002-02-4562382"
+        title={`${push}로 송금하시겠습니까?`}
+        give={makeAccountNumber(push as string)}
+        receive={makeAccountNumber(receive as string)}
         commission="1,000"
-        money="34,221"
+        money={makeMoneyComma(money as string)}
         onClick={onClickConfirmYes}
       />
     </PageTemplate>
