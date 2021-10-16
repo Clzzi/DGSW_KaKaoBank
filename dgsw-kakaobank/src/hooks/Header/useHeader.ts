@@ -1,15 +1,13 @@
-import useLink from 'hooks/Common/useLink';
 import { handleGetMyInfo } from 'lib/api/user/user.api';
 import Toast from 'lib/Toast';
 import Token from 'lib/Token';
 import { CSSProperties, useMemo } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { userInfoState } from 'store/user';
 import { fontPalette } from 'styles/FontPalette';
 
 const useHeader = () => {
-  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
-  const { handleLink: pushLogin } = useLink('/login');
+  const setUserInfo = useSetRecoilState(userInfoState);
 
   const customButtonyStyle: CSSProperties = useMemo(() => {
     return {
@@ -25,7 +23,7 @@ const useHeader = () => {
   const logout = () => {
     sessionStorage.removeItem('access-token');
     sessionStorage.removeItem('refresh-token');
-    pushLogin();
+    window.location.reload();
   };
 
   const getMyInfo = async () => {
