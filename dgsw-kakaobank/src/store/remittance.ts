@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const bankState = atom<string>({
-  key: 'bankState',
-  default: '',
+export const pushAccountMoneyState = atom<string>({
+  key: 'pushAccountMoneyState',
+  default: '0',
 });

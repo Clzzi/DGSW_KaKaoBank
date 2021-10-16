@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Form from 'components/Common/Form';
-import Bank from './Bank';
 import { StyledButton, StyledTitle } from './RemittanceSetCard.style';
 import useRemittance from 'hooks/Remittance/useRemittance';
 import AccountForm from 'components/Common/AccountForm';
@@ -22,18 +21,15 @@ const RemittanceSetCard = (): JSX.Element => {
     onClickModalYes,
     openModal,
     setOpenModal,
-    resetBank,
   } = useRemittance();
 
   useEffect(() => {
     checkStorage();
-    resetBank();
   }, []);
 
   return (
     <>
       <StyledTitle>송금하기</StyledTitle>
-      <Bank />
       <Form
         title="계좌번호 입력"
         placeholder="계좌번호를 입력해주세요"
@@ -57,6 +53,7 @@ const RemittanceSetCard = (): JSX.Element => {
         customInputStyle={customInputStyle}
       />
       <StyledButton onClick={onClickNext}>다음</StyledButton>
+
       {openModal && (
         <ModalPortal>
           <Modal

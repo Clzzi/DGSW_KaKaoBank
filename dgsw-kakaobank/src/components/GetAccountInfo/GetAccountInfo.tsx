@@ -39,7 +39,9 @@ const GetAccountInfo = ({
             <Card
               key={c.accountId}
               company={getCompany(c.accountId)}
-              handleClick={onClickCard}
+              handleClick={() =>
+                onClickCard({ number: c.accountId, money: c.money })
+              }
               money={makeMoneyComma(c.money)}
               number={makeAccountNumber(c.accountId)}
               check={card === c.accountId}

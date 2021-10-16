@@ -1,14 +1,16 @@
 import Toast from 'lib/Toast';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { bankState } from 'store/remittance';
 import { fontPalette } from 'styles/FontPalette';
 import useLink from 'hooks/Common/useLink';
 import makeAccountNumber from 'util/makeAccountNumber';
-import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
+import {
+  ChangeEvent,
+  CSSProperties,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 const useRemittance = () => {
-  const [bank, setBank] = useRecoilState<string>(bankState);
-  const resetBank = useResetRecoilState(bankState);
   const [account, setAccount] = useState<string>('');
   const [money, setMoney] = useState<string>('10000');
   const [accountError, setAccountError] = useState<string>('');
@@ -16,6 +18,7 @@ const useRemittance = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [password, setPassword] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');
+
 
   const { handleLink: pushMain } = useLink('/main');
   const { handleLink: pushNext } = useLink('/remittance/confirm');
@@ -94,7 +97,6 @@ const useRemittance = () => {
     if (
       accountError === '' &&
       moneyError === '' &&
-      bank !== '' &&
       account.length === 14 &&
       money.length > 0
     ) {
@@ -127,8 +129,6 @@ const useRemittance = () => {
     onClickModalYes,
     openModal,
     setOpenModal,
-    setBank,
-    bank,
     customInputStyle,
     customTitleInputStyle,
     account,
@@ -139,7 +139,6 @@ const useRemittance = () => {
     onChangeAccountNumber,
     onChangeMoney,
     accountError,
-    resetBank,
     onClickConfirmYes,
     checkStorage,
     onChangePassword,
