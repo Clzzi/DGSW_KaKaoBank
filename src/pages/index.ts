@@ -5,6 +5,7 @@ export { default as Main } from './MainPage';
 export { default as Password } from './PasswordPage';
 export { default as DetailCard } from './DetailCardPage';
 export { default as Profile } from './ProfilePage';
+export { default as Notfound } from './NotfoundPage';
 
 export { default as AddAccountGetInfo } from './AddAccountGetInfoPage';
 export { default as AddAccountSetCard } from './AddAccountSetCardPage';

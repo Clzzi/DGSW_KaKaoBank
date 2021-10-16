@@ -13,6 +13,7 @@ const Routes = () => {
       <CustomRoute exact path="/service" component={Pages.Main} />
       <CustomRoute exact path="/password" component={Pages.Password} />
       <CustomRoute exact path="/detailcard" component={Pages.DetailCard} />
+      <CustomRoute exact path="/notfound" component={Pages.Notfound} />
 
       <CustomRoute exact path="/add/info" component={Pages.AddAccountGetInfo} />
       <CustomRoute exact path="/add/card" component={Pages.AddAccountSetCard} />
@@ -56,8 +57,16 @@ const Routes = () => {
 
       <CustomRoute exact path="/bring/getcard" component={Pages.BringGetCard} />
       <CustomRoute exact path="/bring/money" component={Pages.BringMoney} />
-      <CustomRoute exact path="/bring/password" component={Pages.BringGetPassword} />
-      <CustomRoute exact path="/bring/complete" component={Pages.BringComplete} />
+      <CustomRoute
+        exact
+        path="/bring/password"
+        component={Pages.BringGetPassword}
+      />
+      <CustomRoute
+        exact
+        path="/bring/complete"
+        component={Pages.BringComplete}
+      />
 
       <Redirect path="*" to="/notfound" />
     </Switch>
