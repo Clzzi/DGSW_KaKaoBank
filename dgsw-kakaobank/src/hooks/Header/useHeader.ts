@@ -18,6 +18,7 @@ const useHeader = () => {
       fontSize: `${fontPalette.font16}`,
       fontFamily: 'AppleB',
       fontWeight: 'normal',
+      boxShadow: '2px 4px 5px rgba(0, 0, 0, 0.25)',
     };
   }, []);
 

@@ -19,6 +19,7 @@ const useMain = () => {
       backgroundColor: '#FFDC00',
       height: '60px',
       color: '#000000',
+      boxShadow: '2px 4px 5px rgba(0, 0, 0, 0.25)',
     };
   }, []);
 
