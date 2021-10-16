@@ -6,8 +6,10 @@ import {
   IGetPushRecordResponse,
   IGetReceiveRecordResponse,
   IRecordDto,
+  IRemittanceDto,
 } from 'types/account/account.type';
 import { customAxios } from 'lib/Axios';
+import { IResponse } from 'types/response/response.type';
 
 export const handleEstablishAccount = async (
   establishAccountDto: IEstablishAccountDto,
@@ -53,5 +55,13 @@ export const handleGetReceiveRecord = async (
     url,
     pushRecordDto,
   );
+  return data;
+};
+
+export const handleRemittance = async (
+  remittanceDto: IRemittanceDto,
+): Promise<IResponse> => {
+  const url: string = `/remittance/send`;
+  const { data } = await customAxios.post<IResponse>(url, remittanceDto);
   return data;
 };

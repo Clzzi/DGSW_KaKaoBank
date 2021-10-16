@@ -12,7 +12,7 @@ const RemittanceConfirmPage = (): JSX.Element => {
         title={`${push}로 송금하시겠습니까?`}
         give={makeAccountNumber(push as string)}
         receive={makeAccountNumber(receive as string)}
-        commission="1,000"
+        commission="0"
         money={makeMoneyComma(money as string)}
         onClick={onClickConfirmYes}
       />

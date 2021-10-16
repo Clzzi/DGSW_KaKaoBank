@@ -29,9 +29,12 @@ const GetPassword = ({
     <>
       <StyledTitle>{title}</StyledTitle>
       <AuthForm
-        title="간편비밀번호 6자리를 입력하세요"
+        title="간편비밀번호 4자리를 입력하세요"
         error={error}
         onChange={onChange}
+        length={4}
+        customErrorStyle={{ textAlign: 'center' }}
+        customTitleStyle={{ textAlign: 'center' }}
       />
       <StyledButton onClick={onClick}>다음</StyledButton>
     </>

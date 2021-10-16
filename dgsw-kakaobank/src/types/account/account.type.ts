@@ -63,6 +63,13 @@ export interface IGetReceiveRecordResponse extends IResponse {
   data: IReceiveRecord[];
 }
 
+export interface IRemittanceDto {
+  sendAccountId: string;
+  sendAccountPw: string;
+  receiveAccountId: string;
+  money: number;
+}
+
 export interface IRecord {
   money: string;
   account: string;
