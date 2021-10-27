@@ -7,5 +7,5 @@ export const StyledTitle = styled.div`
   text-align: start;
   margin-top: 12px;
   margin-bottom: 30px;
+  color: ${(props) => props.theme.fontColor};
 `;
-

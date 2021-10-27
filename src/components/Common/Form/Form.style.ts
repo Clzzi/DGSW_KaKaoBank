@@ -12,6 +12,7 @@ export const StyledForm = styled.div`
     font-family: 'AppleB';
     font-size: ${fontPalette.font30};
     margin-bottom: 8px;
+    color: ${(props) => props.theme.fontColor};
   }
 
   .error {

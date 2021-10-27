@@ -13,7 +13,7 @@ export const StyledTitle = styled.div`
   margin-top: 29px;
   .title {
     font-size: ${fontPalette.font20};
-    color: ${ColorPalette.fureBlack};
+    color:  ${(props) => props.theme.fontColor};
   }
   .balance {
     font-family: 'AppleB';

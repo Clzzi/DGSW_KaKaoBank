@@ -11,6 +11,9 @@ export const StyledTitle = styled.div`
   & > div {
     font-family: 'AppleB';
     font-size: ${fontPalette.font40};
+    &:first-child {
+      color: ${(props) => props.theme.fontColor};
+    }
   }
 
   & > button {

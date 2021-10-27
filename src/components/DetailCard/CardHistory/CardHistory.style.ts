@@ -26,13 +26,13 @@ export const StyledMoney = styled.div<IMoneyProps>`
   font-family: 'AppleB';
   font-size: ${fontPalette.font24};
   color: ${(props) =>
-    props.type === 'push' ? ColorPalette.fureBlack : ColorPalette.darkBlue};
+    props.type === 'push' ? props.theme.fontColor : ColorPalette.darkBlue};
   font-weight: bold;
   .won {
     font-family: 'AppleB';
     font-size: ${fontPalette.font24};
     color: ${(props) =>
-      props.type === 'push' ? ColorPalette.fureBlack : ColorPalette.darkBlue};
+      props.type === 'push' ? props.theme.fontColor : ColorPalette.darkBlue};
     margin-left: 4px;
     font-weight: normal;
   }
@@ -50,7 +50,7 @@ export const StyledInfo = styled.div`
   }
   .account {
     font-size: ${fontPalette.font16};
-    color: ${ColorPalette.fureBlack};
+    color: ${(props) => props.theme.fontColor};
   }
 `;
 

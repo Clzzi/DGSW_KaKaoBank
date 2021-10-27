@@ -5,7 +5,7 @@ import { fontPalette } from 'styles/FontPalette';
 export const StyledTitle = styled.div`
   font-family: 'AppleB';
   font-size: ${fontPalette.font28};
-  color: ${ColorPalette.fureBlack};
+  color:  ${(props) => props.theme.fontColor};
   text-align: start;
   margin-bottom: 70px;
 `;
@@ -18,7 +18,7 @@ export const StyledWrapper = styled.div`
   text-align: start;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid ${ColorPalette.fureBlack};
+  border-bottom: 1px solid ${(props) => props.theme.fontColor};
   .line {
     width: 100%;
     display: flex;
@@ -38,7 +38,7 @@ export const StyledWrapper = styled.div`
       font-weight: bold;
       font-family: 'AppleB';
       font-size: ${fontPalette.font24};
-      color: ${ColorPalette.fureBlack};
+      color:  ${(props) => props.theme.fontColor};
     }
   }
 `;
