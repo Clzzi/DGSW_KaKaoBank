@@ -14,7 +14,7 @@ export const StyledTitle = styled.div`
   .title {
     font-family: 'AppleEB';
     font-size: ${fontPalette.font28};
-    color: ${ColorPalette.fureBlack};
+    color: ${(props) => props.theme.fontColor};
     margin-top: 30px;
     margin-bottom: 70px;
   }
@@ -58,7 +58,7 @@ export const StyledWrapper = styled.div`
     .content {
       font-family: 'AppleB';
       font-size: ${fontPalette.font24};
-      color: ${ColorPalette.fureBlack};
+      color: ${(props) => props.theme.fontColor};
     }
   }
 `;

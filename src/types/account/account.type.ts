@@ -30,6 +30,7 @@ export interface IEstablishAccountResponse extends IResponse {
 
 export interface IEstablishAccountDto {
   password: string;
+  accountName: string;
 }
 
 export interface IEstablishAccountInfo {
