@@ -92,10 +92,11 @@ const useRemittance = () => {
   };
 
   const onClickNext = async () => {
+    console.log(account.length);
     if (
       accountError !== '' ||
       moneyError !== '' ||
-      account.length !== 14 ||
+      account.length <= 0 ||
       money.length <= 0
     ) {
       Toast.errorToast('계좌번호 또는 금액을 제대로 입력해주세요');
