@@ -34,8 +34,7 @@ const useAddAccount = () => {
       const unDuplicatedAccountId = await getUnDuplicatedAccountId(data);
       unDuplicatedAccountId && setCard(unDuplicatedAccountId);
     } catch (e: any) {
-      console.log(e);
-      // Toast.errorToast(e.response.data.message);
+      Toast.errorToast(e.response.data.message);
     }
   };
 
@@ -44,9 +43,7 @@ const useAddAccount = () => {
       const { data } = await handleGetMyAccount();
       let myAccount: string[] = [];
       data.forEach((v) => {
-        if (v) {
-          myAccount.push(v.accountId);
-        }
+        myAccount.push(v.accountId);
       });
       let unDuplicatedAccountId: IOtherAccount[] = [];
       accounts.forEach((account) => {

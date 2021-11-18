@@ -47,7 +47,7 @@ const useMain = () => {
 
   const setMyAccountId = (accounts: IAccount[]) => {
     let accountArray: string[] = [];
-    accounts.map((account) => {
+    accounts.forEach((account) => {
       accountArray.push(account.accountId);
     });
     setAccountId(accountArray);
