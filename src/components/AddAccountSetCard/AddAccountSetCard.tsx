@@ -14,7 +14,6 @@ const AddAccountSetCard = (): JSX.Element => {
     setCardCheck,
     getMyAllAccount,
     card,
-    selectCard,
   } = useAddAccount();
 
   useEffect(() => {
@@ -35,12 +34,12 @@ const AddAccountSetCard = (): JSX.Element => {
           <Card
             key={v.accountId}
             company={getCompany(v.accountId)}
-            money="10"
             handleClick={setCardCheck}
             number={makeAccountNumber(v.accountId)}
           />
         );
       })}
+      {card.length === 0 && <div>등록할 계좌가 없습니다.</div>}
       <Button
         customStyle={customButtonStyle}
         children="등록하기"

@@ -1,4 +1,5 @@
 import useLink from 'hooks/Common/useLink';
+import makeMoneyComma from 'util/makeMoneyComma';
 import { removeHyphen } from 'util/removeHyphen';
 import { StyledCard } from './Card.style';
 
@@ -19,7 +20,7 @@ const Card = ({ company, number, money }: ICardProps) => {
         <div className="company">{company}</div>
         <div className="number">{number}</div>
       </div>
-      <span className="money">{money}</span>
+      <span className="money">{makeMoneyComma(money)}</span>
       <span className="won"> 원</span>
     </StyledCard>
   );

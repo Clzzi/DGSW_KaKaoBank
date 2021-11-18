@@ -87,3 +87,22 @@ export interface IOtherAccount {
 export interface IGetMyAllAccountResponse extends IResponse {
   data: IOtherAccount[];
 }
+
+export interface IMyAccount {
+  accountName: string;
+  accountId: string;
+}
+
+export interface IMyAccountDto {
+  accounts: IMyAccount[];
+}
+
+export interface IMyAccountRes {
+  idx: number;
+  accountName: string;
+  accountId: string;
+}
+
+export interface IMyAccountResponse extends IResponse {
+  data: IMyAccountRes[]
+}

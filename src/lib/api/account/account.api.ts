@@ -6,6 +6,8 @@ import {
   IGetMyAllAccountResponse,
   IGetPushRecordResponse,
   IGetReceiveRecordResponse,
+  IMyAccountDto,
+  IMyAccountResponse,
   IRecordDto,
   IRemittanceDto,
 } from 'types/account/account.type';
@@ -74,3 +76,14 @@ export const handleGetMyAllAccount =
     const { data } = await customAxios.get<IGetMyAllAccountResponse>(url);
     return data;
   };
+
+export const handleSetMyAccount = async (
+  accountIdDto: IMyAccountDto,
+): Promise<IMyAccountResponse> => {
+  const url: string = `/account/my`;
+  const { data } = await customAxios.post<IMyAccountResponse>(
+    url,
+    accountIdDto,
+  );
+  return data;
+};
