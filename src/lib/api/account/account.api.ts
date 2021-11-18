@@ -3,6 +3,7 @@ import {
   IEstablishAccountResponse,
   IGetAccountInfoResponse,
   IGetMyAccountResponse,
+  IGetMyAllAccountResponse,
   IGetPushRecordResponse,
   IGetReceiveRecordResponse,
   IRecordDto,
@@ -10,6 +11,7 @@ import {
 } from 'types/account/account.type';
 import { customAxios } from 'lib/Axios';
 import { IResponse } from 'types/response/response.type';
+import { Url } from 'url';
 
 export const handleEstablishAccount = async (
   establishAccountDto: IEstablishAccountDto,
@@ -65,3 +67,10 @@ export const handleRemittance = async (
   const { data } = await customAxios.post<IResponse>(url, remittanceDto);
   return data;
 };
+
+export const handleGetMyAllAccount =
+  async (): Promise<IGetMyAllAccountResponse> => {
+    const url: string = `/account/my/all`;
+    const { data } = await customAxios.get<IGetMyAllAccountResponse>(url);
+    return data;
+  };

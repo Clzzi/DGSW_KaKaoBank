@@ -77,3 +77,13 @@ export interface IRecord {
   date: string;
   type: URecord;
 }
+
+export interface IOtherAccount {
+  accountId: string;
+  phone: string;
+  name: string;
+}
+
+export interface IGetMyAllAccountResponse extends IResponse {
+  data: IOtherAccount[];
+}

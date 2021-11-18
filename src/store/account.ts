@@ -21,3 +21,8 @@ export const detailCardRecordState = atom<IRecord[]>({
   key: 'detailCardRecord',
   default: [] as IRecord[],
 });
+
+export const myAccountIdState = atom<string[]>({
+  key: 'myAccountIdState',
+  default: [] as string[],
+});

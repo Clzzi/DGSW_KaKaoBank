@@ -1,9 +1,12 @@
 import useLink from 'hooks/Common/useLink';
+import { handleGetMyAllAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { phoneState, setCardState } from 'store/addAccount';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
+import { myAccountIdState } from 'store/account';
+import { phoneState, selectCardState, setCardState } from 'store/addAccount';
 import { ColorPalette } from 'styles/ColorPalette';
+import { IOtherAccount } from 'types/account/account.type';
 import makePhoneNumber from 'util/makePhoneNumber';
 import addAccountValidation from 'validation/addAccount.validation';
 
@@ -12,12 +15,45 @@ const useAddAccount = () => {
   const { handleLink: pushMain } = useLink('/main');
   const [phone, setPhone] = useRecoilState<string>(phoneState);
   const [phoneError, setPhoneError] = useState<string>('');
-  const [card, setCard] = useRecoilState<string[]>(setCardState);
-  const resetCard = useResetRecoilState(setCardState);
+  const [card, setCard] = useRecoilState<IOtherAccount[]>(setCardState);
+  const [selectCard, setSelectCard] = useRecoilState<string[]>(selectCardState);
+  const accountId = useRecoilValue(myAccountIdState);
 
   const onResetPhone = () => {
     setPhone('');
     setPhoneError('');
+  };
+
+  const getMyAllAccount = async () => {
+    try {
+      // const { data } = await handleGetMyAllAccount();
+      const test = [
+        {
+          accountId: '001089349966',
+          phone: '01090882512',
+          name: '손민재',
+        },
+      ];
+      const unDuplicatedAccountId = getUnDuplicatedAccountId(test);
+      setCard(unDuplicatedAccountId);
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
+  };
+
+  const getUnDuplicatedAccountId = (accounts: IOtherAccount[]) => {
+    let unDuplicatedAccountId: IOtherAccount[] = [];
+    accounts.forEach((account) => {
+      if (!accountId.includes(account.accountId)) {
+        const info = {
+          accountId: account.accountId,
+          name: account.name,
+          phone: account.phone,
+        };
+        unDuplicatedAccountId.push(info);
+      }
+    });
+    return unDuplicatedAccountId;
   };
 
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
@@ -81,9 +117,9 @@ const useAddAccount = () => {
     number: string;
   }) => {
     if (check) {
-      setCard((prev) => [...prev, number]);
+      setSelectCard((prev) => [...prev, number]);
     } else {
-      setCard(card.filter((v) => v !== number));
+      setSelectCard(selectCard.filter((v) => v !== number));
     }
   };
 
@@ -95,11 +131,13 @@ const useAddAccount = () => {
     onClickFind,
     customButtonStyle,
     checkGetInfo,
-    resetCard,
     checkSetCard,
+    card,
     setCardCheck,
     onResetPhone,
     setCard,
+    getMyAllAccount,
+    selectCard,
   };
 };
 

@@ -3,14 +3,16 @@ import useTheme from 'hooks/Theme/useTheme';
 import { handleGetMyAccount } from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { CSSProperties, useMemo } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { myCardState } from 'store/account';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { myAccountIdState, myCardState } from 'store/account';
 import { userInfoState } from 'store/user';
 import { ColorPalette } from 'styles/ColorPalette';
+import { IAccount } from 'types/account/account.type';
 
 const useMain = () => {
   const userInfo = useRecoilValue(userInfoState);
   const [myCard, setMyCard] = useRecoilState(myCardState);
+  const setAccountId = useSetRecoilState(myAccountIdState);
   const { handleLink: pushAddCard } = useLink('/add/info');
   const { handleLink: pushEstablish } = useLink('/establish/password');
   const { handleLink: pushRemittance } = useLink('/remittance/getcard');
@@ -28,18 +30,27 @@ const useMain = () => {
 
   const darkThemeButtonStyle: CSSProperties = useMemo(() => {
     return {
-      width: "210px",
-      height: "60px",
-    }
-  },[]);
+      width: '210px',
+      height: '60px',
+    };
+  }, []);
 
   const getMyAccount = async () => {
     try {
       const { data } = await handleGetMyAccount();
+      setMyAccountId(data);
       setMyCard(data);
     } catch (e: any) {
       Toast.infoToast(e.response.data.message);
     }
+  };
+
+  const setMyAccountId = (accounts: IAccount[]) => {
+    let accountArray: string[] = [];
+    accounts.map((account) => {
+      accountArray.push(account.accountId);
+    });
+    setAccountId(accountArray);
   };
 
   const onClickAddCard = () => {
