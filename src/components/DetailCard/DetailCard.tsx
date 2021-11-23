@@ -54,13 +54,14 @@ const DetailCard = (): JSX.Element => {
       </StyledHistoryOption>
       <StyledCardHistoryWrapper>
         {record &&
-          record.map((v) => {
+          record.map((v, i) => {
             return (
               <CardHistory
                 account={v.account}
                 money={v.money}
                 type={v.type}
                 date={v.date}
+                key={i}
               />
             );
           })}

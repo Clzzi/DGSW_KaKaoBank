@@ -1,9 +1,16 @@
 import useLink from 'hooks/Common/useLink';
+import {
+  handleGetMyAccount,
+  handleGetMyAllAccount,
+  handleSetMyAccount,
+} from 'lib/api/account/account.api';
 import Toast from 'lib/Toast';
 import { ChangeEvent, CSSProperties, useMemo, useState } from 'react';
-import { useRecoilState, useResetRecoilState } from 'recoil';
-import { phoneState, setCardState } from 'store/addAccount';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
+import { myAccountIdState } from 'store/account';
+import { phoneState, selectCardState, setCardState } from 'store/addAccount';
 import { ColorPalette } from 'styles/ColorPalette';
+import { IMyAccountDto, IOtherAccount } from 'types/account/account.type';
 import makePhoneNumber from 'util/makePhoneNumber';
 import addAccountValidation from 'validation/addAccount.validation';
 
@@ -12,12 +19,47 @@ const useAddAccount = () => {
   const { handleLink: pushMain } = useLink('/main');
   const [phone, setPhone] = useRecoilState<string>(phoneState);
   const [phoneError, setPhoneError] = useState<string>('');
-  const [card, setCard] = useRecoilState<string[]>(setCardState);
-  const resetCard = useResetRecoilState(setCardState);
+  const [card, setCard] = useRecoilState<IOtherAccount[]>(setCardState);
+  const [selectCard, setSelectCard] = useRecoilState<string[]>(selectCardState);
+  const accountId = useRecoilValue(myAccountIdState);
 
   const onResetPhone = () => {
     setPhone('');
     setPhoneError('');
+  };
+
+  const getMyAllAccount = async () => {
+    try {
+      const { data } = await handleGetMyAllAccount();
+      const unDuplicatedAccountId = await getUnDuplicatedAccountId(data);
+      unDuplicatedAccountId && setCard(unDuplicatedAccountId);
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
+  };
+
+  const getUnDuplicatedAccountId = async (accounts: IOtherAccount[]) => {
+    try {
+      const { data } = await handleGetMyAccount();
+      let myAccount: string[] = [];
+      data.forEach((v) => {
+        myAccount.push(v.accountId);
+      });
+      let unDuplicatedAccountId: IOtherAccount[] = [];
+      accounts.forEach((account) => {
+        if (!myAccount.includes(account.accountId)) {
+          const info = {
+            accountId: account.accountId,
+            name: account.name,
+            phone: account.phone,
+          };
+          unDuplicatedAccountId.push(info);
+        }
+      });
+      return unDuplicatedAccountId;
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
+    }
   };
 
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,13 +105,29 @@ const useAddAccount = () => {
     }
   };
 
-  const onClickSetCard = () => {
-    if (card.length > 0) {
-      Toast.successToast(`${card.length}개의 카드를 등록했습니다.`);
-      sessionStorage.removeItem('AddCard');
-      pushMain();
+  const onClickSetCard = async () => {
+    if (selectCard.length > 0) {
+      await postAccount().then(() => {
+        Toast.successToast(`${selectCard.length}개의 카드를 등록했습니다.`);
+        sessionStorage.removeItem('AddCard');
+        pushMain();
+      });
     } else {
       Toast.infoToast(`카드를 선택해주세요!`);
+    }
+  };
+
+  const postAccount = async () => {
+    try {
+      let info: IMyAccountDto = {
+        accounts: [],
+      };
+      selectCard.forEach((ac) => {
+        info.accounts.push({ accountName: '', accountId: ac });
+      });
+      await handleSetMyAccount(info);
+    } catch (e: any) {
+      Toast.errorToast(e.response.data.message);
     }
   };
 
@@ -81,9 +139,9 @@ const useAddAccount = () => {
     number: string;
   }) => {
     if (check) {
-      setCard((prev) => [...prev, number]);
+      setSelectCard((prev) => [...prev, number]);
     } else {
-      setCard(card.filter((v) => v !== number));
+      setSelectCard(selectCard.filter((v) => v !== number));
     }
   };
 
@@ -93,13 +151,15 @@ const useAddAccount = () => {
     onChangePhone,
     phone,
     onClickFind,
+    selectCard,
     customButtonStyle,
     checkGetInfo,
-    resetCard,
     checkSetCard,
+    card,
     setCardCheck,
     onResetPhone,
     setCard,
+    getMyAllAccount,
   };
 };
 

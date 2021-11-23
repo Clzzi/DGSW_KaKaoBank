@@ -1,8 +1,8 @@
 const makeMoneyComma = (money: string | number) => {
   if (typeof money === 'string') {
-    return money.toLocaleString();
+    return money.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   } else {
-    return money.toString().toLocaleString();
+    return money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 };
 

@@ -1,5 +1,6 @@
 import { StyledCard } from './Card.style';
 import { ReactComponent as Check } from 'assets/icon/check.svg';
+import makeMoneyComma from 'util/makeMoneyComma';
 
 interface ICardProps {
   company: string;
@@ -23,7 +24,7 @@ const Card = ({
         <div className="number">{number}</div>
       </div>
       <div className="money">
-        {money}
+        {makeMoneyComma(money)}
         <span className="won"> 원</span>
       </div>
       <div className="checkBackground">

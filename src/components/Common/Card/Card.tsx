@@ -1,11 +1,12 @@
 import { StyledCard } from './Card.style';
 import { useEffect, useState } from 'react';
 import { ReactComponent as Check } from 'assets/icon/check.svg';
+import makeMoneyComma from 'util/makeMoneyComma';
 
 interface ICardProps {
   company: string;
   number: string;
-  money: string;
+  money?: string;
   handleClick: ({ check, number }: { check: boolean; number: string }) => void;
 }
 
@@ -32,10 +33,12 @@ const Card = ({
         <div className="company">{company}</div>
         <div className="number">{number}</div>
       </div>
-      <div className="money">
-        {money}
-        <span className="won"> 원</span>
-      </div>
+      {money && (
+        <div className="money">
+          {makeMoneyComma(money)}
+          <span className="won"> 원</span>
+        </div>
+      )}
       <div className="checkBackground">
         <Check />
       </div>

@@ -23,7 +23,7 @@ export const StyledButton = styled.div`
 export const StyledTitle = styled.div`
   font-family: 'AppleB';
   font-size: ${fontPalette.font28};
-  color: ${ColorPalette.fureBlack};
+  color:  ${(props) => props.theme.fontColor};
   text-align: start;
   margin-bottom: 75px;
 `;

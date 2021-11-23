@@ -5,7 +5,7 @@ import { fontPalette } from 'styles/FontPalette';
 export const StyledTitle = styled.div`
   font-family: 'AppleB';
   font-size: ${fontPalette.font28};
-  color: ${ColorPalette.fureBlack};
+  color: ${(props) => props.theme.fontColor};
   margin-bottom: 45px;
   text-align: start;
 `;

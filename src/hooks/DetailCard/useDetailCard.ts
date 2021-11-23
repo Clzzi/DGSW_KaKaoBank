@@ -156,10 +156,12 @@ const useDetailCard = () => {
     customBringButtonStyle,
     number,
     getAccountInfo,
+    setRecordNewest,
     onClickOption,
     option,
     loadRecord,
     card,
+    setRecordOldest,
     record,
   };
 };

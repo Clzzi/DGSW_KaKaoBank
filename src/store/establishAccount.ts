@@ -10,3 +10,8 @@ export const establishAccountInfoState = atom<IEstablishAccountInfo>({
   key: 'establishAccountInfoState',
   default: {} as IEstablishAccountInfo,
 });
+
+export const accountNameState = atom<string>({
+  key: "accountNameState",
+  default: "",
+})

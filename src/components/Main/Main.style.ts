@@ -12,8 +12,8 @@ export const StyledMainTitle = styled.div`
   & > span {
     font-family: 'AppleB';
     font-size: ${fontPalette.font24};
+    color: ${(props) => props.theme.fontColor}
   }
-
   & > button {
     cursor: pointer;
     font-family: 'AppleB';

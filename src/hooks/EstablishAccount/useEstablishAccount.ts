@@ -5,6 +5,7 @@ import Toast from 'lib/Toast';
 import { CSSProperties, useMemo, useRef, useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import {
+  accountNameState,
   accountPasswordState,
   establishAccountInfoState,
 } from 'store/establishAccount';
@@ -14,6 +15,8 @@ import makeAccountNumber from 'util/makeAccountNumber';
 
 const useEstablishAccount = () => {
   const confetti = useRef<JSConfetti | null>(null);
+  const [accountName, setAccountName] =
+    useRecoilState<string>(accountNameState);
   const [password, setPassword] = useRecoilState<string>(accountPasswordState);
   const [passwordError, setPasswordError] = useState('');
   const [accountInfo, setAccountInfo] = useRecoilState<IEstablishAccountInfo>(
@@ -63,16 +66,16 @@ const useEstablishAccount = () => {
   }, []);
 
   const onClickEstablish = () => {
-    if (password.length === 4) {
+    if (password.length === 4 && accountName.length > 0) {
       establishAccount();
     } else {
-      Toast.infoToast('비밀번호를 제대로 적어주세요');
+      Toast.infoToast('정보를 제대로 기입해주세요');
     }
   };
 
   const establishAccount = async () => {
     try {
-      const req = { password };
+      const req = { password, accountName };
       const { data } = await handleEstablishAccount(req);
       setAccountInfo({
         accountId: makeAccountNumber(data.accountId),
@@ -115,6 +118,8 @@ const useEstablishAccount = () => {
     passwordError,
     setPassword,
     setPasswordError,
+    accountName,
+    setAccountName,
     onClickComplete,
     onChangePassword,
     customButtonStyle,

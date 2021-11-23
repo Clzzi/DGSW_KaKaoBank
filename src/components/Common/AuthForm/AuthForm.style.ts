@@ -11,7 +11,7 @@ export const StyledForm = styled.div`
     text-align: start;
     font-family: 'AppleB';
     font-size: ${fontPalette.font24};
-    color: ${ColorPalette.fureBlack};
+    color: ${(props) => props.theme.fontColor};
     margin-bottom: 16px;
   }
 

@@ -6,7 +6,7 @@ export const StyledInfoInput = styled.input`
   width: 430px;
   height: 41px;
   background-color: ${ColorPalette.grey};
-  color: ${(props) => props.theme.fontColor || ColorPalette.fureBlack};
+  color: ${ColorPalette.fureBlack};
   font-size: ${fontPalette.font16};
   border-radius: 10px;
   padding: 10px 16px;

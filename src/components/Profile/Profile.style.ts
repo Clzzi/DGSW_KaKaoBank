@@ -11,7 +11,7 @@ export const StyledTitle = styled.div`
   & > div {
     font-family: 'AppleEB';
     font-size: ${fontPalette.font24};
-    color: ${ColorPalette.fureBlack};
+    color:  ${(props) => props.theme.fontColor}
   }
   & > button {
     font-family: 'AppleB';
@@ -43,13 +43,13 @@ export const StyledContent = styled.div`
     padding-left: 24px;
     font-family: 'AppleB';
     font-size: ${fontPalette.font20};
-    color: ${ColorPalette.fureBlack};
+    color:  ${(props) => props.theme.fontColor};
   }
   .content {
     position: absolute;
     padding-left: 145px;
     font-family: 'AppleB';
     font-size: ${fontPalette.font20};
-    color: ${ColorPalette.fureBlack};
+    color:  ${(props) => props.theme.fontColor};
   }
 `;
