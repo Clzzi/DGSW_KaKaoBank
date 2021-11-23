@@ -45,7 +45,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "react-app-rewired build && shx cp build/index.html build/404.html",
     "test": "react-app-rewired test",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
@@ -67,5 +67,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "shx": "^0.3.3"
   }
 }
